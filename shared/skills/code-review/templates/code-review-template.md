@@ -3,7 +3,7 @@
 <!-- markdownlint-configure-file {"MD013": {"tables": false}} -->
 
 <!--
-Save as ./local/code_review_YYYY_mm_dd_vN.md in the reviewed repository.
+Save as docs/.code_reviews/code_review_YYYY_mm_dd_vN.md in the reviewed repository.
 Use the review date in the recorded timezone; N is a positive, unpadded integer.
 Replace every placeholder before issuing the report. Choose one value for each
 enum. Do not leave unexplained blanks. Use NONE only with a reason. Retain all
