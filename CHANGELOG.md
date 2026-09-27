@@ -5,6 +5,20 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
+## [Unreleased]
+
+### Removed
+
+- Removed `ralph-loop-docs-writer` from the shared skill catalog and README; it
+  now lives in the Gralph project. Existing installed copies are not pruned
+  and must be deleted manually.
+- Removed the `make upload` target, which called a script that no longer
+  exists in this repository.
+
+### Fixed
+
+- Stopped tracking Python bytecode caches and ignored `__pycache__/`.
+
 ## [1.5.0] - 2026-09-14
 
 ### Added

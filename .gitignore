@@ -71,6 +71,10 @@ site/
 # Local documentation scripts
 docs/scripts/
 
+# Python artifacts
+__pycache__/
+*.pyc
+
 # Go artifacts
 
 **/coverage.out
