@@ -214,11 +214,25 @@ Write never-nester code. A review rejects code that breaks these rules.
 
 ## Project Layout Expectations
 
-This project follows a Go layout inspired by `golang-standards/project-layout` with CLI-oriented adaptations:
+Follow the layout the project already uses. For new code where neither the project nor an architecture plan sets one, organize by vertical slice inside clean architecture:
 
-- `/cmd`: binary entry points; keep thin
-- `/internal`: private app code organized by domain
-- `/tests`: integration/E2E support and fixtures
+```text
+cmd/<binary>/            composition root: thin main, wires adapters into slices
+internal/
+  <subdomain>/           package <subdomain>: the core
+    <usecase>/           slice: handler or command, use case, slice-only ports
+    postgres/            adapter implementing the core's ports
+  platform/              config, db pool, telemetry, server
+tests/                   integration/E2E support and fixtures
+```
+
+- The subdomain's root package is its core: entities, value objects, domain errors, ports shared by two or more slices, and published events. Name it after the subdomain (`patterns.Pattern`, `patterns.Repository`), never `domain`.
+- Slices and adapters import the core; the core imports none of them, which Go's ban on import cycles enforces.
+- Keep framework, driver, and wire types in adapters.
+- Slices in the same subdomain never import each other; move shared behavior into the core.
+- Another subdomain uses only this one's public surface: its slices' entry points and published events. Never import its entities, ports, or adapters.
+- A subdomain with one or two use cases keeps them in a single slice package.
+- Never add top-level `handlers`, `services`, or `repositories` packages.
 
 Conventions:
 

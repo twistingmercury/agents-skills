@@ -75,7 +75,7 @@ Design around the dependency rule: source-code dependencies point inward, toward
 - **Ports and adapters.** Inner layers declare the interfaces they need; outer layers implement them. Invert the dependency at every boundary where control flows outward.
 - **Details stay details.** Databases, frameworks, brokers, and UIs are replaceable plugins. Business rules must build and pass their tests without them.
 - **Boundary data.** Pass simple data structures across boundaries. Never let ORM entities, framework request types, or wire formats reach the core.
-- **Screaming architecture.** Top-level structure names business capabilities, not frameworks.
+- **Vertical slices.** Within a project, organize by subdomain (a business capability), then by use-case slice; the dependency rule governs how they connect. A subdomain exposes only its use-case entry points and published events to other subdomains. Top-level structure names business capabilities, not layers or frameworks.
 - **Proportion.** The dependency rule is non-negotiable; the number of layers is not. Collapse layers in small services and CLIs where separation adds no value, and record that decision in an ADR.
 
 ### Applying it to API contracts
@@ -84,6 +84,7 @@ Design around the dependency rule: source-code dependencies point inward, toward
 - Keep request, response, and message schemas separate from domain entities and persistence models, and state the mapping at the boundary.
 - Keep transport concerns (status codes, headers, pagination tokens, retries) in the adapter; map domain errors to transport errors there.
 - Keep one use case reachable through several transports (REST, gRPC, events) without changing it.
+- Group contracts by subdomain, and map each operation to one use-case slice.
 
 ## Workflow
 

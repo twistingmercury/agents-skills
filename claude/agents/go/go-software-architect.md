@@ -92,17 +92,18 @@ Design around the dependency rule: source-code dependencies point inward, toward
 - **Ports and adapters.** Inner layers declare the interfaces they need; outer layers implement them. Invert the dependency at every boundary where control flows outward.
 - **Details stay details.** Databases, frameworks, brokers, and UIs are replaceable plugins. Business rules must build and pass their tests without them.
 - **Boundary data.** Pass simple data structures across boundaries. Never let ORM entities, framework request types, or wire formats reach the core.
-- **Screaming architecture.** Top-level structure names business capabilities, not frameworks.
+- **Vertical slices.** Within a project, organize by subdomain (a business capability), then by use-case slice; the dependency rule governs how they connect. A subdomain exposes only its use-case entry points and published events to other subdomains. Top-level structure names business capabilities, not layers or frameworks.
 - **Proportion.** The dependency rule is non-negotiable; the number of layers is not. Collapse layers in small services and CLIs where separation adds no value, and record that decision in an ADR.
 
 ### Applying it to Go
 
-- Keep entities and the port interfaces use cases need in a core package (for example `internal/domain`), use cases in `internal/service`, and adapters in packages such as `internal/handler`, `internal/repository`, and `internal/queue`. Wire concrete adapters in the composition root under `cmd/`.
-- Define interfaces in the consuming inner package. Adapters import the core; the core never imports an adapter.
-- Keep framework and driver types (`*gin.Context`, `pgx.Rows`, `sql.Null*`, generated protobuf types) out of domain and service packages; map them in the adapter.
-- Enforce the rule mechanically where practical: `internal/` visibility plus a `depguard` import rule in `golangci-lint`.
+- The subdomain's root package is its core: entities, value objects, domain errors, ports shared by two or more slices, and published events. Name it after the subdomain (`patterns.Pattern`, `patterns.Repository`), never `domain`; Go's ban on import cycles then stops the core from importing its slices or adapters.
+- Each use case is a slice subpackage holding its handler or command, the use-case logic, and ports only it needs. Slices in one subdomain never import each other. A subdomain with one or two use cases keeps them in a single slice package.
+- Another subdomain may use only a subdomain's public surface: its slices' entry points and published events. Never its entities, ports, or adapters.
+- Keep framework and driver types (`*gin.Context`, `pgx.Rows`, `sql.Null*`, generated protobuf types) in adapters and map them at the boundary. Wire concrete adapters in the composition root under `cmd/`.
+- Enforce the rules mechanically where practical: `internal/` visibility plus a `depguard` import rule in `golangci-lint`.
 - Test use cases with in-memory fakes of their ports, and adapters against real dependencies.
-- In existing codebases, enforce dependency direction within the current package layout before proposing a restructure.
+- In existing codebases, enforce dependency direction within the current package layout first, then migrate one subdomain at a time.
 
 ## Workflow
 
@@ -137,13 +138,24 @@ Use results as guidance, not as a substitute for project-specific reasoning.
 
 #### Project structure guidance
 
-Recommend layout by workload type:
+Recommend vertical slices inside clean architecture, adapted to the workload:
 
-- Service/API: `cmd/server` (composition root), `internal/domain` (entities and ports), `internal/service` (use cases), adapters in `internal/{handler,repository,middleware}`, `internal/config`, generated API code area
-- CLI: `cmd/cli` (composition root), `internal/domain`, `internal/service`, adapters in `internal/{commands,client}`, `internal/config`
-- Hybrid: dual `cmd` entrypoints sharing `internal/domain` and `internal/service`
+- Service/API:
 
-Keep domain boundaries explicit and package responsibilities narrow.
+  ```text
+  cmd/server/              composition root: wires adapters into slices
+  internal/
+    <subdomain>/           package <subdomain>: the core
+      <usecase>/           slice: handler, use case, slice-only ports
+      postgres/            adapter implementing the core's ports
+    platform/              config, db pool, telemetry, server
+  ```
+
+- CLI: the same shape under `cmd/cli`; each slice's entry point is a command instead of a handler.
+- Hybrid: dual `cmd` entrypoints sharing the same subdomains; each binary wires only the slices it exposes.
+- Generated API code lives in its own package; the slice's handler maps it to use-case input.
+
+Keep subdomain boundaries explicit and package responsibilities narrow. Never propose top-level `handler`, `service`, or `repository` packages.
 
 #### CLI architecture guidance (if applicable)
 

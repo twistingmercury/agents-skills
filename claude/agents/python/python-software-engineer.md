@@ -151,12 +151,20 @@ Fix all issues before marking work complete.
 
 ## Project Structure
 
-```
+Follow the layout the project already uses. For new code where neither the project nor an architecture plan sets one, organize by vertical slice inside clean architecture:
+
+```text
 project/
 ├── src/
 │   └── package_name/
 │       ├── __init__.py
-│       └── ...
+│       ├── patterns/            # subdomain
+│       │   ├── domain/          # core: entities, value objects, errors, shared ports, events
+│       │   ├── create/          # slice: entry point, use case, slice-only ports
+│       │   ├── search/
+│       │   └── adapters/        # implementations of the core's ports
+│       ├── platform/            # config, database, telemetry
+│       └── main.py              # composition root
 ├── tests/
 │   ├── conftest.py
 │   └── ...
@@ -164,6 +172,11 @@ project/
 └── README.md
 ```
 
+- Keep each `domain` package free of slice, adapter, and framework imports; define ports as `typing.Protocol` classes
+- Slices in the same subdomain never import each other; another subdomain uses only public entry points and published events
+- Keep ORM models, request objects, and framework types in adapters
+- Libraries and small scripts may stay flat; collapse the slice level for subdomains with one or two use cases
+- Enforce import direction with `import-linter` when the project uses it
 - Use `src/` layout for distributable packages
 - Place tests in a top-level `tests/` directory
 - Use `pyproject.toml` as the single source of project metadata

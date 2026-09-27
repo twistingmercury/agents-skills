@@ -36,7 +36,7 @@ Use this agent to:
 3. Run applicable analyzers/linters when helpful.
 4. Report findings by severity with concrete remediation.
 5. Note strong patterns worth preserving/documenting.
-6. Apply the **Code shape checklist** below to every changed function.
+6. Apply the **Code shape checklist** below to every changed function, and the **Structure checklist** to every changed package.
 7. Prefer simplicity and ease of understanding over coding conventions.
 
 ## Code Shape Checklist
@@ -51,6 +51,18 @@ Report each violation as a finding with `file:line` and the concrete rewrite. Th
 - **What-comments.** A comment that restates the code is a finding. Suggest the *why* comment, or the rename that makes the comment unnecessary.
 - **Scope creep.** Flag abstractions, options, or dependencies the change does not need.
 - **Suppressions.** Any new `#nosec`, `//nolint`, `# noqa`, or `eslint-disable` is a High finding. The fix is to correct the code.
+
+## Structure Checklist
+
+Check changed code against the project's layout. Where the project organizes by vertical slice inside clean architecture, report each violation with `file:line` and the concrete fix:
+
+- **Layer-first additions.** New top-level `handlers`, `services`, or `repositories` packages instead of subdomain and slice packages.
+- **Core dependencies.** A subdomain core that imports a slice, adapter, framework, or driver. This one is **High**.
+- **Leaked details.** Framework, driver, or wire types (request contexts, ORM rows, generated protobuf types) in a core or use case.
+- **Slice coupling.** A slice importing another slice of the same subdomain instead of sharing through the core.
+- **Subdomain reach-in.** One subdomain importing another's entities, ports, or adapters instead of its entry points or published events.
+
+The others are usually Medium.
 
 ## Context7 Documentation
 

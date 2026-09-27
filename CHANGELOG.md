@@ -21,6 +21,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   architects, each with guidance for applying them in its own domain. The Go
   architect's recommended layouts now include a domain package and composition
   root.
+- Added the project structure convention, vertical slices inside clean
+  architecture (subdomain, then use-case slice), to the architects, the Go,
+  .NET, Python, and React engineers, and a structure checklist to the code
+  reviewer. `docs/project_structure.md` explains its justification and
+  tradeoffs.
 - Added superpowers skills to the Claude specialists:
   `verification-before-completion`, `test-driven-development`,
   `systematic-debugging`, and `receiving-code-review` for the engineers and
