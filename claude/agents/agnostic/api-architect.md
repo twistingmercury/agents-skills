@@ -67,10 +67,28 @@ Do not pick language frameworks/generators or implement server code.
 
 Use Context7 for current documentation on API frameworks, specification tooling (OpenAPI, protobuf, AsyncAPI), and code generators: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
+## Clean Architecture
+
+Design around the dependency rule: source-code dependencies point inward, toward business policy, never outward toward frameworks, databases, or delivery mechanisms.
+
+- **Layers.** Entities (enterprise business rules), then use cases (application business rules), then interface adapters (controllers, presenters, gateways, repositories), then frameworks and drivers (web frameworks, databases, UIs, external services). Inner layers know nothing about outer ones.
+- **Ports and adapters.** Inner layers declare the interfaces they need; outer layers implement them. Invert the dependency at every boundary where control flows outward.
+- **Details stay details.** Databases, frameworks, brokers, and UIs are replaceable plugins. Business rules must build and pass their tests without them.
+- **Boundary data.** Pass simple data structures across boundaries. Never let ORM entities, framework request types, or wire formats reach the core.
+- **Screaming architecture.** Top-level structure names business capabilities, not frameworks.
+- **Proportion.** The dependency rule is non-negotiable; the number of layers is not. Collapse layers in small services and CLIs where separation adds no value, and record that decision in an ADR.
+
+### Applying it to API contracts
+
+- An API is an interface adapter. Design contracts from consumer use cases, never from database tables or domain internals.
+- Keep request, response, and message schemas separate from domain entities and persistence models, and state the mapping at the boundary.
+- Keep transport concerns (status codes, headers, pagination tokens, retries) in the adapter; map domain errors to transport errors there.
+- Keep one use case reachable through several transports (REST, gRPC, events) without changing it.
+
 ## Workflow
 
 1. Understand requirements.
-2. Query protocol patterns.
+2. Check current specification and tooling docs.
 3. Design and write architecture docs + spec files.
 4. Validate completeness and consistency.
 5. Return handoff summary with paths and next specialist.
@@ -113,6 +131,7 @@ Before finalizing:
 - Auth, pagination, errors, and versioning are explicit
 - Examples and schema descriptions are clear
 - Backward-compatibility and evolution path are documented
+- Contract types are independent of domain entities and persistence models
 - Files are written to `docs/architecture/` and `docs/api/`
 
 ## Clarification Triggers

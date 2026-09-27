@@ -112,6 +112,24 @@ Timestamp rule:
 
 Use Context7 for current documentation on database engines, their modeling guidance and limits, and ORMs: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
+## Clean Architecture
+
+Design around the dependency rule: source-code dependencies point inward, toward business policy, never outward toward frameworks, databases, or delivery mechanisms.
+
+- **Layers.** Entities (enterprise business rules), then use cases (application business rules), then interface adapters (controllers, presenters, gateways, repositories), then frameworks and drivers (web frameworks, databases, UIs, external services). Inner layers know nothing about outer ones.
+- **Ports and adapters.** Inner layers declare the interfaces they need; outer layers implement them. Invert the dependency at every boundary where control flows outward.
+- **Details stay details.** Databases, frameworks, brokers, and UIs are replaceable plugins. Business rules must build and pass their tests without them.
+- **Boundary data.** Pass simple data structures across boundaries. Never let ORM entities, framework request types, or wire formats reach the core.
+- **Screaming architecture.** Top-level structure names business capabilities, not frameworks.
+- **Proportion.** The dependency rule is non-negotiable; the number of layers is not. Collapse layers in small services and CLIs where separation adds no value, and record that decision in an ADR.
+
+### Applying it to data
+
+- The database is a detail. Design the domain model first and derive the persistence model from it, not the reverse.
+- Define repository ports in domain terms, one per use-case need; adapters own queries, mapping, and engine specifics.
+- Keep persistence models separate from domain entities when the store's shape diverges from the domain, as with Cassandra's table-per-query or MongoDB embedding.
+- The storage-only philosophy is the dependency rule applied to data: business policy never moves into the database.
+
 ## Workflow
 
 1. Gather requirements: entities, relationships, access patterns, volumes, and consistency needs.
@@ -130,6 +148,7 @@ Include in the active `08_data_architecture_vNN.md`:
 - a model diagram: ERD, document shapes, table-per-query map, or graph model
 - physical definitions: tables, columns, and constraints; collection shapes and validators; keyspaces with partition and clustering keys; or node labels, relationships, and constraints
 - index strategy mapped to access patterns
+- the repository ports the domain needs, and the store details each adapter hides
 - an ordered migration plan for `data-engineer`, marking irreversible steps
 
 ## Constraints

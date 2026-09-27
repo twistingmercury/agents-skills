@@ -16,6 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and a Code Shape checklist to the code reviewer, for both platforms.
 - Added Context7 documentation guidance to the global rules and to every
   specialist that writes or designs against third-party libraries.
+- Added clean architecture principles (dependency rule, ports and adapters,
+  boundary data, proportional layering) to the solutions, Go, API, and data
+  architects, each with guidance for applying them in its own domain. The Go
+  architect's recommended layouts now include a domain package and composition
+  root.
 - Added superpowers skills to the Claude specialists:
   `verification-before-completion`, `test-driven-development`,
   `systematic-debugging`, and `receiving-code-review` for the engineers and
