@@ -63,6 +63,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- Removed the `dotnet-postgres-api-starter` skill pending a rewrite, along with
+  its scaffold regression tests from `make test`. Installed copies are not
+  pruned and must be deleted manually.
 - Removed `superpowers:brainstorming` from the solutions architect; it needs a
   user dialogue that a subagent cannot hold.
 - Removed all Mnemonic MCP tool grants, retrieval sections, and the global

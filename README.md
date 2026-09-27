@@ -47,7 +47,6 @@ Portable skills are shared across both integrations:
 | [`check-push-readiness`](shared/skills/check-push-readiness/SKILL.md)               | Assess committed changes before pushing                  |
 | [`code-review`](shared/skills/code-review/SKILL.md)                                 | Coordinate review across multiple concerns               |
 | [`docker-first-ci`](shared/skills/docker-first-ci/SKILL.md)                         | Implement and harden Docker-first CI/CD pipelines        |
-| [`dotnet-postgres-api-starter`](shared/skills/dotnet-postgres-api-starter/SKILL.md) | Scaffold a complete .NET API and PostgreSQL repository   |
 | [`prime`](shared/skills/prime/SKILL.md)                                             | Survey a repository and build working context            |
 | [`readme-writer`](shared/skills/readme-writer/SKILL.md)                             | Create or update a README from a standard template       |
 | [`rlm`](shared/skills/rlm/SKILL.md)                                                 | Run long-context tasks using a persistent local REPL     |
@@ -69,13 +68,6 @@ format, disposition requirements, and verdict rules. Reviews account for explici
 user concerns and relevant test groups, disclosing sampling and omissions.
 Re-reviews reconcile every prior finding with evidence; a finding that was not
 rediscovered remains open until its disposition is justified.
-
-The .NET PostgreSQL starter generates a complete repository targeting .NET 10,
-including Docker builds, tests, CI, and deployment assets. It has no
-application-only alternative. Invoke it in the intended project directory with
-no application files; the skill defines which existing Git and agent metadata
-it preserves. In the generated repository, run `make build-db` before
-`make build`: black-box tests reuse and preserve that database image.
 
 ## How it works
 
@@ -131,18 +123,16 @@ make help
 
 ### Testing
 
-With BATS, Python 3.11+, Bash 4+, and Make available, run the test suites from
-the repository root:
+With Python 3.11+ and Make available, run the test suites from the repository
+root:
 
 ```bash
 make test
 ```
 
-This runs the shared .NET PostgreSQL scaffold regression tests and shared RLM
-unit tests. Separately, you may also run them directly:
+This runs the shared RLM unit tests. You may also run them directly:
 
 ```bash
-bats shared/skills/dotnet-postgres-api-starter/tests/scaffold.bats
 (cd shared/skills/rlm && python3 -m unittest discover -s tests -v)
 ```
 
