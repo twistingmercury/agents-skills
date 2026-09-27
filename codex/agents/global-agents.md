@@ -11,8 +11,8 @@ The exact TOML `name` is authoritative when selecting an agent:
 - `api_architect`: designs REST, GraphQL, gRPC, and AsyncAPI contracts.
 - `bats_test_engineer`: writes isolated black-box BATS coverage for shell scripts.
 - `code_reviewer`: reviews correctness, security, maintainability, and project conventions.
-- `data_architect`: designs storage schemas, relationships, constraints, and indexes.
-- `data_engineer`: implements SQL/Cypher migrations and data transformations.
+- `data_architect`: selects stores and designs data models, constraints, and indexes.
+- `data_engineer`: implements migrations and data transformations for relational, document, wide-column, and graph stores.
 - `devops_engineer`: implements containers, CI/CD, and deployment infrastructure.
 - `dotnet_software_engineer`: implements and refactors production C#/.NET systems.
 - `go_e2e_test_engineer`: writes black-box Go tests for APIs and CLIs.

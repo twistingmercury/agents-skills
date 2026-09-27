@@ -32,10 +32,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `git commit`); `git push` is explicitly denied for every Claude agent and
   forbidden in the Codex instructions. The code reviewer and RLM subcall agent
   remain unable to stage or commit.
-- The data engineer now verifies migrations against disposable Postgres and
-  Neo4j containers (up, down, up), with Bash access limited to `psql`,
-  `pg_isready`, `cypher-shell`, Docker, `make`, `bats`, and `sqlfluff`, and
-  read access to Makefiles, Dockerfiles, compose files, and shell scripts.
+- The data architect and data engineer are now database-agnostic, covering
+  relational (PostgreSQL, MySQL, SQL Server), document (MongoDB), wide-column
+  (Cassandra), and graph (Neo4j) stores. The architect selects stores and
+  designs per family; the engineer follows a per-family playbook and owns
+  native and tool-format migrations, while ORM code migrations stay with the
+  language engineers.
+- The data engineer verifies migrations against a disposable container using
+  the engine's own client (up, down, up), with Bash access limited to Docker,
+  the database clients, migration CLIs, `make`, `bats`, and `sqlfluff`. It can
+  write engine-native files anywhere and other formats only inside
+  `migrations/`, `db/`, or `database/` directories.
 
 ### Removed
 

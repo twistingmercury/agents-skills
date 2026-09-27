@@ -33,7 +33,7 @@ User[User Request] --> Main[Main Claude<br/>Coordinator]
     Main --> Review[Code Review]
 
     Impl --> SoftEng[software-engineer<br/>Go, Python, .NET, React, Shell]
-    Impl --> DataEng[data-engineer<br/>SQL, Cypher]
+    Impl --> DataEng[data-engineer<br/>Relational, document,<br/>wide-column, graph]
     Test --> E2EEng[e2e-test-engineer<br/>Go, BATS]
     DevOps --> DevOpsEng[devops-engineer]
     Doc --> DocEng[technical-writer]
@@ -540,7 +540,7 @@ For quick visual identification in Claude Code:
 
 - **Purple** - solutions-architect (language-agnostic), language-architect (language-specific implementation)
 - **Orange** - api-architect (REST/GraphQL/gRPC specifications), data-architect (schema design)
-- **Green** - software-engineer (implementation for all languages), e2e-test-engineer (testing), data-engineer (SQL/Cypher)
+- **Green** - software-engineer (implementation for all languages), e2e-test-engineer (testing), data-engineer (relational, document, wide-column, and graph migrations)
 - **Red** - code-reviewer (pattern compliance and code review)
 - **Blue** - devops-engineer (deployment and CI/CD)
 - **Gray** - technical-writer (documentation)

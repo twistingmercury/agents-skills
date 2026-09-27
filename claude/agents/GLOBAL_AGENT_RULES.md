@@ -20,7 +20,7 @@
 | Go architecture                          | `go software architect` |
 | DevOps/Docker/CI                         | `devops engineer`       |
 | Data schema/models                       | `data architect`        |
-| SQL/migrations/Cypher                    | `data engineer`         |
+| Database migrations and data scripts     | `data engineer`         |
 | Code review/compliance                   | `/code-review` skill    |
 | Create or update README.md               | `/readme-writer` skill  |
 | Create or update architectural documents | `/arch-docs` skill      |
