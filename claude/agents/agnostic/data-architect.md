@@ -8,7 +8,6 @@ skills:
   - mermaid-diagrams:mermaid-diagrams
   - writing-clearly-and-concisely:writing-clearly-and-concisely
 tools:
-  - "mcp__mnemonic__search_patterns"
   - "mcp__context7__resolve-library-id"
   - "mcp__context7__query-docs"
   - "Read(**/*)"
@@ -16,9 +15,9 @@ tools:
   - "Glob(**/*)"
   - "Grep(*, **/*)"
   - "Bash(mkdir *)"
-disallowedTools:
   - "Bash(git add *)"
   - "Bash(git commit *)"
+disallowedTools:
   - "Bash(git push *)"
 ---
 # Data Architect Agent
@@ -64,9 +63,9 @@ Timestamp rule:
 - `data-engineer`: SQL/Cypher implementation
 - application engineers: repository/data access code
 
-## Mnemonic Retrieval
+## Context7 Documentation
 
-Query `mcp__mnemonic__search_patterns` for schema, indexing, and graph-modeling patterns before finalizing decisions.
+Use Context7 for current documentation on database engines, ORMs, and graph stores: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
 ## Workflow
 

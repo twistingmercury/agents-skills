@@ -7,9 +7,7 @@ skills:
   - arch-docs
   - mermaid-diagrams:mermaid-diagrams
   - writing-clearly-and-concisely:writing-clearly-and-concisely
-  - superpowers:brainstorming
 tools:
-  - "mcp__mnemonic__search_patterns"
   - "mcp__context7__resolve-library-id"
   - "mcp__context7__query-docs"
   - "Read(**/*)"
@@ -18,9 +16,9 @@ tools:
   - "Bash(git diff *)"
   - "Bash(git show *)"
   - "Bash(git log *)"
-disallowedTools:
   - "Bash(git add *)"
   - "Bash(git commit *)"
+disallowedTools:
   - "Bash(git push *)"
 ---
 
@@ -48,9 +46,9 @@ You do not coordinate execution.
 - Document architecture decisions (including ADRs)
 - Provide explicit handoff guidance to the next architect
 
-## Mnemonic Retrieval
+## Context7 Documentation
 
-Optionally query `mcp__mnemonic__search_patterns` for architecture patterns and tradeoff references to strengthen recommendations.
+Use Context7 for current documentation on the platforms, frameworks, and services under consideration: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
 ## Project Context Analysis
 

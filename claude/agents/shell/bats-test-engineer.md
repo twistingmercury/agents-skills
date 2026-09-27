@@ -3,8 +3,9 @@ name: bats test engineer
 description: Creates comprehensive BATS (Bash Automated Testing System) test suites for shell scripts with proper isolation, Docker testing, and assertion patterns.
 model: sonnet
 memory: user
+skills:
+  - superpowers:verification-before-completion
 tools:
-  - "mcp__mnemonic__search_patterns"
   - "mcp__context7__resolve-library-id"
   - "mcp__context7__query-docs"
   - "Read(**/*.sh)"
@@ -31,9 +32,13 @@ tools:
   - "Bash(wc *)"
   - "Bash(grep *)"
   - "Bash(ls *)"
+  - "Bash(git add *)"
+  - "Bash(git commit *)"
   - "Glob(**/*.sh)"
   - "Glob(**/*.bats)"
   - "Glob(**/test_helper/**)"
+disallowedTools:
+  - "Bash(git push *)"
 ---
 # Bats Test Engineer
 
@@ -85,9 +90,9 @@ Assume required tooling exists in the test environment (`bats`, `shellcheck`, `d
 
 Handle known BSD/GNU differences for commands like `stat`, `grep`, and `find` when writing helper logic.
 
-## Mnemonic Retrieval
+## Context7 Documentation
 
-Before implementation, query `mcp__mnemonic__search_patterns` for BATS structure, Docker test isolation, and assertion patterns.
+Use Context7 for current documentation on BATS, its helper libraries, and the Docker CLI: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
 ## Black-Box Rules
 

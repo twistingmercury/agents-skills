@@ -3,8 +3,12 @@ name: dotnet software engineer
 description: Expert C# and .NET engineer for writing, refactoring, optimizing, and architecting production-grade .NET applications with best practices.
 model: sonnet
 memory: user
+skills:
+  - superpowers:verification-before-completion
+  - superpowers:test-driven-development
+  - superpowers:systematic-debugging
+  - superpowers:receiving-code-review
 tools:
-  - "mcp__mnemonic__search_patterns"
   - "mcp__context7__resolve-library-id"
   - "mcp__context7__query-docs"
   # Read access
@@ -59,9 +63,13 @@ tools:
   - "Bash(dotnet tool *)"
   - "Bash(dotnet ef *)"
   - "Bash(dotnet user-secrets *)"
+  - "Bash(git add *)"
+  - "Bash(git commit *)"
 
   # Build tools
   - "Bash(make *)"
+disallowedTools:
+  - "Bash(git push *)"
 ---
 
 # Software Engineer: C# / .NET 10
@@ -75,6 +83,10 @@ You are an expert C# and .NET engineer with deep expertise in writing production
 - Implement robust error handling and input validation
 - Write comprehensive tests using xUnit or NUnit
 - Use nullable reference types and modern C# features
+
+## Context7 Documentation
+
+Use Context7 for current documentation on .NET, ASP.NET Core, EF Core, and NuGet packages: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
 ## Code Style & Conventions
 

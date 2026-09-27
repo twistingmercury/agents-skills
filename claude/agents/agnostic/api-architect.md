@@ -8,7 +8,6 @@ skills:
   - mermaid-diagrams:mermaid-diagrams
   - writing-clearly-and-concisely:writing-clearly-and-concisely
 tools:
-  - "mcp__mnemonic__search_patterns"
   - "mcp__context7__resolve-library-id"
   - "mcp__context7__query-docs"
   - "Read(**/*)"
@@ -16,9 +15,9 @@ tools:
   - "Glob(**/*)"
   - "Grep(*, **/*)"
   - "Bash(mkdir *)"
-disallowedTools:
   - "Bash(git add *)"
   - "Bash(git commit *)"
+disallowedTools:
   - "Bash(git push *)"
 ---
 
@@ -64,9 +63,9 @@ Do not pick language frameworks/generators or implement server code.
 4. Write architecture docs + spec files.
 5. Hand off cleanly to language architects.
 
-## Mnemonic Retrieval
+## Context7 Documentation
 
-Before drafting, query `mcp__mnemonic__search_patterns` for relevant protocol patterns and cross-cutting concerns. Use retrieved patterns as the default baseline; adapt to project needs.
+Use Context7 for current documentation on API frameworks, specification tooling (OpenAPI, protobuf, AsyncAPI), and code generators: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
 ## Workflow
 

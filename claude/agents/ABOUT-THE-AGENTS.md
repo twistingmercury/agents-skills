@@ -8,7 +8,7 @@ The agent ecosystem is organized with **Main Claude as the coordinator** that co
 
 - **Main Claude coordinates**: Creates plans, delegates to specialists, tracks progress
 - **Separation of concerns**: Each agent focuses on one specialized domain
-- **Context efficiency**: Patterns stored in Cognee, not embedded in agents
+- **Current documentation**: Library docs fetched on demand through Context7, not embedded in agents
 - **Composability**: Agents can be used independently or orchestrated together
 - **Maintainability**: Updates to one agent don't affect others
 
@@ -304,58 +304,14 @@ participant DevOps as devops-engineer
 
 ```
 
-## Cognee Integration
+## Library Documentation (Context7)
 
-Architecture and specialized agents query the Cognee knowledge graph for patterns before designing:
-
-```mermaid
-graph LR
-subgraph "Specialized Agents"
-SoftArch[solutions-architect]
-LangArch[language-architect]
-APIArch[api-architect]
-SoftEng[software-engineer]
-E2EEng[e2e-test-engineer]
-DevOpsEng[devops-engineer]
-end
-
-    subgraph "Cognee Knowledge Graph"
-        Arch_Patterns[Architecture Patterns<br/>- System design<br/>- Technology choices<br/>- CLI patterns]
-        API_Patterns[API Patterns<br/>- REST/GraphQL/gRPC specs<br/>- Auth patterns<br/>- Pagination]
-        Impl_Patterns[Implementation Patterns<br/>- Language-specific<br/>- Framework usage<br/>- Best practices]
-        Test_Patterns[Test Patterns<br/>- E2E testing<br/>- Shell script testing<br/>- Test isolation]
-        DevOps_Patterns[DevOps Patterns<br/>- Docker<br/>- K8s<br/>- CI/CD]
-    end
-
-    SoftArch <--> Arch_Patterns
-    LangArch <--> Arch_Patterns
-    LangArch <--> Impl_Patterns
-    APIArch <--> API_Patterns
-    SoftEng <--> Impl_Patterns
-    E2EEng <--> Test_Patterns
-    DevOpsEng <--> DevOps_Patterns
-
-    style Arch_Patterns fill:#9b59b6,stroke:#8e44ad
-    style API_Patterns fill:#e67e22,stroke:#d35400
-    style Impl_Patterns fill:#27ae60,stroke:#229954
-    style Test_Patterns fill:#27ae60,stroke:#229954
-    style DevOps_Patterns fill:#3498db,stroke:#2980b9
-
-```
-
-### Pattern Query Flow
+Agents that design or write against third-party libraries fetch current documentation from the Context7 MCP server instead of relying on training data:
 
 1. **Agent receives task** from coordinator or user
-2. **Agent searches Cognee** using `search()` with appropriate search_type
-3. **Agent adapts patterns** to specific requirements
-4. **Agent delivers artifacts** (specs, code, tests, configs)
-
-### Why Cognee?
-
-- **Context efficiency**: ~80% reduction in agent size
-- **Pattern reuse**: Same patterns across multiple agents
-- **Maintainability**: Update patterns once, all agents benefit
-- **Separation of concerns**: Agents contain logic, not data
+2. **Agent resolves the library** with `mcp__context7__resolve-library-id`
+3. **Agent queries current docs** with `mcp__context7__query-docs` for the APIs, configuration, or version it needs
+4. **Agent delivers artifacts** that follow the repository's pinned versions and conventions
 
 ## Decision Trees
 
@@ -599,7 +555,7 @@ The agent ecosystem provides:
 - **No formal specs required** - Start with natural language, architects ask clarifying questions
 - **Multi-language support** - Same workflow for Go, Python, .NET, and shell scripts
 - **Separation of concerns** - Each agent has one focused responsibility
-- **Context efficiency** - Patterns in Cognee, not embedded in agents
+- **Current documentation** - Library docs fetched on demand through Context7, not embedded in agents
 - **Composability** - Use agents independently or orchestrated together
 - **Maintainability** - Update one agent without affecting others
 - **Scalability** - Add new languages without redesigning

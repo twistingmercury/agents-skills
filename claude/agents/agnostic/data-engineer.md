@@ -3,8 +3,11 @@ name: data engineer
 description: Language-agnostic data engineer. Writes SQL migrations, Cypher queries, and data transformation scripts. Implements storage-only schemas designed by data-architect.
 model: sonnet
 memory: user
+skills:
+  - superpowers:verification-before-completion
+  - superpowers:systematic-debugging
+  - superpowers:receiving-code-review
 tools:
-  - "mcp__mnemonic__search_patterns"
   - "mcp__context7__resolve-library-id"
   - "mcp__context7__query-docs"
   # Read access
@@ -28,9 +31,9 @@ tools:
   - "Glob(**/migrations/**)"
   - "Grep(*, **/*.sql)"
   - "Grep(*, **/*.cypher)"
-disallowedTools:
   - "Bash(git add *)"
   - "Bash(git commit *)"
+disallowedTools:
   - "Bash(git push *)"
 ---
 # Data Engineer Agent
@@ -70,6 +73,10 @@ Timestamp rule:
 - `data-architect`: provides schema and migration intent
 - `data-engineer` (this agent): writes SQL/Cypher artifacts
 - application engineers: consume resulting schema
+
+## Context7 Documentation
+
+Use Context7 for current documentation on database engines, SQL dialects, Cypher, and migration tooling: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
 ## Migration Conventions
 

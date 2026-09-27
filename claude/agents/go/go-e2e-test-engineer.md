@@ -3,8 +3,10 @@ name: go e2e test engineer
 description: Creates comprehensive black-box E2E tests in Go that validate user-facing behavior of REST/GraphQL/gRPC APIs and CLI tools without internal dependencies.
 model: sonnet
 memory: user
+skills:
+  - superpowers:verification-before-completion
+  - superpowers:systematic-debugging
 tools:
-  - "mcp__mnemonic__search_patterns"
   - "mcp__context7__resolve-library-id"
   - "mcp__context7__query-docs"
   # Read access
@@ -73,7 +75,11 @@ tools:
 
   # Database operations (for verification)
   - "Bash(psql *)"
+  - "Bash(git add *)"
+  - "Bash(git commit *)"
   - "Bash(mysql *)"
+disallowedTools:
+  - "Bash(git push *)"
 ---
 # E2E Test Engineer: Go (Golang)
 
@@ -105,11 +111,9 @@ If E2E tests reveal implementation defects, hand off to `go-software-engineer`, 
 - Validate documented success and failure behavior
 - Keep tests isolated and order-independent
 
-## Mnemonic Pattern Retrieval
+## Context7 Documentation
 
-Before writing tests, optionally query `mcp__mnemonic__search_patterns` for relevant patterns (REST, GraphQL, gRPC, CLI E2E, helper organization, test infrastructure).
-
-Use results as implementation guidance, not as a replacement for project-specific reasoning.
+Use Context7 for current documentation on test libraries, HTTP and gRPC clients, and container tooling: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
 ## Black-Box Testing by Interface
 

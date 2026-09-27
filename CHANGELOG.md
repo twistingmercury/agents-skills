@@ -5,10 +5,40 @@ All notable changes to this project will be documented in this file.
 The format is based on [Keep a Changelog](https://keepachangelog.com/en/1.1.0/),
 and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0.html).
 
-## [Unreleased]
+## [1.6.0] - 2026-09-27
+
+### Added
+
+- Added language-agnostic Code Shape rules (never-nester, named callbacks,
+  why-comments, modern stdlib, no inline linter suppressions) to the Claude and
+  Codex global rules.
+- Added a Code shape subsection with Go examples to the Go software engineer,
+  and a Code Shape checklist to the code reviewer, for both platforms.
+- Added Context7 documentation guidance to the global rules and to every
+  specialist that writes or designs against third-party libraries.
+- Added superpowers skills to the Claude specialists:
+  `verification-before-completion`, `test-driven-development`,
+  `systematic-debugging`, and `receiving-code-review` for the engineers and
+  test engineers, and `writing-plans` for the Go software architect. The Codex
+  counterparts carry the same discipline as a Working Discipline section.
+
+### Changed
+
+- The Go software engineer now requires testify, defers to project-defined
+  quality gates, and targets the module's `go` directive instead of Go 1.21.
+- The code reviewer derives conventions from project instructions, linter
+  configuration, and surrounding code instead of a pattern store.
+- Specialists may now stage and commit their own work (`git add`,
+  `git commit`); `git push` is explicitly denied for every Claude agent and
+  forbidden in the Codex instructions. The code reviewer and RLM subcall agent
+  remain unable to stage or commit.
 
 ### Removed
 
+- Removed `superpowers:brainstorming` from the solutions architect; it needs a
+  user dialogue that a subagent cannot hold.
+- Removed all Mnemonic MCP tool grants, retrieval sections, and the global
+  Mnemonic Patterns rule, plus the stale Cognee documentation.
 - Removed `ralph-loop-docs-writer` from the shared skill catalog and README; it
   now lives in the Gralph project. Existing installed copies are not pruned
   and must be deleted manually.

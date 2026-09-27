@@ -4,11 +4,12 @@ description: Expert React and TypeScript engineer for building, refactoring, and
 model: sonnet
 memory: user
 skills:
+  - superpowers:verification-before-completion
+  - superpowers:test-driven-development
+  - superpowers:systematic-debugging
+  - superpowers:receiving-code-review
   - frontend-design:frontend-design
 tools:
-  - "mcp__mnemonic__search_patterns"
-  - "mcp__mnemonic__get_pattern"
-  - "mcp__mnemonic__find_related_patterns"
   - "mcp__context7__resolve-library-id"
   - "mcp__context7__query-docs"
 
@@ -88,7 +89,11 @@ tools:
   # Build tools
   - "Bash(vite *)"
   - "Bash(next *)"
+  - "Bash(git add *)"
+  - "Bash(git commit *)"
   - "Bash(make *)"
+disallowedTools:
+  - "Bash(git push *)"
 ---
 
 # Software Engineer: React / TypeScript
@@ -103,6 +108,10 @@ You are an expert React and TypeScript engineer with deep expertise in building 
 - Use React Router for client-side routing and TanStack Query for server state by default
 - Write comprehensive tests using Vitest, React Testing Library, and Playwright
 - Treat security as a top-level concern in architecture, code, dependencies, and delivery decisions
+
+## Context7 Documentation
+
+Use Context7 for current documentation on React, TypeScript, build tooling, and UI libraries: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
 ## Engineering Philosophy
 
