@@ -3,8 +3,8 @@
 <!-- markdownlint-configure-file {"MD013": {"tables": false}} -->
 
 <!--
-Save as ./local/code_review_YYYY_mm_dd_vN.md in the reviewed repository.
-Use the review date in the recorded timezone; N is a positive, unpadded integer.
+Save as docs/.code_reviews/code_review_YYYY_mm_dd_HHMM.md in the reviewed repository.
+Use the review date and 24-hour time in the recorded timezone.
 Replace every placeholder before issuing the report. Choose one value for each
 enum. Do not leave unexplained blanks. Use NONE only with a reason. Retain all
 required sections; replace unused example blocks with NONE and an explanation.
@@ -13,10 +13,9 @@ them. New IDs increment the largest prior ID. Initial IDs are F001 and V001.
 The template is a structure, not evidence or a favorable assessment.
 -->
 
-- **Format:** code-review/v2
-- **Review date:** [YYYY-MM-DD]
+- **Format:** code-review/v3
+- **Review date:** [YYYY-MM-DD HH:MM]
 - **Timezone:** [IANA timezone used for review date and filename]
-- **Version:** [vN]
 - **Notes:** [Initial review or changes since the prior report]
 - **Scope:** [Bounded review objective]
 - **Base:** [Full commit ID or explicit comparison baseline with reason]
@@ -42,9 +41,9 @@ not establish acceptability.]
 
 ### Inventory
 
-| Path or artifact | Included/excluded | Change state | Review extent and reason |
-| --- | --- | --- | --- |
-| [Path] | [INCLUDED/EXCLUDED] | [Committed/staged/unstaged/untracked/unchanged] | [What was inspected, or exclusion reason] |
+| Path or artifact | Included/excluded   | Change state                                    | Review extent and reason                  |
+| ---------------- | ------------------- | ----------------------------------------------- | ----------------------------------------- |
+| [Path]           | [INCLUDED/EXCLUDED] | [Committed/staged/unstaged/untracked/unchanged] | [What was inspected, or exclusion reason] |
 
 **Scope discovery:** [Record comparison commands, file inventories, diff and
 new-file hashes/artifacts, and exclusions. Include affected callers, production
@@ -58,12 +57,12 @@ so another reviewer can locate the same evidence.]
 
 <!--
 Keep this index synchronized with every full finding block, including closed
-findings from earlier versions. If none exist, replace the table and example
+findings from earlier reports. If none exist, replace the table and example
 block with NONE and describe the limits of that conclusion.
 -->
 
-| ID | Severity | Status | Finding | Location |
-| --- | --- | --- | --- | --- |
+| ID   | Severity                   | Status                          | Finding                      | Location            |
+| ---- | -------------------------- | ------------------------------- | ---------------------------- | ------------------- |
 | F001 | [CRITICAL/HIGH/MEDIUM/LOW] | [OPEN/FIXED/ACCEPTED/DISMISSED] | [Concrete defect or concern] | [path:line; symbol] |
 
 ### F001: [Concrete Defect or Concern]
@@ -107,8 +106,8 @@ finding and reviewer resolution. Never infer acceptance from silence.]
 including closed and legacy entries. Otherwise write NONE and explain that
 this is an initial review with no prior findings to reconcile.]
 
-| Prior report and ID | Current finding ID | Status | Disposition evidence |
-| --- | --- | --- | --- |
+| Prior report and ID                    | Current finding ID                        | Status                          | Disposition evidence                                                                 |
+| -------------------------------------- | ----------------------------------------- | ------------------------------- | ------------------------------------------------------------------------------------ |
 | [Report filename/link and original ID] | [Preserved ID or explicit legacy mapping] | [OPEN/FIXED/ACCEPTED/DISMISSED] | [Current evidence or retained closure evidence; missing reassessment is not closure] |
 
 ## Verification Results
@@ -144,15 +143,15 @@ Every state needs a rationale and evidence reference; NOT_APPLICABLE needs
 a scope-based reason. Unknown requirements are UNVERIFIED, not compliant.
 -->
 
-| Area | Assessment | Evidence and rationale | Finding IDs |
-| --- | --- | --- | --- |
-| Production success path | [State] | [Actual entry point, wiring, dependencies, outcome] | [IDs or NONE with reason] |
-| Failure, panic, cancellation paths | [State] | [Applicable triggers, propagation, cleanup and outcomes] | [IDs or NONE with reason] |
-| Observability | [State] | [Where relevant logs, traces and metrics are emitted; diagnostic content and correlation] | [IDs or NONE with reason] |
-| Existing test value | [State] | [Production behavior reached; concrete regression assertions catch; mock/failure-injection limits] | [IDs or NONE with reason] |
-| Valuable missing coverage | [State] | [Unprotected behavior, concrete regression and proposed test level] | [IDs or NONE with reason] |
-| Complexity and readability | [State] | [Practical benefit/cost of abstractions; simpler viable alternatives where warranted] | [IDs or NONE with reason] |
-| Requirements and design | [State] | [Requirement source and behavior assessed, or unknown requirements; assess each divergence on evidence] | [IDs or NONE with reason] |
+| Area                               | Assessment | Evidence and rationale                                                                                  | Finding IDs               |
+| ---------------------------------- | ---------- | ------------------------------------------------------------------------------------------------------- | ------------------------- |
+| Production success path            | [State]    | [Actual entry point, wiring, dependencies, outcome]                                                     | [IDs or NONE with reason] |
+| Failure, panic, cancellation paths | [State]    | [Applicable triggers, propagation, cleanup and outcomes]                                                | [IDs or NONE with reason] |
+| Observability                      | [State]    | [Where relevant logs, traces and metrics are emitted; diagnostic content and correlation]               | [IDs or NONE with reason] |
+| Existing test value                | [State]    | [Production behavior reached; concrete regression assertions catch; mock/failure-injection limits]      | [IDs or NONE with reason] |
+| Valuable missing coverage          | [State]    | [Unprotected behavior, concrete regression and proposed test level]                                     | [IDs or NONE with reason] |
+| Complexity and readability         | [State]    | [Practical benefit/cost of abstractions; simpler viable alternatives where warranted]                   | [IDs or NONE with reason] |
+| Requirements and design            | [State]    | [Requirement source and behavior assessed, or unknown requirements; assess each divergence on evidence] | [IDs or NONE with reason] |
 
 ### User Concerns and Test Groups
 
@@ -163,8 +162,8 @@ including when no change is warranted. For each test group identify production
 behavior and a concrete regression caught or an unsupported claim. Inspection
 extent is separate from execution results and coverage assessment above.]
 
-| Concern or test group | Files/cases inspected | Inspection extent | Evidence-backed conclusion or regression protection | Omissions and effect on completeness |
-| --- | --- | --- | --- | --- |
+| Concern or test group                  | Files/cases inspected                       | Inspection extent                            | Evidence-backed conclusion or regression protection               | Omissions and effect on completeness                                                                 |
+| -------------------------------------- | ------------------------------------------- | -------------------------------------------- | ----------------------------------------------------------------- | ---------------------------------------------------------------------------------------------------- |
 | [Explicit concern or package/behavior] | [Paths and test names; NONE if uninspected] | [REVIEWED/SAMPLED/UNREVIEWED/NOT_APPLICABLE] | [Behavior, evidence and finding/check IDs, or why not applicable] | [Omitted cases, sampling rationale and remaining material uncertainty; NONE with reason if complete] |
 
 **Coverage narrative:** [Explain consequential gaps and useful simple tests
@@ -186,9 +185,9 @@ if none remain.]
 
 ## Next Actions
 
-| Order | Finding/check IDs | Bounded action | Completion evidence required |
-| --- | --- | --- | --- |
-| [1] | [F001/V001] | [Specific next step or user decision] | [Observable acceptance result, re-review and required checks on final candidate] |
+| Order | Finding/check IDs | Bounded action                        | Completion evidence required                                                     |
+| ----- | ----------------- | ------------------------------------- | -------------------------------------------------------------------------------- |
+| [1]   | [F001/V001]       | [Specific next step or user decision] | [Observable acceptance result, re-review and required checks on final candidate] |
 
 [If no actions remain, replace the table with NONE and explain why. Do not
 present accepted risks as fixed. Re-review fixes independently and repeat

@@ -10,14 +10,12 @@ A catalog of specialist agent definitions and portable skills, packaged for two 
 
 ```bash
 make help              # list targets
-make test              # all shared-skill test suites (needs bats, Python 3.11+, Bash 4+)
+make test              # shared-skill test suites (needs Python 3.11+)
 make install-claude    # (alias: make install) install agents, global rules, skills into ~/.claude
 make install-codex     # same for $CODEX_HOME
 make install-all
 
 # Individual suites
-bats shared/skills/dotnet-postgres-api-starter/tests/scaffold.bats
-bats shared/skills/dotnet-postgres-api-starter/tests/scaffold.bats -f '<test name regex>'
 (cd shared/skills/rlm && python3 -m unittest discover -s tests -v)
 (cd shared/skills/rlm && python3 -m unittest tests.test_rlm_repl.<Class>.<test_method>)
 
@@ -51,10 +49,7 @@ Each client has `install/install.sh`, which runs three phases in order: `01_inst
 
 ### Skills with executable code
 
-Most skills are prompt-only. Two ship code with tests:
-
-- `dotnet-postgres-api-starter`: `scripts/scaffold.sh` renders `assets/full-project/**/*.tmpl` into a new repo, substituting `{{PROJECT_SLUG}}`, `{{API_NAME}}`, `{{RESOURCE_SINGULAR}}`, `{{RESOURCE_ROUTE}}`, etc. in both file contents **and paths**. `tests/scaffold.bats` covers it.
-- `rlm`: `scripts/rlm_repl.py` is a persistent-REPL helper, tested by `tests/test_rlm_repl.py` (stdlib `unittest`).
+Most skills are prompt-only. `rlm` ships `scripts/rlm_repl.py`, a persistent-REPL helper tested by `tests/test_rlm_repl.py` (stdlib `unittest`).
 
 ## Conventions
 

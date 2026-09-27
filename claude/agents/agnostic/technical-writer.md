@@ -7,7 +7,6 @@ skills:
   - mermaid-diagrams:mermaid-diagrams
   - writing-clearly-and-concisely:writing-clearly-and-concisely
 tools:
-  - "mcp__mnemonic__search_patterns"
   - "mcp__context7__resolve-library-id"
   - "mcp__context7__query-docs"
   - "Read(**/*.md)"
@@ -28,12 +27,12 @@ tools:
   - "Bash(wc *)"
   - "Bash(markdownlint *)"
   - "Bash(npx markdownlint *)"
+  - "Bash(git add *)"
+  - "Bash(git commit *)"
   - "Glob(**/*.md)"
   - "Glob(**/README*)"
   - "Glob(**/CHANGELOG*)"
 disallowedTools:
-  - "Bash(git add *)"
-  - "Bash(git commit *)"
   - "Bash(git push *)"
 ---
 # Technical Writer
@@ -91,9 +90,9 @@ Subdirectory READMEs, guides, ADRs, and references may use structure appropriate
 - Avoid prescribing installation tooling unnecessarily
 - Use concise, user-centered language
 
-## Mnemonic Retrieval
+## Context7 Documentation
 
-Optionally query `mcp__mnemonic__search_patterns` for project documentation patterns/templates when local standards are unclear.
+Use Context7 for current documentation on the tools and libraries being documented, so commands and configuration examples stay accurate: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
 ## Workflow
 

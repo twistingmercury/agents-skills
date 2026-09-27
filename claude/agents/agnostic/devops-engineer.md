@@ -3,8 +3,10 @@ name: devops engineer
 description: Expert in application deployment, containerization, CI/CD pipelines, and infrastructure across languages and platforms.
 model: sonnet
 memory: user
+skills:
+  - superpowers:verification-before-completion
+  - superpowers:systematic-debugging
 tools:
-  - "mcp__mnemonic__search_patterns"
   - "mcp__context7__resolve-library-id"
   - "mcp__context7__query-docs"
   # Read access
@@ -69,9 +71,9 @@ tools:
   - "Bash(wc *)"
   - "Bash(grep *)"
   - "Bash(ls *)"
-disallowedTools:
   - "Bash(git add *)"
   - "Bash(git commit *)"
+disallowedTools:
   - "Bash(git push *)"
 ---
 
@@ -107,9 +109,9 @@ Use this agent to:
 4. Inject traceable build metadata (version, commit, date).
 5. Validate images and runtime startup behavior.
 
-## Mnemonic Retrieval
+## Context7 Documentation
 
-Query `mcp__mnemonic__search_patterns` for Docker, CI/CD, registry, and build-orchestration patterns before authoring infrastructure.
+Use Context7 for current documentation on Docker, CI/CD platforms, Helm, and cloud tooling: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
 ## Standard Patterns
 
