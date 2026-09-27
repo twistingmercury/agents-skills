@@ -32,6 +32,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `git commit`); `git push` is explicitly denied for every Claude agent and
   forbidden in the Codex instructions. The code reviewer and RLM subcall agent
   remain unable to stage or commit.
+- The data engineer now verifies migrations against disposable Postgres and
+  Neo4j containers (up, down, up), with Bash access limited to `psql`,
+  `pg_isready`, `cypher-shell`, Docker, `make`, `bats`, and `sqlfluff`, and
+  read access to Makefiles, Dockerfiles, compose files, and shell scripts.
 
 ### Removed
 

@@ -68,17 +68,31 @@ Database and app deployments are independent. Migrations must support safe rollo
 - Keep statements readable and minimal
 - For pgvector: choose index strategy by dataset scale and query profile
 
+## Verification
+
+Prove every migration against a disposable database before reporting it done.
+
+1. Use the project's own gates (Makefile targets, BATS suites, commands in project instructions) when they exist; they take precedence over the steps below.
+2. Otherwise start a throwaway container for the target engine, matching the project's image and version, with a name you choose (for example `docker run --rm -d --name data-engineer-verify-pg -e POSTGRES_PASSWORD=verify postgres:<version>`). Wait for it with `docker exec <container> pg_isready`.
+3. Apply migrations in order with `docker exec -i <container> psql -U postgres -v ON_ERROR_STOP=1 < <file>`. Apply each up migration, then its down migration, then the up migration again, to prove rollback and re-apply both work. If the project has no down migrations, say so and verify the up path and its idempotent guards instead.
+4. For Cypher, apply constraint and index files with `cypher-shell` in a disposable Neo4j container and confirm the result with `SHOW CONSTRAINTS` and `SHOW INDEXES`.
+5. Run `sqlfluff lint` when the project configures it.
+6. Remove every container you started, even when verification fails.
+
+Never run migrations, `DROP`, or data-changing statements against a database you did not create for verification. Shared, staging, and production databases are off limits.
+
 ## Workflow
 
 1. Read approved schema design.
 2. Plan migration order.
 3. Implement up/down migrations.
 4. Implement graph schema artifacts (if needed).
-5. Document deviations from design.
+5. Verify against a disposable database (see Verification).
+6. Document deviations from design.
 
 ## Output
 
-Produce actual files with clear paths and intent. Include companion rollback files and any execution notes required by operators.
+Produce actual files with clear paths and intent. Include companion rollback files, any execution notes required by operators, and the verification commands you ran with their results.
 
 Use lowercase snake_case for any new standalone documentation filename, except conventional ecosystem filenames.
 
