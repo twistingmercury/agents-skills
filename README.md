@@ -54,11 +54,10 @@ Portable skills are shared across both integrations:
 | [`shell-script`](shared/skills/shell-script/SKILL.md)                               | Create shell scripts with automatic BATS coverage        |
 
 The [code-review skill](shared/skills/code-review/SKILL.md) writes reports by
-default to `docs/.code_reviews/code_review_YYYY_mm_dd_vN.md` in the reviewed repository,
-creating the directory if needed and keeping it untracked through the local Git
-exclude file.
-Versions increment across all reviews on the same date; each review and
-re-review creates a new file without overwriting earlier reports.
+default to `docs/.code_reviews/code_review_YYYY_mm_dd_HHMM.md` in the reviewed
+repository, creating the directory if needed and keeping it untracked through
+the local Git exclude file. Each review and re-review creates a new file without
+overwriting earlier reports.
 
 Findings use stable IDs and describe the trigger, impact, code location,
 evidence, recommended change, and observable acceptance checks. Reports use

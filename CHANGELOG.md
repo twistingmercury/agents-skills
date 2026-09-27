@@ -38,6 +38,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   reviewed repository, creating the directory when missing and keeping it
   untracked through `.git/info/exclude` rather than tracked ignore files.
   Re-reviews still find prior reports in the legacy `./local/` location.
+- Code review reports are no longer versioned: files are named
+  `code_review_YYYY_mm_dd_HHMM.md`, and the template (now `code-review/v3`)
+  drops the `Version` field.
 - The Go software engineer now requires testify, defers to project-defined
   quality gates, and targets the module's `go` directive instead of Go 1.21.
 - The code reviewer derives conventions from project instructions, linter

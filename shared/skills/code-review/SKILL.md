@@ -1,6 +1,6 @@
 ---
 name: code-review
-description: Conduct evidence-based code reviews of files, diffs, pull requests, or working changes using independent general, architectural, and language perspectives. Produce a versioned, actionable report with explicit findings, verification, and an acceptance verdict.
+description: Conduct evidence-based code reviews of files, diffs, pull requests, or working changes using independent general, architectural, and language perspectives. Produce an actionable report with explicit findings, verification, and an acceptance verdict.
 ---
 
 # Code Review
@@ -86,7 +86,7 @@ Assessment completeness is independently `INCOMPLETE` whenever required evidence
 
 ## 5. Persist the report
 
-Write reports in the reviewed repository's `docs/.code_reviews/` directory, resolved from the repository root (`git rev-parse --show-toplevel`), as `docs/.code_reviews/code_review_YYYY_mm_dd_vN.md`, for example `docs/.code_reviews/code_review_2026_09_11_v1.md`.
+Write reports in the reviewed repository's `docs/.code_reviews/` directory, resolved from the repository root (`git rev-parse --show-toplevel`), as `docs/.code_reviews/code_review_YYYY_mm_dd_HHMM.md`, for example `docs/.code_reviews/code_review_2026_09_11_1412.md`.
 
 Before writing, prepare the directory:
 
@@ -94,15 +94,13 @@ Before writing, prepare the directory:
 2. Keep it untracked. If `git check-ignore -q docs/.code_reviews/probe` reports that the path is not ignored, append `/docs/.code_reviews/` to the repository's local exclude file (`git rev-parse --git-path info/exclude`). Do not edit tracked ignore files such as `.gitignore`.
 3. If `git ls-files docs/.code_reviews` lists tracked reports, leave them tracked and tell the user; do not untrack them yourself.
 
-Outside a Git repository, use `docs/.code_reviews/` under the reviewed project's root and skip the ignore steps. Use the repository session's local calendar date and record its timezone; if none is known, use UTC and state it. `N` is a positive integer without leading zeros.
+Outside a Git repository, use `docs/.code_reviews/` under the reviewed project's root and skip the ignore steps. Use the repository session's local date and 24-hour time when the report is written, and record its timezone; if none is known, use UTC and state it. Never overwrite an existing report: if the filename is taken, append seconds (`HHMMSS`).
 
-For that date, choose one greater than the highest existing matching version in `docs/.code_reviews/` (start at `v1`). Number across all scopes that day, not separately per task. Reserve/create the destination without overwriting; if another reviewer takes it, rescan and increment. The bracket notation `v[x]` is not literal filename text.
-
-Every new review or re-review gets a new versioned file. Preserve existing reports, including published reviews; do not rewrite earlier verdicts or fixed-state history. If the date changes, start that day's sequence and link the prior report to preserve the review lineage. When looking for prior reports, also check the legacy `./local/` location. A later explicit user destination overrides this default; preserve existing artifacts there as well.
+Every new review or re-review gets a new file. Preserve existing reports, including published reviews; do not rewrite earlier verdicts or fixed-state history. A re-review links its prior report to preserve the review lineage. When looking for prior reports, also check the legacy `./local/` location. A later explicit user destination overrides this default; preserve existing artifacts there as well.
 
 Use the template's exact section order and field labels, with descriptive prose in each finding. Do not leave placeholders, omit required sections, or use prechecked compliance claims. Keep index rows consistent with finding details and verdict. Write `NONE` with a reason for empty sections; use `NOT_APPLICABLE` plus a reason for inapplicable fields, not a fabricated command or evidence. Markdown is the canonical report; do not generate a conflicting second summary for automation.
 
-The report's date/version must match the filename, and its candidate and prior-report references must identify the assessed work. Keep reports untracked; do not force-add them, edit tracked ignore files, or commit/push as part of a review. Return a short synopsis naming the verdict, key findings or limitations, and the report link.
+The report's date and time must match the filename, and its candidate and prior-report references must identify the assessed work. Keep reports untracked; do not force-add them, edit tracked ignore files, or commit/push as part of a review. Return a short synopsis naming the verdict, key findings or limitations, and the report link.
 
 ## 6. Resolve and re-review within authorization
 
