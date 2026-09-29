@@ -13,5 +13,6 @@ install-codex: ## Install Codex agents, global rules, and shared skills.
 
 install-all: install-claude install-codex ## Install both platform integrations.
 
-test: ## Run the shared skill test suites (requires Python 3.11+).
+test: ## Run the shared skill test suites (requires Python 3.11+ and bats).
 	cd shared/skills/rlm && python3 -m unittest discover -s tests
+	bats shared/skills/python-uv-starter/tests

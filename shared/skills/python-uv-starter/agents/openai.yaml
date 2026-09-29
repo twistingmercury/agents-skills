@@ -1,0 +1,4 @@
+interface:
+  display_name: "Python uv Starter"
+  short_description: "Scaffold an empty uv-based Python CLI project"
+  default_prompt: "Use $python-uv-starter to scaffold a new Python project in the current directory."

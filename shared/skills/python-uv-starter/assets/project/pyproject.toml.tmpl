@@ -1,0 +1,20 @@
+[build-system]
+requires = ["setuptools>=61.0"]
+build-backend = "setuptools.build_meta"
+
+[dependency-groups]
+dev = ["pytest", "ruff"]
+
+[project]
+name = "{{PROJECT_NAME}}"
+version = "0.0.1"
+description = "{{DESCRIPTION}}"
+readme = "README.md"
+requires-python = ">={{PYTHON_VERSION}}"
+dependencies = []
+
+[project.scripts]
+{{PROJECT_NAME}} = "{{PACKAGE_NAME}}.main:main"
+
+[tool.ruff.lint]
+select = ["N"]

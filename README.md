@@ -48,6 +48,7 @@ Portable skills are shared across both integrations:
 | [`code-review`](shared/skills/code-review/SKILL.md)                                 | Coordinate review across multiple concerns               |
 | [`docker-first-ci`](shared/skills/docker-first-ci/SKILL.md)                         | Implement and harden Docker-first CI/CD pipelines        |
 | [`prime`](shared/skills/prime/SKILL.md)                                             | Survey a repository and build working context            |
+| [`python-uv-starter`](shared/skills/python-uv-starter/SKILL.md)                     | Scaffold an empty uv-based Python CLI project            |
 | [`readme-writer`](shared/skills/readme-writer/SKILL.md)                             | Create or update a README from a standard template       |
 | [`rlm`](shared/skills/rlm/SKILL.md)                                                 | Run long-context tasks using a persistent local REPL     |
 | [`shell-script`](shared/skills/shell-script/SKILL.md)                               | Create shell scripts with automatic BATS coverage        |

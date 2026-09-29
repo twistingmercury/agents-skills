@@ -10,7 +10,7 @@ A catalog of specialist agent definitions and portable skills, packaged for two 
 
 ```bash
 make help              # list targets
-make test              # shared-skill test suites (needs Python 3.11+)
+make test              # shared-skill test suites (needs Python 3.11+ and bats)
 make install-claude    # (alias: make install) install agents, global rules, skills into ~/.claude
 make install-codex     # same for $CODEX_HOME
 make install-all
@@ -50,6 +50,7 @@ Each client has `install/install.sh`, which runs three phases in order: `01_inst
 ### Skills with executable code
 
 Most skills are prompt-only. `rlm` ships `scripts/rlm_repl.py`, a persistent-REPL helper tested by `tests/test_rlm_repl.py` (stdlib `unittest`).
+`python-uv-starter` ships `scripts/scaffold.sh`, which renders `assets/project/*.tmpl` into the current directory, tested by `tests/scaffold.bats`.
 
 ## Conventions
 
