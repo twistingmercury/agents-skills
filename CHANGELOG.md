@@ -29,6 +29,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   audits; superpowers `requesting-code-review` and the official `code-review`
   plugin cover that too, so the catalog no longer ships a third review
   pipeline. The README no longer describes its report format.
+- Retired the `go e2e test engineer` agent to `_archive/agents/go/` and
+  removed it from the README role table, the agent table in
+  `agents/ABOUT-THE-AGENTS.md`, the delegation table, the install guide, and
+  the Go software engineer's and devops engineer's agent relationships. The
+  Go software engineer now owns the black-box E2E tests for what it builds,
+  under `tests/`, alongside its unit and integration tests.
 
 ## [2.0.0] - 2026-09-30
 

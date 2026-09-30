@@ -22,7 +22,6 @@ is the routing table; this document explains the roles and the flow behind it.
 | Implementation          | `react software engineer`  | Writes production React and TypeScript                                                     |
 | Implementation          | `data engineer`            | Implements approved data designs as native migrations, schema definitions, and data scripts |
 | Implementation          | `shell script engineer`    | Writes bash scripts under `rules/shell/` together with their BATS tests                    |
-| Testing                 | `go e2e test engineer`     | Writes black-box end-to-end tests in Go for APIs and CLIs                                  |
 | Operations              | `devops engineer`          | Builds Dockerfiles, CI/CD pipelines, and deployment configuration                          |
 | Documentation           | `technical writer`         | Creates and maintains README, CHANGELOG, and guides                                        |
 | Support                 | `rlm subcall agent`        | Extracts what is relevant from one chunk of a long context for the `rlm` skill             |
@@ -71,8 +70,8 @@ User: "Build a user management REST API in Go"
 2. /arch-docs records the approved design under docs/architecture/
 3. superpowers:writing-plans breaks the design into tasks
 4. superpowers:subagent-driven-development runs them: go software engineer
-   implements handlers, data engineer writes migrations, go e2e test engineer
-   writes black-box tests, devops engineer adds the Dockerfile and CI
+   implements handlers and their black-box tests, data engineer writes
+   migrations, devops engineer adds the Dockerfile and CI
 5. superpowers:requesting-code-review, then finishing-a-development-branch
 ```
 

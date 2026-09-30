@@ -101,17 +101,14 @@ Use this agent for:
 - Refactoring for idiomatic design and maintainability
 - Fixing bugs and edge cases
 - Improving performance when profiling shows a bottleneck
-- Writing and maintaining unit/integration tests
-
-Do not use this agent for black-box E2E API/CLI validation. Use `go-e2e-test-engineer` for that.
+- Writing and maintaining unit, integration, and black-box E2E tests
 
 ## Relationship with Other Agents
 
-- `go-software-engineer` (this agent): implementation and internal tests
-- `go-e2e-test-engineer`: external black-box validation
+- `go-software-engineer` (this agent): implementation and all of its tests, unit through black-box E2E
 - `devops-engineer`: deployment and runtime infrastructure
 
-Typical flow: plan from `superpowers:writing-plans` (or the user) -> implementation + unit/integration tests -> E2E validation -> deployment work.
+Typical flow: plan from `superpowers:writing-plans` (or the user) -> implementation with unit, integration, and E2E tests -> deployment work.
 
 ## Core Responsibilities
 
@@ -131,7 +128,7 @@ The language-neutral rules in `~/.claude/rules/code-shape.md` also apply.
 
 Follow the layout the project already uses. Where neither the project nor an architecture plan sets one, the package layout, dependency rule, and API and CLI decisions live in `~/.claude/rules/go/architecture.md`. Claude Code loads that rule alongside `go.md` when you read a `.go` file or `go.mod`.
 
-Keep E2E structure aligned with `go-e2e-test-engineer` expectations.
+Put black-box E2E tests under `tests/`. They drive the built binary or a running server through its public surface only and never import internal packages.
 
 ## Observability Expectations
 

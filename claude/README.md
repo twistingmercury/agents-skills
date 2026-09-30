@@ -13,7 +13,7 @@ Display names use spaces, such as `go software engineer`, while definition
 filenames use hyphens, such as `go-software-engineer.md`. Use the display name
 when requesting or delegating to a role.
 
-See [About the agents](../agents/ABOUT-THE-AGENTS.md) for the twelve live
+See [About the agents](../agents/ABOUT-THE-AGENTS.md) for the eleven live
 agents and the workflow behind them.
 
 ## Main Claude workflow
@@ -33,9 +33,8 @@ Main Claude:
   2. Records the approved design under docs/architecture/ with /arch-docs
   3. Writes the plan with superpowers:writing-plans
   4. Runs the plan with superpowers:subagent-driven-development: go software
-     engineer implements handlers, data engineer writes migrations, go e2e
-     test engineer writes black-box tests, devops engineer adds the
-     Dockerfile and CI
+     engineer implements handlers and their black-box tests, data engineer
+     writes migrations, devops engineer adds the Dockerfile and CI
   5. Reviews with superpowers:requesting-code-review
   6. Integrates with superpowers:finishing-a-development-branch
 ```
@@ -122,9 +121,10 @@ otherwise `~/.claude/skills`, and restart Claude Code.
 
 ### Removing stale agent and skill copies
 
-The `bats test engineer`, `code reviewer`, `go software architect`, and
-`solutions architect` agents and the `shell-script`, `capture-requirements`,
-and `code-review` skills were retired from the catalog, and the installer
+The `bats test engineer`, `code reviewer`, `go software architect`,
+`solutions architect`, and `go e2e test engineer` agents and the
+`shell-script`, `capture-requirements`, and `code-review` skills were retired
+from the catalog, and the installer
 never prunes, so copies installed by an earlier run remain until you delete
 them. Save any custom changes, then remove these
 files from `AGENTS_DIR` when set, otherwise `~/.claude/agents`:
@@ -133,6 +133,7 @@ files from `AGENTS_DIR` when set, otherwise `~/.claude/agents`:
 - `code-reviewer.md`
 - `go-software-architect.md`
 - `solutions-architect.md`
+- `go-e2e-test-engineer.md`
 
 Remove the `shell-script`, `capture-requirements`, and `code-review`
 directories from `SKILLS_DIR` when set, otherwise `~/.claude/skills`, and

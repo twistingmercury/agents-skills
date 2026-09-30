@@ -8,7 +8,6 @@
 | ---------------------------------------- | ----------------------- |
 | Shell scripts                            | `shell script engineer` |
 | Go code/services                         | `go software engineer`  |
-| E2E tests                                | `go e2e test engineer`  |
 | API specs                                | `api architect`         |
 | Documentation                            | `technical writer`      |
 | DevOps/Docker/CI                         | `devops engineer`       |

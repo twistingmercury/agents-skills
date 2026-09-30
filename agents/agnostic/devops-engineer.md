@@ -108,8 +108,7 @@ Use this agent to:
 
 ## Relationship with Other Agents
 
-- implementation agents produce application code
-- E2E agents validate behavior
+- implementation agents produce application code and its tests
 - `devops-engineer` (this agent) delivers build/release/deploy infrastructure
 
 ## Core Responsibilities
