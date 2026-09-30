@@ -7,12 +7,170 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+
+## [2.0.0] - 2026-09-30
+
 ### Added
 
 - Added the `python-uv-starter` skill, which scaffolds an empty uv-based Python
   CLI project (src layout, pytest, ruff, Makefile, Docker-first wheel build,
   GitHub Actions CI) from bundled templates, with BATS coverage for its
   renderer.
+- Added path-scoped Claude Code coding rules for shell, BATS, Go, Python, and
+  Dockerfiles under `rules/`, with an always-on `index.md` that points
+  at them.
+- Added the path-scoped `rules/go/architecture.md` rule, which loads for `.go`
+  and `go.mod` files and carries the Go architecture decisions: the
+  dependency rule, subdomain and use-case slice packages, the service, CLI,
+  and hybrid layout, the API style guide, and CLI conventions. The Go
+  software engineer now points at it instead of repeating the layout.
+
+### Changed
+
+This release removes four agents and one skill in favor of superpowers, so
+any routing to them breaks.
+
+- Repositioned the `check-push-readiness` skill as the read-only audit that
+  runs before the "push and create a pull request" option of
+  `superpowers:finishing-a-development-branch`. Its description now names
+  what it checks (live remote SHA, fast-forward state, secrets and debug code
+  in the diff, commit metadata, validation of the committed tree) and its
+  prompt says what it leaves to the superpowers skill.
+
+- Reframed `rules/agent-delegation.md` around superpowers: the main session
+  runs brainstorming, planning, review, and integration itself and hands
+  implementation to the matching specialist, which it may seat as the
+  implementer in `superpowers:subagent-driven-development`. The constraints
+  now name the API and data architects as the consultants and say specialists
+  execute the task they are handed and return. The table is unchanged.
+- Design specs now live under `docs/architecture/`, written through the
+  `/arch-docs` skill, instead of `docs/superpowers/specs/`. The delegation
+  rule records this so `superpowers:brainstorming` honors it as a user
+  preference, and the API architect now works from that approved design (or
+  the user's stated requirements) and hands off to the language engineers.
+- Code review is no longer routed through the delegation table. Superpowers
+  owns review (`requesting-code-review` and the subagent-driven-development
+  reviewer), and the `code-review` skill remains for standalone formal audits
+  with a written report.
+- The shell script engineer now owns the BATS tests for its scripts. It
+  carries the `superpowers:test-driven-development` skill, the `.bats` and
+  `test_helper` read, write, edit, and glob tools, and `bats` and `mkdir`
+  commands; its workflow writes failing BATS tests first, then the script,
+  then runs `bats` and `shellcheck` until clean. It points at both
+  `rules/shell/shell.md` and `rules/shell/bats.md`.
+- Shell script work now routes to the `shell script engineer`. The delegation
+  table in `rules/agent-delegation.md` points there instead of at the retired
+  `shell-script` skill.
+- Flattened the layout. `shared/skills/`, `claude/agents/`, `claude/rules/`,
+  and `claude/install/` are now `skills/`, `agents/`, `rules/`, and
+  `install/` at the repository root. The installer and `make test` read the
+  new paths.
+- The Claude global rules now install as rule files instead of a managed block
+  in `~/.claude/CLAUDE.md`. `GLOBAL_AGENT_RULES.md` is split into
+  `agent-delegation.md`, `code-shape.md`, and `library-docs.md` under
+  `rules/`.
+- Pared the Claude Go, Python, shell script, BATS, and devops agents down to
+  role, scope, workflow, and output. Each now points at its rule file in
+  `~/.claude/rules/` instead of carrying the coding standards inline.
+- Removed the Context7 Documentation section from the Claude agents. The
+  always-on `library-docs.md` rule reaches subagents and carries that
+  guidance. The one reviewer-specific duty, checking current docs before
+  flagging an API as deprecated or misused, moved into `library-docs.md` when
+  the code reviewer was retired in this release.
+- Claude installer phase 2 is now `02_install_rules.sh`, which copies
+  `rules/` into `~/.claude/rules/` and keeps its subject folders. The
+  installer no longer reads or writes `~/.claude/CLAUDE.md`.
+- Rewrote `agents/ABOUT-THE-AGENTS.md` around the superpowers flow. It now
+  presents the specialists as implementer seats and artifact producers,
+  lists the twelve live agents in one table grouped by area, and walks the
+  brainstorm, plan, implement, review, and finish stages through their
+  `superpowers:` skills. The five pipeline workflows, the API style tree,
+  the architect-selection tree, the numbered best practices, the long
+  example, and the color coding are gone, and it no longer names the
+  retired agents.
+- Brought the guides in line with the reduced catalog. The install guide's
+  example workflow and narrow-request list now follow the superpowers flow
+  and name only live agents, and it gains a troubleshooting entry listing
+  the four retired agent files and the `shell-script` skill directory to
+  delete from an earlier install. The repo `CLAUDE.md` layout and sync
+  notes point at `rules/` instead of `claude/rules/`, name
+  `rules/go/architecture.md` with the other language rules, and add
+  `agents/ABOUT-THE-AGENTS.md` and the stale-copies entry to the places a
+  role change touches. The README's "How it works" now says superpowers
+  owns design, planning, review, and integration and the specialists
+  implement.
+
+### Removed
+
+- Retired the `solutions architect` agent and removed it from the README
+  role table, the delegation table, the install guide, and the API
+  architect's agent relationships. Superpowers `brainstorming` covers its
+  job with the human present, and design specs go under `docs/architecture/`
+  through the `arch-docs` skill. The agent file now lives under
+  `_archive/agents/`.
+- Retired the `go software architect` agent and removed it from the README
+  role table, the delegation table, the install guide, and the Go software
+  engineer's agent relationships. Its design judgment lives in
+  `rules/go/architecture.md`, and superpowers `writing-plans` and
+  `brainstorming` own planning. The agent file now lives under
+  `_archive/agents/`.
+- Retired the `code reviewer` agent and removed it from the README role
+  table. Superpowers owns review, and the agent's checklists already live in
+  `rules/code-shape.md`. Its one uncovered duty, checking current docs before
+  flagging an API as deprecated or misused, moves to `rules/library-docs.md`.
+  The agent file now lives under
+  `_archive/agents/`.
+- Retired the `bats test engineer` agent and removed it from the README role
+  table, the delegation table, and the install guide. Its duties move to the
+  shell script engineer, which writes the tests first under
+  test-driven-development instead of after the script. The agent file stays
+  on disk; only its registrations are removed.
+- Retired the `shell-script` skill and removed it from the README skill table
+  and the delegation table. The shell script engineer plus the
+  `rules/shell/shell.md` and `rules/shell/bats.md` rules cover its job, and
+  its test-after flow conflicted with superpowers' test-driven-development.
+- Retired the Codex integration. `codex/` (agents, global rules, installer)
+  moved to `_archive/codex/` and is not installed. The Makefile now has a
+  single `install` target for Claude Code, and the docs describe one client.
+- Removed the Claude `02_install_global_agents.sh` phase, its `FORCE`,
+  `CLAUDE_ROOT`, and `AGENT_RULES_SOURCE` settings, and
+  `agents/GLOBAL_AGENT_RULES.md`. An agent-rules block left in
+  `~/.claude/CLAUDE.md` by an earlier install is not removed; delete it by
+  hand so the rules do not load twice.
+  - Retired the `capture-requirements` skill to `_archive/skills/`. Superpowers
+  `brainstorming` covers the same elicitation (read the project, ask one
+  question at a time, gate on approval, write a handoff document), and the
+  skill's handoff targeted the architecture agents retired in 2.0.0. It also
+  shipped a second `01_requirements_v01.md` template that competed with the
+  `arch-docs` one for the same `docs/architecture/` path.
+- Retired the `code-review` skill to `_archive/skills/`. 2.0.0 had already
+  taken it out of the delegation table and kept it only for standalone
+  audits; superpowers `requesting-code-review` and the official `code-review`
+  plugin cover that too, so the catalog no longer ships a third review
+  pipeline. The README no longer describes its report format.
+- Retired the `go e2e test engineer` agent to `_archive/agents/go/` and
+  removed it from the README role table, the agent table in
+  `agents/ABOUT-THE-AGENTS.md`, the delegation table, the install guide, and
+  the Go software engineer's and devops engineer's agent relationships. The
+  Go software engineer now owns the black-box E2E tests for what it builds,
+  under `tests/`, alongside its unit and integration tests.
+
+### Fixed
+
+- Claude agents were launching without the Bash tool. The
+  `disallowedTools: Bash(git push *)` entry removed Bash entirely, not only
+  `git push`, so no agent could run tests, linters, or `git commit`. The
+  `disallowedTools` block is removed from every Claude agent, and each prompt
+  now states that the agent never pushes. Every agent with Bash gets the same
+  read-only git set (`status`, `diff`, `log`, `show`, `blame`, `ls-files`,
+  `rev-parse`, `describe`, `remote -v`) plus `fetch` and `pull`; agents that
+  commit their own work also get `add`, `commit`, and `tag`. The code reviewer
+  and RLM subcall agent are told not to stage or commit either.
+- The README's "Key Considerations" linked to `docs/project_structure.md`,
+  deleted in an earlier commit. It now points at `rules/go/architecture.md`.
+  The install guide's links to `agents/ABOUT-THE-AGENTS.md` and `rules/`
+  were relative to `claude/` and resolved nowhere; they now climb to the
+  repository root.
 
 ## [1.6.0] - 2026-09-27
 
