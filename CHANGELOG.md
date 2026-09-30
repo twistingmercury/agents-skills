@@ -7,34 +7,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
-### Changed
-
-- Repositioned the `check-push-readiness` skill as the read-only audit that
-  runs before the "push and create a pull request" option of
-  `superpowers:finishing-a-development-branch`. Its description now names
-  what it checks (live remote SHA, fast-forward state, secrets and debug code
-  in the diff, commit metadata, validation of the committed tree) and its
-  prompt says what it leaves to the superpowers skill.
-
-### Removed
-
-- Retired the `capture-requirements` skill to `_archive/skills/`. Superpowers
-  `brainstorming` covers the same elicitation (read the project, ask one
-  question at a time, gate on approval, write a handoff document), and the
-  skill's handoff targeted the architecture agents retired in 2.0.0. It also
-  shipped a second `01_requirements_v01.md` template that competed with the
-  `arch-docs` one for the same `docs/architecture/` path.
-- Retired the `code-review` skill to `_archive/skills/`. 2.0.0 had already
-  taken it out of the delegation table and kept it only for standalone
-  audits; superpowers `requesting-code-review` and the official `code-review`
-  plugin cover that too, so the catalog no longer ships a third review
-  pipeline. The README no longer describes its report format.
-- Retired the `go e2e test engineer` agent to `_archive/agents/go/` and
-  removed it from the README role table, the agent table in
-  `agents/ABOUT-THE-AGENTS.md`, the delegation table, the install guide, and
-  the Go software engineer's and devops engineer's agent relationships. The
-  Go software engineer now owns the black-box E2E tests for what it builds,
-  under `tests/`, alongside its unit and integration tests.
 
 ## [2.0.0] - 2026-09-30
 
@@ -57,6 +29,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 This release removes four agents and one skill in favor of superpowers, so
 any routing to them breaks.
+
+- Repositioned the `check-push-readiness` skill as the read-only audit that
+  runs before the "push and create a pull request" option of
+  `superpowers:finishing-a-development-branch`. Its description now names
+  what it checks (live remote SHA, fast-forward state, secrets and debug code
+  in the diff, commit metadata, validation of the committed tree) and its
+  prompt says what it leaves to the superpowers skill.
 
 - Reframed `rules/agent-delegation.md` around superpowers: the main session
   runs brainstorming, planning, review, and integration itself and hands
@@ -158,6 +137,23 @@ any routing to them breaks.
   `agents/GLOBAL_AGENT_RULES.md`. An agent-rules block left in
   `~/.claude/CLAUDE.md` by an earlier install is not removed; delete it by
   hand so the rules do not load twice.
+  - Retired the `capture-requirements` skill to `_archive/skills/`. Superpowers
+  `brainstorming` covers the same elicitation (read the project, ask one
+  question at a time, gate on approval, write a handoff document), and the
+  skill's handoff targeted the architecture agents retired in 2.0.0. It also
+  shipped a second `01_requirements_v01.md` template that competed with the
+  `arch-docs` one for the same `docs/architecture/` path.
+- Retired the `code-review` skill to `_archive/skills/`. 2.0.0 had already
+  taken it out of the delegation table and kept it only for standalone
+  audits; superpowers `requesting-code-review` and the official `code-review`
+  plugin cover that too, so the catalog no longer ships a third review
+  pipeline. The README no longer describes its report format.
+- Retired the `go e2e test engineer` agent to `_archive/agents/go/` and
+  removed it from the README role table, the agent table in
+  `agents/ABOUT-THE-AGENTS.md`, the delegation table, the install guide, and
+  the Go software engineer's and devops engineer's agent relationships. The
+  Go software engineer now owns the black-box E2E tests for what it builds,
+  under `tests/`, alongside its unit and integration tests.
 
 ### Fixed
 
