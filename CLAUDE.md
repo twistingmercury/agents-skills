@@ -25,17 +25,17 @@ markdownlint --ignore-path /dev/null agents/*/*.md   # .markdownlintignore skips
 
 ## Layout and how the pieces connect
 
-- `agents/<group>/*.md`: Claude agents. YAML frontmatter (`name` with spaces like `go software engineer`, `description`, `model`, `memory`, `tools` allowlist) plus a prompt body. Filenames use hyphens.
+- `agents/<group>/*.md`: Claude agents. YAML frontmatter (`name` with spaces like `go software engineer`, `description`, `model`, `memory`, `tools` allowlist) plus a prompt body. Filenames use hyphens. `agents/ABOUT-THE-AGENTS.md` lists the twelve live agents and the superpowers flow they slot into: the main session brainstorms, plans, reviews, and integrates through `superpowers:*` skills, and the specialists implement. Retired agent files still on disk are not registered anywhere.
 - `skills/<skill>/`: one skill tree installed **unchanged**. `SKILL.md` is the entrypoint. The optional `agents/openai.yaml` is leftover Codex UI metadata; harmless, not read by Claude Code.
-- `claude/rules/`: Claude Code rules, installed to `~/.claude/rules/` with their subject folders intact. Files without `paths:` frontmatter load every session: `agent-delegation.md`, `code-shape.md`, and `library-docs.md` are the global coordination rules, and `index.md` points at the language rules. The language rules (`shell/`, `go/`, `python/`, `docker.md`) have `paths:` and load when a matching file is read.
+- `rules/`: Claude Code rules, installed to `~/.claude/rules/` with their subject folders intact. Files without `paths:` frontmatter load every session: `agent-delegation.md`, `code-shape.md`, and `library-docs.md` are the global coordination rules, and `index.md` points at the language rules. The language rules (`shell/shell.md`, `shell/bats.md`, `go/go.md`, `go/architecture.md`, `python/python.md`, `docker.md`) have `paths:` and load when a matching file is read. `rules/go/architecture.md` carries the Go architecture decisions (vertical slices inside clean architecture) that the retired Go architect used to hold.
 - `lib/print.sh`: `print::info/error/success/warning` helpers sourced by the installer.
 - `_archive/`: retired resources, including the whole Codex integration (`_archive/codex/`). Not installed.
 
 ### Keeping things in sync
 
-Adding, renaming, or removing a role means changing `agents/`, the role table in `README.md`, and the delegation table in `rules/agent-delegation.md` (if it's routed there). A new or removed skill needs a README skill-table update.
+Adding, renaming, or removing a role means changing `agents/`, the role table in `README.md`, the agent table in `agents/ABOUT-THE-AGENTS.md`, and the delegation table in `rules/agent-delegation.md` (if it's routed there). A new or removed skill needs a README skill-table update. A retired agent or skill also needs a line in the stale-copies troubleshooting entry in `claude/README.md`, because the installer never prunes.
 
-Language standards live once, in `rules/`. The Go, Python, shell, and devops agents only point at their rule file, so a change to a standard is a change to the rule, not the agent.
+Language standards live once, in `rules/`. The Go, Python, shell, and devops agents only point at their rule files (the Go engineer at `rules/go/go.md` and `rules/go/architecture.md`, the shell engineer at `rules/shell/shell.md` and `rules/shell/bats.md`), so a change to a standard is a change to the rule, not the agent.
 
 ### Installers
 

@@ -74,6 +74,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   the architect-selection tree, the numbered best practices, the long
   example, and the color coding are gone, and it no longer names the
   retired agents.
+- Brought the guides in line with the reduced catalog. The install guide's
+  example workflow and narrow-request list now follow the superpowers flow
+  and name only live agents, and it gains a troubleshooting entry listing
+  the four retired agent files and the `shell-script` skill directory to
+  delete from an earlier install. The repo `CLAUDE.md` layout and sync
+  notes point at `rules/` instead of `claude/rules/`, name
+  `rules/go/architecture.md` with the other language rules, and add
+  `agents/ABOUT-THE-AGENTS.md` and the stale-copies entry to the places a
+  role change touches. The README's "How it works" now says superpowers
+  owns design, planning, review, and integration and the specialists
+  implement.
 
 ### Removed
 
@@ -123,6 +134,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `rev-parse`, `describe`, `remote -v`) plus `fetch` and `pull`; agents that
   commit their own work also get `add`, `commit`, and `tag`. The code reviewer
   and RLM subcall agent are told not to stage or commit either.
+- The README's "Key Considerations" linked to `docs/project_structure.md`,
+  deleted in an earlier commit. It now points at `rules/go/architecture.md`.
+  The install guide's links to `agents/ABOUT-THE-AGENTS.md` and `rules/`
+  were relative to `claude/` and resolved nowhere; they now climb to the
+  repository root.
 
 ## [1.6.0] - 2026-09-27
 

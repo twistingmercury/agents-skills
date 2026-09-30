@@ -13,39 +13,48 @@ Display names use spaces, such as `go software engineer`, while definition
 filenames use hyphens, such as `go-software-engineer.md`. Use the display name
 when requesting or delegating to a role.
 
-See [About the agents](agents/ABOUT-THE-AGENTS.md) for role boundaries and the
-full workflow model.
+See [About the agents](../agents/ABOUT-THE-AGENTS.md) for the twelve live
+agents and the workflow behind them.
 
 ## Main Claude workflow
 
-Main Claude owns coordination and the final response. It starts with
-`superpowers:brainstorming`, records the approved design under
-`docs/architecture/`, plans with superpowers, can consult the API or data
-architect, delegates artifact production to implementation specialists, and
-then requests independent validation. For example:
+Process belongs to superpowers. The main session brainstorms, plans, reviews,
+and integrates through the `superpowers:*` skills and hands implementation to
+the specialist whose language or domain matches. The `api architect` and
+`data architect` are consultants the brainstorm draws on; the rest of the
+catalog takes the implementer seat. For example:
 
 ```text
 User: "Build a user management REST API in Go"
 
 Main Claude:
-  1. Brainstorms the design with superpowers:brainstorming
+  1. Brainstorms the design with superpowers:brainstorming; the api architect
+     drafts the OpenAPI contract and the data architect the schema
   2. Records the approved design under docs/architecture/ with /arch-docs
   3. Writes the plan with superpowers:writing-plans
-  4. Delegates the contract to api architect
-  5. Delegates implementation to go software engineer
-  6. Delegates black-box tests to go e2e test engineer
+  4. Runs the plan with superpowers:subagent-driven-development: go software
+     engineer implements handlers, data engineer writes migrations, go e2e
+     test engineer writes black-box tests, devops engineer adds the
+     Dockerfile and CI
+  5. Reviews with superpowers:requesting-code-review
+  6. Integrates with superpowers:finishing-a-development-branch
 ```
 
-Narrow requests can go directly to one specialist:
+Narrow requests with a known owner skip the flow and go to one specialist:
 
 ```text
-"Write BATS tests for scripts/backup.sh" -> shell script engineer
+"Write a Dockerfile and GitHub Actions workflow" -> devops engineer
+"Add a migration that creates the invoices table" -> data engineer
+"Write scripts/backup.sh with its BATS tests" -> shell script engineer
 "Update the project README" -> technical writer
 ```
 
+If the request changes behavior or adds functionality, start at brainstorming
+instead.
+
 ## Rules
 
-The files under [`rules/`](rules/) install to `~/.claude/rules/`, where
+The files under [`rules/`](../rules/) install to `~/.claude/rules/`, where
 Claude Code loads them for the main session and for subagents.
 
 - `agent-delegation.md`, `code-shape.md`, `library-docs.md`, and `index.md`
@@ -110,6 +119,22 @@ the installer never prunes, so installed copies named `dotnet-postgres-api-start
 (or the older `dotnet-minimal-api-starter`) remain until you delete them.
 Save any custom changes, then remove those entries from `SKILLS_DIR` when set,
 otherwise `~/.claude/skills`, and restart Claude Code.
+
+### Removing stale agent and skill copies
+
+The `bats test engineer`, `code reviewer`, `go software architect`, and
+`solutions architect` agents and the `shell-script` skill were retired from
+the catalog, and the installer never prunes, so copies installed by an earlier
+run remain until you delete them. Save any custom changes, then remove these
+files from `AGENTS_DIR` when set, otherwise `~/.claude/agents`:
+
+- `bats-test-engineer.md`
+- `code-reviewer.md`
+- `go-software-architect.md`
+- `solutions-architect.md`
+
+Remove the `shell-script` directory from `SKILLS_DIR` when set, otherwise
+`~/.claude/skills`, and restart Claude Code.
 
 ### Agents or skills do not appear
 
