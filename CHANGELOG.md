@@ -66,6 +66,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Claude installer phase 2 is now `02_install_rules.sh`, which copies
   `rules/` into `~/.claude/rules/` and keeps its subject folders. The
   installer no longer reads or writes `~/.claude/CLAUDE.md`.
+- Rewrote `agents/ABOUT-THE-AGENTS.md` around the superpowers flow. It now
+  presents the specialists as implementer seats and artifact producers,
+  lists the twelve live agents in one table grouped by area, and walks the
+  brainstorm, plan, implement, review, and finish stages through their
+  `superpowers:` skills. The five pipeline workflows, the API style tree,
+  the architect-selection tree, the numbered best practices, the long
+  example, and the color coding are gone, and it no longer names the
+  retired agents.
 
 ### Removed
 
