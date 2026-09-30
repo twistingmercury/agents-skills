@@ -7,6 +7,8 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.0.0] - 2026-09-30
+
 ### Added
 
 - Added the `python-uv-starter` skill, which scaffolds an empty uv-based Python
@@ -23,6 +25,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   software engineer now points at it instead of repeating the layout.
 
 ### Changed
+
+This release removes four agents and one skill in favor of superpowers, so
+any routing to them breaks.
 
 - Reframed `rules/agent-delegation.md` around superpowers: the main session
   runs brainstorming, planning, review, and integration itself and hands
