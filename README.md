@@ -31,7 +31,7 @@ Claude Code display names use spaces (`go software engineer`).
 | Implementation           | `go_software_engineer`, `python_software_engineer`, `dotnet_software_engineer`, `react_software_engineer`, `shell_script_engineer`, `data_engineer` |
 | Testing                  | `go_e2e_test_engineer`                                                                                                                              |
 | Operations               | `devops_engineer`                                                                                                                                   |
-| Documentation and review | `technical_writer`, `code_reviewer`                                                                                                                 |
+| Documentation            | `technical_writer`                                                                                                                                  |
 | Support                  | `rlm_subcall_agent`                                                                                                                                 |
 
 Portable skills:

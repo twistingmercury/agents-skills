@@ -24,6 +24,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Code review is no longer routed through the delegation table. Superpowers
+  owns review (`requesting-code-review` and the subagent-driven-development
+  reviewer), and the `code-review` skill remains for standalone formal audits
+  with a written report.
 - The shell script engineer now owns the BATS tests for its scripts. It
   carries the `superpowers:test-driven-development` skill, the `.bats` and
   `test_helper` read, write, edit, and glob tools, and `bats` and `mkdir`
@@ -54,6 +58,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- Retired the `code reviewer` agent and removed it from the README role
+  table. Superpowers owns review, and the agent's checklists already live in
+  `rules/code-shape.md`. Its one uncovered duty, checking current docs before
+  flagging an API as deprecated or misused, moves to `rules/library-docs.md`.
+  The agent file stays on disk; only its registrations are removed.
 - Retired the `bats test engineer` agent and removed it from the README role
   table, the delegation table, and the install guide. Its duties move to the
   shell script engineer, which writes the tests first under
