@@ -27,8 +27,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `claude/rules/`.
 - Pared the Claude Go, Python, shell script, BATS, and devops agents down to
   role, scope, workflow, and output. Each now points at its rule file in
-  `~/.claude/rules/` instead of carrying the coding standards inline. The
-  Codex agents are unchanged and keep their standards.
+  `~/.claude/rules/` instead of carrying the coding standards inline.
 - Removed the Context7 Documentation section from the Claude agents. The
   always-on `library-docs.md` rule reaches subagents and carries that
   guidance. The code reviewer keeps its one specific duty: check current docs
@@ -39,6 +38,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- Retired the Codex integration. `codex/` (agents, global rules, installer)
+  moved to `_archive/codex/` and is not installed. The Makefile now has a
+  single `install` target for Claude Code, and the docs describe one client.
 - Removed the Claude `02_install_global_agents.sh` phase, its `FORCE`,
   `CLAUDE_ROOT`, and `AGENT_RULES_SOURCE` settings, and
   `claude/agents/GLOBAL_AGENT_RULES.md`. An agent-rules block left in

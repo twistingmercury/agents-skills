@@ -8,11 +8,6 @@ help: ## Show this help
 install: ## Install Claude Code agents, rules, and skills.
 	./claude/install/install.sh
 
-# install-codex: ## Install Codex agents, global rules, and shared skills.
-# 	./codex/install/install.sh
-
-# install-all: install-claude install-codex ## Install both platform integrations.
-
 test: ## Run the shared skill test suites (requires Python 3.11+ and bats).
 	cd skills/rlm && python3 -m unittest discover -s tests
 	bats skills/python-uv-starter/tests

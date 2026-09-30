@@ -183,4 +183,4 @@ Include these checks in CI. The `code_reviewer` agent flags dependency violation
 - **`solutions_architect`**: Maps subdomains as the module boundaries inside each service and keeps their public surfaces explicit, so a subdomain can later become its own service.
 - **`data_architect`**: Assigns each subdomain its own persistence model; suggests read models or events for cross-subdomain queries.
 
-Agent display names in Claude Code use spaces (`go software architect`); Codex uses snake_case (`go_software_architect`). See the platform guides for naming conventions in each client.
+Agent display names in Claude Code use spaces (`go software architect`); the labels above are the catalog's snake_case form.
