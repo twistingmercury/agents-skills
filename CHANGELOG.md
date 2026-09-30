@@ -24,6 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- The shell script engineer now owns the BATS tests for its scripts. It
+  carries the `superpowers:test-driven-development` skill, the `.bats` and
+  `test_helper` read, write, edit, and glob tools, and `bats` and `mkdir`
+  commands; its workflow writes failing BATS tests first, then the script,
+  then runs `bats` and `shellcheck` until clean. It points at both
+  `rules/shell/shell.md` and `rules/shell/bats.md`.
 - Shell script work now routes to the `shell script engineer`. The delegation
   table in `rules/agent-delegation.md` points there instead of at the retired
   `shell-script` skill.
@@ -48,6 +54,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- Retired the `bats test engineer` agent and removed it from the README role
+  table, the delegation table, and the install guide. Its duties move to the
+  shell script engineer, which writes the tests first under
+  test-driven-development instead of after the script. The agent file stays
+  on disk; only its registrations are removed.
 - Retired the `shell-script` skill and removed it from the README skill table
   and the delegation table. The shell script engineer plus the
   `rules/shell/shell.md` and `rules/shell/bats.md` rules cover its job, and

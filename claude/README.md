@@ -36,7 +36,7 @@ Main Claude:
 Narrow requests can go directly to one specialist:
 
 ```text
-"Write BATS tests for scripts/backup.sh" -> bats test engineer
+"Write BATS tests for scripts/backup.sh" -> shell script engineer
 "Update the project README" -> technical writer
 ```
 

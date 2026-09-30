@@ -35,7 +35,7 @@ markdownlint --ignore-path /dev/null agents/*/*.md   # .markdownlintignore skips
 
 Adding, renaming, or removing a role means changing `agents/`, the role table in `README.md`, and the delegation table in `rules/agent-delegation.md` (if it's routed there). A new or removed skill needs a README skill-table update.
 
-Language standards live once, in `rules/`. The Go, Python, shell, BATS, and devops agents only point at their rule file, so a change to a standard is a change to the rule, not the agent.
+Language standards live once, in `rules/`. The Go, Python, shell, and devops agents only point at their rule file, so a change to a standard is a change to the rule, not the agent.
 
 ### Installers
 
