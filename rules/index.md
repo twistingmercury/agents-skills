@@ -5,5 +5,6 @@ Path-scoped rules load only when a matching file is read. Before creating the fi
 - Shell script (`*.sh`, `*.bash`): `~/.claude/rules/shell/shell.md`
 - BATS test (`*.bats`): `~/.claude/rules/shell/bats.md`
 - Go source (`*.go`): `~/.claude/rules/go/go.md`
+- Go architecture (`*.go`, `go.mod`): `~/.claude/rules/go/architecture.md`
 - Python source (`*.py`): `~/.claude/rules/python/python.md`
 - Dockerfile: `~/.claude/rules/docker.md`

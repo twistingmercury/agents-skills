@@ -16,6 +16,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Added path-scoped Claude Code coding rules for shell, BATS, Go, Python, and
   Dockerfiles under `rules/`, with an always-on `index.md` that points
   at them.
+- Added the path-scoped `rules/go/architecture.md` rule, which loads for `.go`
+  and `go.mod` files and carries the Go architecture decisions: the
+  dependency rule, subdomain and use-case slice packages, the service, CLI,
+  and hybrid layout, the API style guide, and CLI conventions. The Go
+  software engineer now points at it instead of repeating the layout.
 
 ### Changed
 
