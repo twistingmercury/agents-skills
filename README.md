@@ -40,20 +40,20 @@ labels; each platform guide explains how those labels map to its agent names.
 
 Portable skills are shared across both integrations:
 
-| Skill                                                                               | Purpose                                                  |
-| ----------------------------------------------------------------------------------- | -------------------------------------------------------- |
-| [`arch-docs`](shared/skills/arch-docs/SKILL.md)                                     | Create and update architecture documentation             |
-| [`capture-requirements`](shared/skills/capture-requirements/SKILL.md)               | Capture requirements for architecture and design handoff |
-| [`check-push-readiness`](shared/skills/check-push-readiness/SKILL.md)               | Assess committed changes before pushing                  |
-| [`code-review`](shared/skills/code-review/SKILL.md)                                 | Coordinate review across multiple concerns               |
-| [`docker-first-ci`](shared/skills/docker-first-ci/SKILL.md)                         | Implement and harden Docker-first CI/CD pipelines        |
-| [`prime`](shared/skills/prime/SKILL.md)                                             | Survey a repository and build working context            |
-| [`python-uv-starter`](shared/skills/python-uv-starter/SKILL.md)                     | Scaffold an empty uv-based Python CLI project            |
-| [`readme-writer`](shared/skills/readme-writer/SKILL.md)                             | Create or update a README from a standard template       |
-| [`rlm`](shared/skills/rlm/SKILL.md)                                                 | Run long-context tasks using a persistent local REPL     |
-| [`shell-script`](shared/skills/shell-script/SKILL.md)                               | Create shell scripts with automatic BATS coverage        |
+| Skill                                                          | Purpose                                                  |
+| -------------------------------------------------------------- | -------------------------------------------------------- |
+| [`arch-docs`](skills/arch-docs/SKILL.md)                       | Create and update architecture documentation             |
+| [`capture-requirements`](skills/capture-requirements/SKILL.md) | Capture requirements for architecture and design handoff |
+| [`check-push-readiness`](skills/check-push-readiness/SKILL.md) | Assess committed changes before pushing                  |
+| [`code-review`](skills/code-review/SKILL.md)                   | Coordinate review across multiple concerns               |
+| [`docker-first-ci`](skills/docker-first-ci/SKILL.md)           | Implement and harden Docker-first CI/CD pipelines        |
+| [`prime`](skills/prime/SKILL.md)                               | Survey a repository and build working context            |
+| [`python-uv-starter`](skills/python-uv-starter/SKILL.md)       | Scaffold an empty uv-based Python CLI project            |
+| [`readme-writer`](skills/readme-writer/SKILL.md)               | Create or update a README from a standard template       |
+| [`rlm`](skills/rlm/SKILL.md)                                   | Run long-context tasks using a persistent local REPL     |
+| [`shell-script`](skills/shell-script/SKILL.md)                 | Create shell scripts with automatic BATS coverage        |
 
-The [code-review skill](shared/skills/code-review/SKILL.md) writes reports by
+The [code-review skill](skills/code-review/SKILL.md) writes reports by
 default to `docs/.code_reviews/code_review_YYYY_mm_dd_HHMM.md` in the reviewed
 repository, creating the directory if needed and keeping it untracked through
 the local Git exclude file. Each review and re-review creates a new file without
@@ -134,7 +134,7 @@ make test
 This runs the shared RLM unit tests. You may also run them directly:
 
 ```bash
-(cd shared/skills/rlm && python3 -m unittest discover -s tests -v)
+(cd skills/rlm && python3 -m unittest discover -s tests -v)
 ```
 
 ### Versioning

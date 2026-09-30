@@ -40,12 +40,15 @@ Narrow requests can go directly to one specialist:
 "Update the project README" -> technical writer
 ```
 
-## Global rules
+## Rules
 
-[`GLOBAL_AGENT_RULES.md`](agents/GLOBAL_AGENT_RULES.md) is the source for the
-managed agent-rules block in the user's global `CLAUDE.md`. The installer uses
-the embedded `Last Updated` date to avoid unnecessary rewrites unless
-`FORCE=1` is set.
+The files under [`rules/`](rules/) install to `~/.claude/rules/`, where
+Claude Code loads them for the main session and for subagents.
+
+- `agent-delegation.md`, `code-shape.md`, `library-docs.md`, and `index.md`
+  have no `paths:` frontmatter and load in every session.
+- The rules in the subject folders and `docker.md` carry `paths:` globs and
+  load when a matching file is read.
 
 ## Installation
 
@@ -54,8 +57,7 @@ the embedded `Last Updated` date to avoid unnecessary rewrites unless
 - Claude Code is installed.
 - Bash 4 or newer is available.
 - Make is available if using the Make targets below.
-- The home directory is writable. The full installer creates `~/.claude` as
-  needed; the standalone global-rules phase expects it to exist already.
+- The home directory is writable. The installer creates `~/.claude` as needed.
 
 From the repository root, run either the Make target or direct entrypoint:
 
@@ -64,25 +66,19 @@ make install-claude
 ./claude/install/install.sh
 ```
 
-The entrypoint runs the agent, global-rules, and skill phases in order. The
-default destinations are:
+The entrypoint runs the agent, rules, and skill phases in order. The default
+destinations are:
 
-- agent links: `~/.claude/agents/`
-- managed global rules: `~/.claude/CLAUDE.md`
-- skill links: `~/.claude/skills/`
+- agents: `~/.claude/agents/`
+- rules: `~/.claude/rules/`
+- skills: `~/.claude/skills/`
 
 Run a single phase when troubleshooting or developing an installer:
 
 ```bash
 ./claude/install/01_install_agents.sh
-./claude/install/02_install_global_agents.sh
+./claude/install/02_install_rules.sh
 ./claude/install/03_install_skills.sh
-```
-
-Set `FORCE=1` to reinstall a managed rules block even when its date is current:
-
-```bash
-FORCE=1 ./claude/install/02_install_global_agents.sh
 ```
 
 ### Preservation behavior
@@ -95,11 +91,10 @@ FORCE=1 ./claude/install/02_install_global_agents.sh
   it manually.
 - Broken symlinks left by previous installations are swept out; the installer
   replaces the skill directory wholesale with `cp -R`.
-- The global-rules phase creates `~/.claude/CLAUDE.md.<timestamp>.backup` when
-  adding rules to an existing file without a managed block or replacing a block
-  with a readable installed date.
-- For a dated block with complete rule markers, updates remove the old block
-  and append the current one, retaining content outside those markers.
+- Rules follow the same contract per top-level entry of `rules/`: a rule file
+  or subject folder with a matching name in `~/.claude/rules/` is replaced
+  wholesale, and other entries there are preserved.
+- The installer no longer reads or writes `~/.claude/CLAUDE.md`.
 
 Restart Claude Code after installation so it reloads agents, rules, and skills.
 
@@ -119,19 +114,13 @@ Rerun the installer and restart Claude Code. Moving or deleting the checkout
 does not break an existing installation, but the installer must be rerun to
 pick up repository updates.
 
-### Global rules were overwritten
+### Rules load twice after upgrading
 
-Look for `~/.claude/CLAUDE.md.<timestamp>.backup`, created for the updates
-described in [Preservation behavior](#preservation-behavior). If installation
-fails after the backup is created, the installer attempts to restore it.
-
-### The global-rules phase cannot find Claude configuration
-
-Confirm that `~/.claude` exists and is writable, then rerun:
-
-```bash
-./claude/install/02_install_global_agents.sh
-```
+Earlier versions wrote the delegation, Code Shape, and Library Documentation
+rules into `~/.claude/CLAUDE.md` between `<!-- BEGIN AGENT RULES -->` and
+`<!-- END AGENT RULES -->`. The installer no longer manages that block and does
+not remove it. Delete the block, markers included, so the same rules are not
+loaded from both `CLAUDE.md` and `~/.claude/rules/`.
 
 ## Testing
 

@@ -5,9 +5,6 @@ set -euo pipefail
 SCRIPTS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
 PROJ_ROOT="${PROJ_ROOT:-$(cd "${SCRIPTS}/../.." && pwd)}"
 
-# Set shared timestamp for all logs during this install run
-export TIMESTAMP="${TIMESTAMP:-$(date +%Y%m%d-%H%M%S)}"
-
 # shellcheck source=../../lib/print.sh disable=SC1091
 . "${PROJ_ROOT}/lib/print.sh"
 
@@ -20,9 +17,9 @@ main(){
         return 1
     fi
 
-    print::info "Step 2/3: Installing global agent rules..."
-    if ! "${SCRIPTS}/02_install_global_agents.sh"; then
-        print::error "Failed to install global agent rules"
+    print::info "Step 2/3: Installing rules..."
+    if ! "${SCRIPTS}/02_install_rules.sh"; then
+        print::error "Failed to install rules"
         return 2
     fi
 

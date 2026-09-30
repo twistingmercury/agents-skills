@@ -67,7 +67,7 @@ The commands below assume this skill directory is your working directory.
 From the repository root, change into it first:
 
 ```bash
-cd shared/skills/rlm
+cd skills/rlm
 ```
 
 Check optional parsers and preview their installation command:

@@ -13,6 +13,29 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   CLI project (src layout, pytest, ruff, Makefile, Docker-first wheel build,
   GitHub Actions CI) from bundled templates, with BATS coverage for its
   renderer.
+- Added path-scoped Claude Code coding rules for shell, BATS, Go, Python, and
+  Dockerfiles under `claude/rules/`, with an always-on `index.md` that points
+  at them.
+
+### Changed
+
+- Moved the portable skills from `shared/skills/` to `skills/` at the
+  repository root. Both skill installers and `make test` read the new path.
+- The Claude global rules now install as rule files instead of a managed block
+  in `~/.claude/CLAUDE.md`. `GLOBAL_AGENT_RULES.md` is split into
+  `agent-delegation.md`, `code-shape.md`, and `library-docs.md` under
+  `claude/rules/`.
+- Claude installer phase 2 is now `02_install_rules.sh`, which copies
+  `claude/rules/` into `~/.claude/rules/` and keeps its subject folders. The
+  installer no longer reads or writes `~/.claude/CLAUDE.md`.
+
+### Removed
+
+- Removed the Claude `02_install_global_agents.sh` phase, its `FORCE`,
+  `CLAUDE_ROOT`, and `AGENT_RULES_SOURCE` settings, and
+  `claude/agents/GLOBAL_AGENT_RULES.md`. An agent-rules block left in
+  `~/.claude/CLAUDE.md` by an earlier install is not removed; delete it by
+  hand so the rules do not load twice.
 
 ## [1.6.0] - 2026-09-27
 
