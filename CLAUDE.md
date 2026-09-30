@@ -29,7 +29,7 @@ markdownlint --ignore-path /dev/null agents/*/*.md   # .markdownlintignore skips
 - `skills/<skill>/`: one skill tree installed **unchanged**. `SKILL.md` is the entrypoint. The optional `agents/openai.yaml` is leftover Codex UI metadata; harmless, not read by Claude Code.
 - `rules/`: Claude Code rules, installed to `~/.claude/rules/` with their subject folders intact. Files without `paths:` frontmatter load every session: `agent-delegation.md`, `code-shape.md`, and `library-docs.md` are the global coordination rules, and `index.md` points at the language rules. The language rules (`shell/shell.md`, `shell/bats.md`, `go/go.md`, `go/architecture.md`, `python/python.md`, `docker.md`) have `paths:` and load when a matching file is read. `rules/go/architecture.md` carries the Go architecture decisions (vertical slices inside clean architecture) that the retired Go architect used to hold.
 - `lib/print.sh`: `print::info/error/success/warning` helpers sourced by the installer.
-- `_archive/`: retired resources, including the whole Codex integration (`_archive/codex/`). Not installed.
+- `_archive/`: retired resources: the whole Codex integration (`_archive/codex/`), the retired agents (`_archive/agents/`), and the retired skills (`_archive/skills/`). Not installed.
 
 ### Keeping things in sync
 
