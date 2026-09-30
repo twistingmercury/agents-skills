@@ -117,100 +117,9 @@ Use Context7 for current documentation on Go modules, frameworks, and standard l
 
 ## Go Standards
 
-### Style and API design
+The Go coding standards live in `~/.claude/rules/go/go.md`: API design, code shape, errors, concurrency, performance, testing, security, dependencies, and the checks to run after any change. Claude Code loads that rule when you read a `.go` file. If you are about to write Go and have not read a `.go` file in this session, read the rule file first.
 
-- Follow `gofmt` and idiomatic naming
-- Avoid stuttering in exported names (`agent.Repository`, not `agent.AgentRepository`)
-- Keep functions focused; see **Code shape** below
-- Prefer composition over inheritance-like patterns
-- Define interfaces where consumed, not where implemented
-- Document exported APIs with concise godoc comments
-
-### Code shape (required)
-
-Write never-nester code. A review rejects code that breaks these rules.
-
-- **Invert conditions and return early.** Handle the error or edge case first so the happy path stays at the left margin.
-
-  ```go
-  // No
-  if err := cmd.Start(); err == nil {
-      readOutput(stdout)
-      err = cmd.Wait()
-  }
-
-  // Yes
-  if err := cmd.Start(); err != nil {
-      return finish(err)
-  }
-
-  readOutput(stdout)
-  ```
-
-- **Extract non-trivial loop and `case` bodies** into named functions so each loop or case reads as one step.
-
-  ```go
-  switch block.Type {
-  case "text":
-      activity = append(activity, textActivity(block.Text)...)
-  case "tool_use":
-      activity = append(activity, toolActivity(block))
-  }
-  ```
-
-- **Blank line after every `if` block**, except before the enclosing `}` or an `else`.
-- **Name callbacks** longer than a line or two. When the callback needs outer state, return it from a named function.
-
-  ```go
-  // No
-  err = fs.WalkDir(fsys, root, func(path string, d fs.DirEntry, err error) error {
-      // ...fifteen lines...
-  })
-
-  // Yes
-  err = fs.WalkDir(fsys, root, copyTo(dest))
-  ```
-
-- **Split functions that do more than one job.** Past about 30 lines, look for the seams (collect, validate, decode) and give each its own function.
-- **Use the modern standard library**: `slices.Backward`, `slices.Contains`, `slices.Insert`, `maps.Keys`, the `min`/`max` built-ins, and range over ints.
-
-  ```go
-  // No
-  for i := len(lines) - 1; i >= 0; i-- {
-
-  // Yes
-  for _, line := range slices.Backward(lines) {
-  ```
-
-- **Comments say why, not what.** If a comment is needed to explain what code does, rewrite the code instead.
-
-  ```go
-  // No:  readLines calls fn with each line read from r.
-  // Yes: readLines exists because bufio.Scanner stops at a 64 KiB token,
-  //      and one stream-json event can be larger than that.
-  ```
-
-- **Build the bare minimum.** Add no interfaces, options, or layers the task does not need. Ask before adding a dependency.
-
-### Errors and context
-
-- Handle errors explicitly
-- Wrap with `%w` when adding context
-- Use `context.Context` for cancellation, deadlines, and request scope
-- Clean up resources with `defer`
-
-### Concurrency
-
-- Prefer channels for coordination and mutexes for shared mutable state
-- Manage goroutine lifecycle; prevent leaks
-- Use `sync.WaitGroup` or `errgroup.Group` where appropriate
-- Validate concurrent code with race detection
-
-### Performance
-
-- Optimize only after measuring
-- Use benchmarks and profiles (`-bench`, `pprof`) before tuning
-- Prioritize correctness and clarity over premature optimization
+The language-neutral rules in `~/.claude/rules/code-shape.md` also apply.
 
 ## Project Layout Expectations
 
@@ -234,63 +143,7 @@ tests/                   integration/E2E support and fixtures
 - A subdomain with one or two use cases keeps them in a single slice package.
 - Never add top-level `handlers`, `services`, or `repositories` packages.
 
-Conventions:
-
-- Keep unit tests adjacent to code (`*_test.go`)
-- Keep benchmark files separate (`*_benchmark_test.go`)
-- Keep E2E structure aligned with `go-e2e-test-engineer` expectations
-
-## Required Post-Change Workflow
-
-If the project defines its own gates (Makefile targets, `CLAUDE.md` commands, a Docker build), run those; they take precedence over this list. Otherwise, after any Go code change, run the following sequence and fix issues until clean:
-
-```bash
-goimports -w .
-golangci-lint run
-govulncheck ./...
-gosec ./...
-go vet ./...
-go test ./...
-go test -race ./...
-```
-
-Rules:
-
-- Do not skip steps
-- Read tool output fully
-- Fix root causes, then rerun the full sequence
-- Never add `// #nosec` or `//nolint` to silence a finding; fix the code
-- Do not mark work complete while failures remain
-
-## Testing Standards
-
-- Use `github.com/stretchr/testify`: `require` for preconditions that make the rest of the test meaningless, `assert` for checks. Convert stdlib-style assertions in tests you touch.
-- Cover happy paths, edge cases, and failure modes
-- Prefer table-driven tests for behavior matrices
-- Use subtests (`t.Run`) and helpers (`t.Helper`) to keep tests readable
-- Use `t.Parallel()` for independent tests
-- Use fuzzing for parser/decoder/validator paths handling untrusted input
-- Use coverage as a signal, not a target; prioritize critical paths
-
-For bug fixes, add a test that reproduces the issue before (or alongside) the fix.
-
-## Security and Dependency Standards
-
-### Security
-
-- Validate and constrain external input early
-- Never hardcode secrets; use env vars or secret managers
-- Avoid command/path/SQL injection classes of bugs
-- Use `crypto/rand` for cryptographic randomness
-- Avoid logging secrets or sensitive identifiers
-
-### Dependencies
-
-- Prefer standard library when practical
-- Add dependencies deliberately (maintenance, security, API stability)
-- Keep `go.mod`/`go.sum` tidy
-- Use `replace` only for local development
-- Keep module boundaries clean; use `/internal` for non-public packages
+Keep E2E structure aligned with `go-e2e-test-engineer` expectations.
 
 ## Observability Expectations
 
@@ -303,17 +156,12 @@ For services and workers:
 
 For CLI tools: prioritize clear user output over service-style telemetry.
 
-## Go Version Strategy
-
-- Target the version in the module's `go` directive, and use every idiom it allows (`slices`, `maps`, `iter`, range-over-func, range over ints)
-- Prefer recent stable versions for security and runtime improvements
-
 ## Common Package Choices
 
 Package versions are examples; use current stable releases.
 
 - CLI/config: `cobra`, `pflag`, `viper`
-- Testing: `testify` (required; see Testing Standards)
+- Testing: `testify` (required by the Go rule)
 - Concurrency helpers: `x/sync/errgroup`
 - REST: `gin`, `swaggo/*` when OpenAPI docs are needed
 - gRPC: `grpc`, `protobuf`, `go-grpc-middleware`, `grpc-gateway`
@@ -322,11 +170,7 @@ Package versions are examples; use current stable releases.
 
 Work is complete only when all of the following are true:
 
-- Code is idiomatic and maintainable, and follows **Code shape**
-- `go test ./...` passes
-- `go test -race ./...` passes
-- `go vet ./...` is clean
-- `golangci-lint run` is clean
-- Security scans (`govulncheck`, `gosec`) are addressed
+- Code is idiomatic and maintainable, and follows the Go rule and the code shape rule
+- The project's own gates, or the check sequence in the Go rule, run clean
 
 Before finalizing, check for resource leaks, incomplete error handling, nondeterministic tests, and uncovered edge cases.

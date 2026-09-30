@@ -1,6 +1,6 @@
 # Code shape
 
-These rules apply to code in every language. Language agents carry their own examples.
+These rules apply to code in every language. Language rules add the language-specific details.
 
 - **Never-nester.** Handle errors and edge cases first and return early; keep the happy path at the left margin. Move non-trivial loop and `case` bodies into named functions.
 - **Blank line after every `if` block**, except before the enclosing block's closing brace or an `else`.

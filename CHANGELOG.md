@@ -25,6 +25,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   in `~/.claude/CLAUDE.md`. `GLOBAL_AGENT_RULES.md` is split into
   `agent-delegation.md`, `code-shape.md`, and `library-docs.md` under
   `claude/rules/`.
+- Pared the Claude Go, Python, shell script, BATS, and devops agents down to
+  role, scope, workflow, and output. Each now points at its rule file in
+  `~/.claude/rules/` instead of carrying the coding standards inline. The
+  Codex agents are unchanged and keep their standards.
 - Claude installer phase 2 is now `02_install_rules.sh`, which copies
   `claude/rules/` into `~/.claude/rules/` and keeps its subject folders. The
   installer no longer reads or writes `~/.claude/CLAUDE.md`.

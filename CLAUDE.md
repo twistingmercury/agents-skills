@@ -38,6 +38,8 @@ markdownlint '**/*.md'                             # uses .markdownlint.json
 
 Every role exists twice, once per client. Adding, renaming, or removing a role means changing both `claude/agents/` and `codex/agents/`, the role tables in `README.md`, the delegation table in `claude/rules/agent-delegation.md` (if it's routed there), and the registry in `codex/agents/global-agents.md`. A new or removed skill needs a README skill-table update. The Codex prompts aren't a copy of the Claude ones: they open with Codex-specific constraints (sandbox, no commits, handoff to the parent) before the shared role instructions.
 
+Language standards are the exception to "same content twice". On the Claude side they live once in `claude/rules/`, and the Go, Python, shell, BATS, and devops agents only point at their rule file. Codex has no path-scoped rules, so the Codex agents still carry those standards inline. A change to a standard means editing the Claude rule and the matching Codex agent.
+
 ### Installers
 
 Each client has `install/install.sh`, which runs three phases in order: agents (`01_install_agents.sh`), global guidance (`02_install_rules.sh` for Claude, `02_install_global_agents.sh` for Codex), then skills (`03_install_skills.sh`). Key behaviors:

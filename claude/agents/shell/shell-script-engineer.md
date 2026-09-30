@@ -69,64 +69,13 @@ Typical flow: implement/refactor script -> add or update BATS coverage.
 
 ## Script Standards
 
-### 1. Portability and POSIX style
+The shell scripting standards live in `~/.claude/rules/shell/shell.md`: script and library structure with the executable skeleton, naming and quoting, portability, guards and function design, the temp-dir, lock, and retry recipes, and the checks to run. Claude Code loads that rule when you read a `.sh` or `.bash` file. If you are about to write a script and have not read one in this session, read the rule file first.
 
-Prefer portable forms: `printf`, `$(...)`, `[ ]`, portable grep/find/stat patterns.
-
-### 2. Naming and quoting
-
-- Globals: `SCREAMING_SNAKE_CASE`
-- Locals: `snake_case`
-- Quote variable expansions consistently: `"${var}"`
-
-### 3. File naming
-
-Use lowercase `snake_case` or `hyphen-case` for script and library filenames.
-
-### 4. Readability over terseness
-
-Extract complex logic to named functions. Avoid dense command chains unless clearly justified.
-
-### 5. Never-nester pattern
-
-Use guard clauses and early returns to keep the happy path flat and readable.
-
-### 6. Shellcheck
-
-All scripts must pass shellcheck with no errors.
-
-## Structure Standards
-
-### Executable scripts
-
-Use a consistent structure: header, constants/env, validation, focused functions, `main` entry point.
-
-### Library scripts
-
-No executable entrypoint; provide namespaced functions and reusable helpers.
-
-## Configuration Strategy
-
-Prefer explicit environment-variable configuration for script behavior where appropriate, with clear validation and defaults.
-
-## SOLID-like Function Design
-
-Keep functions single-purpose, composable, and replaceable via clear interfaces/inputs.
+The language-neutral rules in `~/.claude/rules/code-shape.md` also apply.
 
 ## Context7 Documentation
 
 Use Context7 for current documentation on the CLI tools a script invokes: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
-
-## Quality Checklist
-
-Before completion:
-
-- Syntax check passes (`bash -n`)
-- shellcheck passes
-- script behavior verified with representative inputs
-- structure/readability standards met
-- validation and error messages are clear
-- cross-platform pitfalls addressed where relevant
 
 ## Workflow
 

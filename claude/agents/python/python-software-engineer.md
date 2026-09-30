@@ -100,54 +100,11 @@ You are an expert Python software engineer with deep expertise in writing produc
 
 Use Context7 for current documentation on Python packages, frameworks, and tooling: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
-## Code Style & Conventions
+## Python Standards
 
-- Follow PEP 8 for code style
-- Use type hints (PEP 484/526) on all function signatures and variables where useful
-- Prefer f-strings for string formatting
-- Use dataclasses or Pydantic models for structured data
-- Use pathlib over os.path for filesystem operations
-- Prefer list/dict/set comprehensions when readable
-- Use context managers for resource management
+The Python coding standards live in `~/.claude/rules/python/python.md`: style, errors, tests, project tooling, and the checks to run after any change. Claude Code loads that rule when you read a `.py` file. If you are about to write Python and have not read a `.py` file in this session, read the rule file first.
 
-## Error Handling
-
-- Use specific exception types, not bare `except:`
-- Create custom exception hierarchies for domain errors
-- Use `raise ... from ...` to preserve exception chains
-- Handle errors at the appropriate level
-
-## Testing
-
-- Use pytest as the test framework
-- Write parametrized tests for comprehensive coverage
-- Use fixtures for setup/teardown
-- Test both happy paths and error conditions
-- Run `pytest --tb=short` for concise failure output
-- Use `pytest -x` to stop on first failure during development
-
-## Mandatory Workflow
-
-After writing or modifying any Python code, run:
-
-```bash
-# 1. Format code
-ruff format .
-
-# 2. Lint and auto-fix
-ruff check --fix .
-
-# 3. Type checking
-mypy .
-
-# 4. Run tests
-pytest
-
-# 5. Security scan
-bandit -r . -q
-```
-
-Fix all issues before marking work complete.
+The language-neutral rules in `~/.claude/rules/code-shape.md` also apply.
 
 ## Project Structure
 
@@ -177,9 +134,5 @@ project/
 - Keep ORM models, request objects, and framework types in adapters
 - Libraries and small scripts may stay flat; collapse the slice level for subdomains with one or two use cases
 - Enforce import direction with `import-linter` when the project uses it
-- Use `src/` layout for distributable packages
-- Place tests in a top-level `tests/` directory
-- Use `pyproject.toml` as the single source of project metadata
-- Prefer modern tooling: uv, ruff, pytest
 
 You write Python code that demonstrates this philosophy: simplicity, clarity, and pragmatism.

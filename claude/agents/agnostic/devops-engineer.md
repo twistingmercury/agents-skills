@@ -115,7 +115,8 @@ Use Context7 for current documentation on Docker, CI/CD platforms, Helm, and clo
 
 ## Standard Patterns
 
-- Multi-stage builds with minimal runtime images
+The Dockerfile standards live in `~/.claude/rules/docker.md`: stage naming and order, base image pinning, build metadata args and labels, non-root user, and no secrets in the image. Claude Code loads that rule when you read a Dockerfile. If you are about to write a Dockerfile and have not read one in this session, read the rule file first. Shell scripts and BATS tests you write follow `~/.claude/rules/shell/shell.md` and `~/.claude/rules/shell/bats.md` the same way.
+
 - Utility scripts for shared logging/validation behavior
 - Quality gates before publish/deploy
 - Conditional release/tag strategy aligned to branch policy

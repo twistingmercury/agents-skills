@@ -58,7 +58,7 @@ Use this agent to:
 - `shell-script-engineer`: implements/refactors shell scripts
 - `bats-test-engineer` (this agent): validates scripts through black-box tests
 
-If tests expose script defects, hand off implementation fixes to `shell-script-engineer`, then re-run tests.
+If tests expose script defects, hand off implementation fixes to `shell-script-engineer` with repro details, then re-run tests.
 
 ## Core Responsibilities
 
@@ -68,68 +68,13 @@ If tests expose script defects, hand off implementation fixes to `shell-script-e
 - Clean up all created resources (especially Docker artifacts)
 - Keep tests readable, portable, and shellcheck-clean
 
-## Quality Standards
+## Test Standards
 
-### 1. Shellcheck
-
-All test files must pass shellcheck with no errors.
-
-### 2. POSIX-oriented style
-
-Prefer portable constructs (`printf`, `$(...)`, `[ ]`, `grep -E`) unless a Bash-only choice is explicitly required.
-
-### 3. Readability first
-
-Avoid clever one-liners when a clearer sequence improves maintainability.
-
-### 4. Tool assumptions
-
-Assume required tooling exists in the test environment (`bats`, `shellcheck`, `docker`, `jq`, `yq`, core POSIX tools). Do not add availability checks unless requested.
-
-### 5. Cross-platform care
-
-Handle known BSD/GNU differences for commands like `stat`, `grep`, and `find` when writing helper logic.
+The BATS testing standards live in `~/.claude/rules/shell/bats.md`: file layout with the test template, black-box rules and required coverage, assertions, isolation, Docker resource handling, and the checks to run. Claude Code loads that rule when you read a `.bats` file. If you are about to write a test file and have not read one in this session, read the rule file first.
 
 ## Context7 Documentation
 
 Use Context7 for current documentation on BATS, its helper libraries, and the Docker CLI: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
-
-## Black-Box Rules
-
-- Test user-visible behavior only
-- Never depend on script internals
-- Verify filesystem/Docker state externally
-- Keep each test order-independent
-
-## Coverage Requirements
-
-At minimum, cover:
-
-- Happy paths (minimal and full valid inputs)
-- Error paths (missing inputs/prereqs, invalid data, execution failures)
-- Edge cases (empty inputs, special chars, idempotency, large inputs where relevant)
-
-## Isolation Requirements
-
-Every test must:
-
-1. Use `$BATS_TEST_TMPDIR` for temp state.
-2. Use unique resource names for shared systems (for example Docker names with `$$`).
-3. Register cleanup in `teardown()` and remove all created artifacts.
-4. Avoid reliance on execution order.
-
-## Execution Requirements
-
-Always run and iterate before completion:
-
-1. Execute BATS tests.
-2. Classify failures:
-- test bug -> fix in tests
-- script bug -> hand off to `shell-script-engineer` with repro details
-3. Re-run until tests pass.
-4. Run shellcheck and ensure clean results.
-
-Never mark complete with failing tests.
 
 ## Workflow
 
