@@ -24,6 +24,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   skill's handoff targeted the architecture agents retired in 2.0.0. It also
   shipped a second `01_requirements_v01.md` template that competed with the
   `arch-docs` one for the same `docs/architecture/` path.
+- Retired the `code-review` skill to `_archive/skills/`. 2.0.0 had already
+  taken it out of the delegation table and kept it only for standalone
+  audits; superpowers `requesting-code-review` and the official `code-review`
+  plugin cover that too, so the catalog no longer ships a third review
+  pipeline. The README no longer describes its report format.
 
 ## [2.0.0] - 2026-09-30
 

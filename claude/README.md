@@ -123,9 +123,10 @@ otherwise `~/.claude/skills`, and restart Claude Code.
 ### Removing stale agent and skill copies
 
 The `bats test engineer`, `code reviewer`, `go software architect`, and
-`solutions architect` agents and the `shell-script` and `capture-requirements`
-skills were retired from the catalog, and the installer never prunes, so
-copies installed by an earlier run remain until you delete them. Save any custom changes, then remove these
+`solutions architect` agents and the `shell-script`, `capture-requirements`,
+and `code-review` skills were retired from the catalog, and the installer
+never prunes, so copies installed by an earlier run remain until you delete
+them. Save any custom changes, then remove these
 files from `AGENTS_DIR` when set, otherwise `~/.claude/agents`:
 
 - `bats-test-engineer.md`
@@ -133,8 +134,9 @@ files from `AGENTS_DIR` when set, otherwise `~/.claude/agents`:
 - `go-software-architect.md`
 - `solutions-architect.md`
 
-Remove the `shell-script` and `capture-requirements` directories from
-`SKILLS_DIR` when set, otherwise `~/.claude/skills`, and restart Claude Code.
+Remove the `shell-script`, `capture-requirements`, and `code-review`
+directories from `SKILLS_DIR` when set, otherwise `~/.claude/skills`, and
+restart Claude Code.
 
 ### Agents or skills do not appear
 

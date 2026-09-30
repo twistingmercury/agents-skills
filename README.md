@@ -40,29 +40,11 @@ Portable skills:
 | -------------------------------------------------------------- | -------------------------------------------------------- |
 | [`arch-docs`](skills/arch-docs/SKILL.md)                       | Create and update architecture documentation             |
 | [`check-push-readiness`](skills/check-push-readiness/SKILL.md) | Read-only audit of unpushed commits before a push        |
-| [`code-review`](skills/code-review/SKILL.md)                   | Coordinate review across multiple concerns               |
 | [`docker-first-ci`](skills/docker-first-ci/SKILL.md)           | Implement and harden Docker-first CI/CD pipelines        |
 | [`prime`](skills/prime/SKILL.md)                               | Survey a repository and build working context            |
 | [`python-uv-starter`](skills/python-uv-starter/SKILL.md)       | Scaffold an empty uv-based Python CLI project            |
 | [`readme-writer`](skills/readme-writer/SKILL.md)               | Create or update a README from a standard template       |
 | [`rlm`](skills/rlm/SKILL.md)                                   | Run long-context tasks using a persistent local REPL     |
-
-The [code-review skill](skills/code-review/SKILL.md) writes reports by
-default to `docs/.code_reviews/code_review_YYYY_mm_dd_HHMM.md` in the reviewed
-repository, creating the directory if needed and keeping it untracked through
-the local Git exclude file. Each review and re-review creates a new file without
-overwriting earlier reports.
-
-Findings use stable IDs and describe the trigger, impact, code location,
-evidence, recommended change, and observable acceptance checks. Reports use
-`ACCEPTABLE`, `CHANGES_REQUIRED`, or `INCOMPLETE` verdicts, with assessment
-completeness recorded separately as `COMPLETE` or `INCOMPLETE`. An open finding
-or failed required check requires changes; missing required evidence or
-independent reviewers prevents acceptance. The skill defines the full report
-format, disposition requirements, and verdict rules. Reviews account for explicit
-user concerns and relevant test groups, disclosing sampling and omissions.
-Re-reviews reconcile every prior finding with evidence; a finding that was not
-rediscovered remains open until its disposition is justified.
 
 ## How it works
 
