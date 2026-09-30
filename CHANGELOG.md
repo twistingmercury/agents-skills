@@ -24,6 +24,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Shell script work now routes to the `shell script engineer`. The delegation
+  table in `rules/agent-delegation.md` points there instead of at the retired
+  `shell-script` skill.
 - Flattened the layout. `shared/skills/`, `claude/agents/`, `claude/rules/`,
   and `claude/install/` are now `skills/`, `agents/`, `rules/`, and
   `install/` at the repository root. The installer and `make test` read the
@@ -45,6 +48,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- Retired the `shell-script` skill and removed it from the README skill table
+  and the delegation table. The shell script engineer plus the
+  `rules/shell/shell.md` and `rules/shell/bats.md` rules cover its job, and
+  its test-after flow conflicted with superpowers' test-driven-development.
 - Retired the Codex integration. `codex/` (agents, global rules, installer)
   moved to `_archive/codex/` and is not installed. The Makefile now has a
   single `install` target for Claude Code, and the docs describe one client.

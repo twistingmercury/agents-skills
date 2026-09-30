@@ -47,7 +47,6 @@ Portable skills:
 | [`python-uv-starter`](skills/python-uv-starter/SKILL.md)       | Scaffold an empty uv-based Python CLI project            |
 | [`readme-writer`](skills/readme-writer/SKILL.md)               | Create or update a README from a standard template       |
 | [`rlm`](skills/rlm/SKILL.md)                                   | Run long-context tasks using a persistent local REPL     |
-| [`shell-script`](skills/shell-script/SKILL.md)                 | Create shell scripts with automatic BATS coverage        |
 
 The [code-review skill](skills/code-review/SKILL.md) writes reports by
 default to `docs/.code_reviews/code_review_YYYY_mm_dd_HHMM.md` in the reviewed

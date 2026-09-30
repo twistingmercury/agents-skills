@@ -7,7 +7,7 @@
 | Task                                     | Delegate To             |
 | ---------------------------------------- | ----------------------- |
 | BATS tests                               | `bats test engineer`    |
-| Shell scripts                            | `/shell-script` skill   |
+| Shell scripts                            | `shell script engineer` |
 | Go code/services                         | `go software engineer`  |
 | E2E tests                                | `go e2e test engineer`  |
 | API specs                                | `api architect`         |
