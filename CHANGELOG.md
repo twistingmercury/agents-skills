@@ -7,6 +7,24 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Repositioned the `check-push-readiness` skill as the read-only audit that
+  runs before the "push and create a pull request" option of
+  `superpowers:finishing-a-development-branch`. Its description now names
+  what it checks (live remote SHA, fast-forward state, secrets and debug code
+  in the diff, commit metadata, validation of the committed tree) and its
+  prompt says what it leaves to the superpowers skill.
+
+### Removed
+
+- Retired the `capture-requirements` skill to `_archive/skills/`. Superpowers
+  `brainstorming` covers the same elicitation (read the project, ask one
+  question at a time, gate on approval, write a handoff document), and the
+  skill's handoff targeted the architecture agents retired in 2.0.0. It also
+  shipped a second `01_requirements_v01.md` template that competed with the
+  `arch-docs` one for the same `docs/architecture/` path.
+
 ## [2.0.0] - 2026-09-30
 
 ### Added

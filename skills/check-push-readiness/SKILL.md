@@ -1,9 +1,14 @@
 ---
 name: check-push-readiness
-description: Assess whether local commits on the current branch are ready to push to their configured remote branch. Use when asked whether a commit, set of commits, or branch is ready to push. Limit the verdict to the exact committed content that the next Git push would transfer.
+description: Read-only audit of the exact unpushed commits before a push. Resolves the live remote SHA, checks for fast-forward, scans the diff for secrets and debug code, reviews commit metadata, and validates the committed tree. Use when asked whether a commit, set of commits, or branch is ready to push, or before choosing the push-and-create-PR option in superpowers:finishing-a-development-branch. Limit the verdict to the exact committed content that the next Git push would transfer.
 ---
 
 # Check Push Readiness
+
+This skill complements `superpowers:finishing-a-development-branch`. That
+skill verifies the test suite and chooses how to integrate the branch; this one
+audits what the push would transfer, read-only, before that push option is
+taken. It never merges, pushes, or cleans up.
 
 ## Apply Guardrails
 

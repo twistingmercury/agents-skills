@@ -13,4 +13,6 @@ tested or updated. Do not install from it or point new work at it.
   superpowers owns their steps (`test-driven-development`,
   `requesting-code-review`, `writing-plans`, `brainstorming`).
 - `skills/`: the `shell-script` skill, retired in 2.0.0 because the shell
-  script engineer owns its scripts and BATS tests.
+  script engineer owns its scripts and BATS tests, and the
+  `capture-requirements` skill, retired after 2.0.0 because superpowers
+  `brainstorming` covers its elicitation and handoff.

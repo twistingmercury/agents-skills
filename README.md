@@ -39,8 +39,7 @@ Portable skills:
 | Skill                                                          | Purpose                                                  |
 | -------------------------------------------------------------- | -------------------------------------------------------- |
 | [`arch-docs`](skills/arch-docs/SKILL.md)                       | Create and update architecture documentation             |
-| [`capture-requirements`](skills/capture-requirements/SKILL.md) | Capture requirements for architecture and design handoff |
-| [`check-push-readiness`](skills/check-push-readiness/SKILL.md) | Assess committed changes before pushing                  |
+| [`check-push-readiness`](skills/check-push-readiness/SKILL.md) | Read-only audit of unpushed commits before a push        |
 | [`code-review`](skills/code-review/SKILL.md)                   | Coordinate review across multiple concerns               |
 | [`docker-first-ci`](skills/docker-first-ci/SKILL.md)           | Implement and harden Docker-first CI/CD pipelines        |
 | [`prime`](skills/prime/SKILL.md)                               | Survey a repository and build working context            |
