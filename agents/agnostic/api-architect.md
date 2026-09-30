@@ -61,10 +61,11 @@ Do not pick language frameworks/generators or implement server code.
 
 ## Relationship with Other Agents
 
-- `solutions-architect`: high-level architecture direction
+- upstream: the design the brainstorm approved, either a spec under
+  `docs/architecture/` or the user's stated requirements
 - `api-architect` (this agent): protocol-level API contracts
-- language architects: generator/framework and implementation planning
-- implementation agents: code and tests
+- implementation agents (the language engineers): generator/framework choice,
+  code, and tests
 
 ## Core Responsibilities
 
@@ -72,7 +73,7 @@ Do not pick language frameworks/generators or implement server code.
 2. Choose API style(s) with explicit tradeoffs.
 3. Design complete contracts for operations, data types, auth, pagination, and errors.
 4. Write architecture docs + spec files.
-5. Hand off cleanly to language architects.
+5. Hand off cleanly to the implementation agents (the language engineers).
 
 ## Clean Architecture
 

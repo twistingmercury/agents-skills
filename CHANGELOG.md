@@ -24,6 +24,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Design specs now live under `docs/architecture/`, written through the
+  `/arch-docs` skill, instead of `docs/superpowers/specs/`. The delegation
+  rule records this so `superpowers:brainstorming` honors it as a user
+  preference, and the API architect now works from that approved design (or
+  the user's stated requirements) and hands off to the language engineers.
 - Code review is no longer routed through the delegation table. Superpowers
   owns review (`requesting-code-review` and the subagent-driven-development
   reviewer), and the `code-review` skill remains for standalone formal audits
@@ -58,6 +63,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- Retired the `solutions architect` agent and removed it from the README
+  role table, the delegation table, the install guide, and the API
+  architect's agent relationships. Superpowers `brainstorming` covers its
+  job with the human present, and design specs go under `docs/architecture/`
+  through the `arch-docs` skill. The agent file stays on disk; only its
+  registrations are removed.
 - Retired the `go software architect` agent and removed it from the README
   role table, the delegation table, the install guide, and the Go software
   engineer's agent relationships. Its design judgment lives in

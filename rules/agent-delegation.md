@@ -11,7 +11,6 @@
 | E2E tests                                | `go e2e test engineer`  |
 | API specs                                | `api architect`         |
 | Documentation                            | `technical writer`      |
-| System architecture                      | `solutions architect`   |
 | DevOps/Docker/CI                         | `devops engineer`       |
 | Data schema/models                       | `data architect`        |
 | Database migrations and data scripts     | `data engineer`         |
@@ -23,3 +22,4 @@
 - Architects and reviewers are **consultants** — they return recommendations; they do not coordinate
 - Main Claude creates coordination plans and delegates; specialists execute
 - Specialists may stage, commit, and tag their own work (`git add`, `git commit`, `git tag`); nobody but the user pushes
+- Design specs from `superpowers:brainstorming` go under `docs/architecture/` via the `/arch-docs` skill, not `docs/superpowers/specs/`; brainstorming honors this as a user preference
