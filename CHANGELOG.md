@@ -89,8 +89,9 @@ any routing to them breaks.
   `~/.claude/rules/` instead of carrying the coding standards inline.
 - Removed the Context7 Documentation section from the Claude agents. The
   always-on `library-docs.md` rule reaches subagents and carries that
-  guidance. The code reviewer keeps its one specific duty: check current docs
-  before flagging an API as deprecated or misused.
+  guidance. The one reviewer-specific duty, checking current docs before
+  flagging an API as deprecated or misused, moved into `library-docs.md` when
+  the code reviewer was retired in this release.
 - Claude installer phase 2 is now `02_install_rules.sh`, which copies
   `rules/` into `~/.claude/rules/` and keeps its subject folders. The
   installer no longer reads or writes `~/.claude/CLAUDE.md`.
@@ -120,19 +121,20 @@ any routing to them breaks.
   role table, the delegation table, the install guide, and the API
   architect's agent relationships. Superpowers `brainstorming` covers its
   job with the human present, and design specs go under `docs/architecture/`
-  through the `arch-docs` skill. The agent file stays on disk; only its
-  registrations are removed.
+  through the `arch-docs` skill. The agent file now lives under
+  `_archive/agents/`.
 - Retired the `go software architect` agent and removed it from the README
   role table, the delegation table, the install guide, and the Go software
   engineer's agent relationships. Its design judgment lives in
   `rules/go/architecture.md`, and superpowers `writing-plans` and
-  `brainstorming` own planning. The agent file stays on disk; only its
-  registrations are removed.
+  `brainstorming` own planning. The agent file now lives under
+  `_archive/agents/`.
 - Retired the `code reviewer` agent and removed it from the README role
   table. Superpowers owns review, and the agent's checklists already live in
   `rules/code-shape.md`. Its one uncovered duty, checking current docs before
   flagging an API as deprecated or misused, moves to `rules/library-docs.md`.
-  The agent file stays on disk; only its registrations are removed.
+  The agent file now lives under
+  `_archive/agents/`.
 - Retired the `bats test engineer` agent and removed it from the README role
   table, the delegation table, and the install guide. Its duties move to the
   shell script engineer, which writes the tests first under
