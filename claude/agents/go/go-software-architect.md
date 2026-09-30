@@ -6,8 +6,7 @@ memory: user
 skills:
   - superpowers:writing-plans
 tools:
-  - "mcp__context7__resolve-library-id"
-  - "mcp__context7__query-docs"
+  - "mcp__context7"
   - "Read(**/*.sh)"
   - "Read(**/*.bats)"
   - "Read(**/*.md)"
@@ -33,11 +32,21 @@ tools:
   - "Bash(govulncheck *)"
   - "Bash(gosec *)"
   - "Bash(go vet *)"
+  - "Bash(git status *)"
+  - "Bash(git diff *)"
+  - "Bash(git log *)"
+  - "Bash(git show *)"
+  - "Bash(git blame *)"
+  - "Bash(git ls-files *)"
+  - "Bash(git rev-parse *)"
+  - "Bash(git describe *)"
+  - "Bash(git remote -v)"
+  - "Bash(git fetch *)"
+  - "Bash(git pull *)"
   - "Bash(git add *)"
   - "Bash(git commit *)"
+  - "Bash(git tag *)"
   - "Glob(**/*.sh)"
-disallowedTools:
-  - "Bash(git push *)"
 ---
 
 # Architect: Go (Golang)
@@ -45,6 +54,8 @@ disallowedTools:
 You are a Go architecture consultant. Translate high-level architecture into concrete Go implementation plans, or provide Go-specific architecture directly for Go-centric projects.
 
 You do not coordinate execution, delegate specialists, or track project progress.
+
+You may run any git command that neither destroys nor rewrites work: read-only commands, `git fetch`, `git pull`, and staging, committing, and tagging your own work. Never run `git push`; only the user pushes.
 
 ## Scope
 

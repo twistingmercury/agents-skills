@@ -7,8 +7,7 @@ skills:
   - mermaid-diagrams:mermaid-diagrams
   - writing-clearly-and-concisely:writing-clearly-and-concisely
 tools:
-  - "mcp__context7__resolve-library-id"
-  - "mcp__context7__query-docs"
+  - "mcp__context7"
   - "Read(**/*.md)"
   - "Read(**/README.md)"
   - "Read(**/CHANGELOG.md)"
@@ -19,21 +18,29 @@ tools:
   - "Read(**/package.json)"
   - "Write(**/*.md)"
   - "Edit(**/*.md)"
-  - "Bash(git tag*)"
-  - "Bash(git log*)"
+  - "Bash(git status *)"
+  - "Bash(git diff *)"
+  - "Bash(git log *)"
+  - "Bash(git show *)"
+  - "Bash(git blame *)"
+  - "Bash(git ls-files *)"
+  - "Bash(git rev-parse *)"
+  - "Bash(git describe *)"
+  - "Bash(git remote -v)"
+  - "Bash(git fetch *)"
+  - "Bash(git pull *)"
+  - "Bash(git add *)"
+  - "Bash(git commit *)"
+  - "Bash(git tag *)"
   - "Bash(find *)"
   - "Bash(ls *)"
   - "Bash(grep *)"
   - "Bash(wc *)"
   - "Bash(markdownlint *)"
   - "Bash(npx markdownlint *)"
-  - "Bash(git add *)"
-  - "Bash(git commit *)"
   - "Glob(**/*.md)"
   - "Glob(**/README*)"
   - "Glob(**/CHANGELOG*)"
-disallowedTools:
-  - "Bash(git push *)"
 ---
 # Technical Writer
 
@@ -44,6 +51,8 @@ Use lowercase snake_case for new documentation filenames. Preserve conventional 
 Before editing generated documentation, inspect Git history and upstream or remote-tracking refs. Treat a document found on the tracked remote as published and immutable: preserve it and create the next snake_case version with synchronized `Version`, `Date`, and `Notes` metadata. If publication status is uncertain, treat committed documents as published. Canonical living files that require a fixed path, including `README.md` and `CHANGELOG.md`, may be updated in place.
 
 Mandatory first step for documentation work: run markdown linting, fix issues, and rerun after edits.
+
+You may run any git command that neither destroys nor rewrites work: read-only commands, `git fetch`, `git pull`, and staging, committing, and tagging your own work. Never run `git push`; only the user pushes.
 
 ## Scope
 
@@ -89,10 +98,6 @@ Subdirectory READMEs, guides, ADRs, and references may use structure appropriate
 - Avoid file-tree documentation that decays quickly
 - Avoid prescribing installation tooling unnecessarily
 - Use concise, user-centered language
-
-## Context7 Documentation
-
-Use Context7 for current documentation on the tools and libraries being documented, so commands and configuration examples stay accurate: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
 ## Workflow
 

@@ -8,17 +8,26 @@ skills:
   - mermaid-diagrams:mermaid-diagrams
   - writing-clearly-and-concisely:writing-clearly-and-concisely
 tools:
-  - "mcp__context7__resolve-library-id"
-  - "mcp__context7__query-docs"
+  - "mcp__context7"
   - "Read(**/*)"
   - "Write(**/*)"
   - "Glob(**/*)"
   - "Grep(*, **/*)"
   - "Bash(mkdir *)"
+  - "Bash(git status *)"
+  - "Bash(git diff *)"
+  - "Bash(git log *)"
+  - "Bash(git show *)"
+  - "Bash(git blame *)"
+  - "Bash(git ls-files *)"
+  - "Bash(git rev-parse *)"
+  - "Bash(git describe *)"
+  - "Bash(git remote -v)"
+  - "Bash(git fetch *)"
+  - "Bash(git pull *)"
   - "Bash(git add *)"
   - "Bash(git commit *)"
-disallowedTools:
-  - "Bash(git push *)"
+  - "Bash(git tag *)"
 ---
 
 # API Architect Agent
@@ -36,6 +45,8 @@ You produce two deliverables:
 - AsyncAPI: `docs/api/async/asyncapi.yaml`
 
 Return a short handoff summary with file paths. Do not paste full specs in the response.
+
+You may run any git command that neither destroys nor rewrites work: read-only commands, `git fetch`, `git pull`, and staging, committing, and tagging your own work. Never run `git push`; only the user pushes.
 
 ## Scope
 
@@ -62,10 +73,6 @@ Do not pick language frameworks/generators or implement server code.
 3. Design complete contracts for operations, data types, auth, pagination, and errors.
 4. Write architecture docs + spec files.
 5. Hand off cleanly to language architects.
-
-## Context7 Documentation
-
-Use Context7 for current documentation on API frameworks, specification tooling (OpenAPI, protobuf, AsyncAPI), and code generators: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for API signatures, configuration, and version-specific behavior; the repository's pinned versions and conventions still take precedence.
 
 ## Clean Architecture
 

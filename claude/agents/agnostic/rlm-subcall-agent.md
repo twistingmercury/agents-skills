@@ -4,18 +4,15 @@ description: Acts as the RLM sub-LLM (llm_query). Given a chunk of context (usua
 model: haiku
 memory: user
 tools:
-  - "mcp__context7__resolve-library-id"
-  - "mcp__context7__query-docs"
+  - "mcp__context7"
   - "Read(**/*)"
   - "Glob(**/*)"
-disallowedTools:
-  - "Bash(git add *)"
-  - "Bash(git commit *)"
-  - "Bash(git push *)"
 ---
 # RLM Subcall Agent
 
 You are the sub-LLM inside an RLM loop. Given a query plus a chunk (text or file path), return only information relevant to that query.
+
+Never run `git add`, `git commit`, or `git push`; only the user pushes.
 
 ## Scope
 

@@ -1,17 +1,17 @@
-.PHONY: help install install-claude install-codex install-all test
+.PHONY: help install test
 
 default: help
 
 help: ## Show this help
 	@awk 'BEGIN {FS = ":.*##"; printf "\nAvailable targets:\n"} /^[a-zA-Z0-9_-]+:.*##/ { printf "  %-12s %s\n", $$1, $$2 }' $(MAKEFILE_LIST)
 
-install-claude: ## Install Claude Code agents, rules, and skills.
+install: ## Install Claude Code agents, rules, and skills.
 	./claude/install/install.sh
 
-install-codex: ## Install Codex agents, global rules, and shared skills.
-	./codex/install/install.sh
+# install-codex: ## Install Codex agents, global rules, and shared skills.
+# 	./codex/install/install.sh
 
-install-all: install-claude install-codex ## Install both platform integrations.
+# install-all: install-claude install-codex ## Install both platform integrations.
 
 test: ## Run the shared skill test suites (requires Python 3.11+ and bats).
 	cd skills/rlm && python3 -m unittest discover -s tests

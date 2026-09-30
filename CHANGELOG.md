@@ -29,6 +29,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   role, scope, workflow, and output. Each now points at its rule file in
   `~/.claude/rules/` instead of carrying the coding standards inline. The
   Codex agents are unchanged and keep their standards.
+- Removed the Context7 Documentation section from the Claude agents. The
+  always-on `library-docs.md` rule reaches subagents and carries that
+  guidance. The code reviewer keeps its one specific duty: check current docs
+  before flagging an API as deprecated or misused.
 - Claude installer phase 2 is now `02_install_rules.sh`, which copies
   `claude/rules/` into `~/.claude/rules/` and keeps its subject folders. The
   installer no longer reads or writes `~/.claude/CLAUDE.md`.
@@ -40,6 +44,18 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   `claude/agents/GLOBAL_AGENT_RULES.md`. An agent-rules block left in
   `~/.claude/CLAUDE.md` by an earlier install is not removed; delete it by
   hand so the rules do not load twice.
+
+### Fixed
+
+- Claude agents were launching without the Bash tool. The
+  `disallowedTools: Bash(git push *)` entry removed Bash entirely, not only
+  `git push`, so no agent could run tests, linters, or `git commit`. The
+  `disallowedTools` block is removed from every Claude agent, and each prompt
+  now states that the agent never pushes. Every agent with Bash gets the same
+  read-only git set (`status`, `diff`, `log`, `show`, `blame`, `ls-files`,
+  `rev-parse`, `describe`, `remote -v`) plus `fetch` and `pull`; agents that
+  commit their own work also get `add`, `commit`, and `tag`. The code reviewer
+  and RLM subcall agent are told not to stage or commit either.
 
 ## [1.6.0] - 2026-09-27
 

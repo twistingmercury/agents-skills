@@ -25,4 +25,4 @@
 
 - Architects and reviewers are **consultants** — they return recommendations; they do not coordinate
 - Main Claude creates coordination plans and delegates; specialists execute
-- Specialists may stage and commit their own work (`git add`, `git commit`); nobody but the user pushes
+- Specialists may stage, commit, and tag their own work (`git add`, `git commit`, `git tag`); nobody but the user pushes

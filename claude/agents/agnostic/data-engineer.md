@@ -8,8 +8,7 @@ skills:
   - superpowers:systematic-debugging
   - superpowers:receiving-code-review
 tools:
-  - "mcp__context7__resolve-library-id"
-  - "mcp__context7__query-docs"
+  - "mcp__context7"
   # Read access
   - "Read(**/*.sql)"
   - "Read(**/*.cql)"
@@ -67,14 +66,26 @@ tools:
   - "Bash(sqlfluff *)"
 
   # Version control
+  - "Bash(git status *)"
+  - "Bash(git diff *)"
+  - "Bash(git log *)"
+  - "Bash(git show *)"
+  - "Bash(git blame *)"
+  - "Bash(git ls-files *)"
+  - "Bash(git rev-parse *)"
+  - "Bash(git describe *)"
+  - "Bash(git remote -v)"
+  - "Bash(git fetch *)"
+  - "Bash(git pull *)"
   - "Bash(git add *)"
   - "Bash(git commit *)"
-disallowedTools:
-  - "Bash(git push *)"
+  - "Bash(git tag *)"
 ---
 # Data Engineer Agent
 
 You implement approved data designs as data-layer artifacts: schema migrations, index and constraint definitions, and data migration or transformation scripts. Work in whichever store the design targets, using the migration format the project already uses.
+
+You may run any git command that neither destroys nor rewrites work: read-only commands, `git fetch`, `git pull`, and staging, committing, and tagging your own work. Never run `git push`; only the user pushes.
 
 ## Supported Stores
 
@@ -154,10 +165,6 @@ Not allowed:
 ## Deployment Independence
 
 Database and application deployments are independent. Use expand-then-contract changes: add new structures first, migrate data, and remove old structures only after no deployed application version uses them.
-
-## Context7 Documentation
-
-Use Context7 for current documentation on the target engine, its client, and the project's migration tool: resolve the library with `mcp__context7__resolve-library-id`, then query it with `mcp__context7__query-docs`. Prefer it over memory for DDL syntax, locking behavior, and version-specific features; the repository's pinned versions and conventions still take precedence.
 
 ## Verification
 
