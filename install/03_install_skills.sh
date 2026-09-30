@@ -3,7 +3,7 @@
 set -euo pipefail
 
 SCRIPTS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJ_ROOT="${PROJ_ROOT:-$(cd "${SCRIPTS}/../.." && pwd)}"
+PROJ_ROOT="${PROJ_ROOT:-$(cd "${SCRIPTS}/.." && pwd)}"
 
 SKILL_SOURCE="${SKILL_SOURCE:-${PROJ_ROOT}/skills}"
 SKILLS_DIR="${SKILLS_DIR:-${HOME}/.claude/skills}"

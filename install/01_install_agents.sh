@@ -3,9 +3,9 @@
 set -euo pipefail
 
 SCRIPTS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJ_ROOT="${PROJ_ROOT:-$(cd "${SCRIPTS}/../.." && pwd)}"
+PROJ_ROOT="${PROJ_ROOT:-$(cd "${SCRIPTS}/.." && pwd)}"
 
-AGENT_SOURCE="${AGENT_SOURCE:-${PROJ_ROOT}/claude/agents}"
+AGENT_SOURCE="${AGENT_SOURCE:-${PROJ_ROOT}/agents}"
 AGENTS_DIR="${AGENTS_DIR:-${HOME}/.claude/agents}"
 # AGENTS_DIR="$PROJ_ROOT/.local/agents"
 

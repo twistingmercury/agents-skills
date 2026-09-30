@@ -14,17 +14,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   GitHub Actions CI) from bundled templates, with BATS coverage for its
   renderer.
 - Added path-scoped Claude Code coding rules for shell, BATS, Go, Python, and
-  Dockerfiles under `claude/rules/`, with an always-on `index.md` that points
+  Dockerfiles under `rules/`, with an always-on `index.md` that points
   at them.
 
 ### Changed
 
-- Moved the portable skills from `shared/skills/` to `skills/` at the
-  repository root. Both skill installers and `make test` read the new path.
+- Flattened the layout. `shared/skills/`, `claude/agents/`, `claude/rules/`,
+  and `claude/install/` are now `skills/`, `agents/`, `rules/`, and
+  `install/` at the repository root. The installer and `make test` read the
+  new paths.
 - The Claude global rules now install as rule files instead of a managed block
   in `~/.claude/CLAUDE.md`. `GLOBAL_AGENT_RULES.md` is split into
   `agent-delegation.md`, `code-shape.md`, and `library-docs.md` under
-  `claude/rules/`.
+  `rules/`.
 - Pared the Claude Go, Python, shell script, BATS, and devops agents down to
   role, scope, workflow, and output. Each now points at its rule file in
   `~/.claude/rules/` instead of carrying the coding standards inline.
@@ -33,7 +35,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   guidance. The code reviewer keeps its one specific duty: check current docs
   before flagging an API as deprecated or misused.
 - Claude installer phase 2 is now `02_install_rules.sh`, which copies
-  `claude/rules/` into `~/.claude/rules/` and keeps its subject folders. The
+  `rules/` into `~/.claude/rules/` and keeps its subject folders. The
   installer no longer reads or writes `~/.claude/CLAUDE.md`.
 
 ### Removed
@@ -43,7 +45,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   single `install` target for Claude Code, and the docs describe one client.
 - Removed the Claude `02_install_global_agents.sh` phase, its `FORCE`,
   `CLAUDE_ROOT`, and `AGENT_RULES_SOURCE` settings, and
-  `claude/agents/GLOBAL_AGENT_RULES.md`. An agent-rules block left in
+  `agents/GLOBAL_AGENT_RULES.md`. An agent-rules block left in
   `~/.claude/CLAUDE.md` by an earlier install is not removed; delete it by
   hand so the rules do not load twice.
 

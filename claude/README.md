@@ -63,7 +63,7 @@ From the repository root, run either the Make target or direct entrypoint:
 
 ```bash
 make install-claude
-./claude/install/install.sh
+./install/install.sh
 ```
 
 The entrypoint runs the agent, rules, and skill phases in order. The default
@@ -76,9 +76,9 @@ destinations are:
 Run a single phase when troubleshooting or developing an installer:
 
 ```bash
-./claude/install/01_install_agents.sh
-./claude/install/02_install_rules.sh
-./claude/install/03_install_skills.sh
+./install/01_install_agents.sh
+./install/02_install_rules.sh
+./install/03_install_skills.sh
 ```
 
 ### Preservation behavior
@@ -127,7 +127,7 @@ loaded from both `CLAUDE.md` and `~/.claude/rules/`.
 With ShellCheck installed, validate the installer shell scripts:
 
 ```bash
-shellcheck claude/install/*.sh
+shellcheck install/*.sh
 ```
 
 Run the shared test suites from the repository root using `make test`; see the

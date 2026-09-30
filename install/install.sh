@@ -3,9 +3,9 @@
 set -euo pipefail
 
 SCRIPTS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJ_ROOT="${PROJ_ROOT:-$(cd "${SCRIPTS}/../.." && pwd)}"
+PROJ_ROOT="${PROJ_ROOT:-$(cd "${SCRIPTS}/.." && pwd)}"
 
-# shellcheck source=../../lib/print.sh disable=SC1091
+# shellcheck source=../lib/print.sh disable=SC1091
 . "${PROJ_ROOT}/lib/print.sh"
 
 main(){

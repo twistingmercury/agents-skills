@@ -3,9 +3,9 @@
 set -euo pipefail
 
 SCRIPTS="$(cd "$(dirname "${BASH_SOURCE[0]}")" && pwd)"
-PROJ_ROOT="${PROJ_ROOT:-$(cd "${SCRIPTS}/../.." && pwd)}"
+PROJ_ROOT="${PROJ_ROOT:-$(cd "${SCRIPTS}/.." && pwd)}"
 
-RULE_SOURCE="${RULE_SOURCE:-${PROJ_ROOT}/claude/rules}"
+RULE_SOURCE="${RULE_SOURCE:-${PROJ_ROOT}/rules}"
 RULES_DIR="${RULES_DIR:-${HOME}/.claude/rules}"
 # RULES_DIR="${PROJ_ROOT}/.local/rules" #test target
 
