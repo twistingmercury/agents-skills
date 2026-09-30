@@ -1,6 +1,6 @@
 # Agent delegation
 
-**Main Claude coordinates. Specialists implement. For non-trivial tasks, delegate to the appropriate specialist rather than implementing directly.**
+**The main session runs brainstorming, planning, review, and integration itself through superpowers. It hands implementation to the specialist whose language or domain matches, and may seat that specialist as the implementer in `superpowers:subagent-driven-development`.**
 
 ## Delegation table
 
@@ -19,7 +19,7 @@
 
 ## Constraints
 
-- Architects and reviewers are **consultants** — they return recommendations; they do not coordinate
-- Main Claude creates coordination plans and delegates; specialists execute
+- The API and data architects are **consultants**: they return recommendations and do not coordinate
+- Specialists execute the task they are handed and return
 - Specialists may stage, commit, and tag their own work (`git add`, `git commit`, `git tag`); nobody but the user pushes
 - Design specs from `superpowers:brainstorming` go under `docs/architecture/` via the `/arch-docs` skill, not `docs/superpowers/specs/`; brainstorming honors this as a user preference

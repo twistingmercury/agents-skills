@@ -24,6 +24,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Reframed `rules/agent-delegation.md` around superpowers: the main session
+  runs brainstorming, planning, review, and integration itself and hands
+  implementation to the matching specialist, which it may seat as the
+  implementer in `superpowers:subagent-driven-development`. The constraints
+  now name the API and data architects as the consultants and say specialists
+  execute the task they are handed and return. The table is unchanged.
 - Design specs now live under `docs/architecture/`, written through the
   `/arch-docs` skill, instead of `docs/superpowers/specs/`. The delegation
   rule records this so `superpowers:brainstorming` honors it as a user
