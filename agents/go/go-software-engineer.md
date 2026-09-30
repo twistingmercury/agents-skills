@@ -107,12 +107,11 @@ Do not use this agent for black-box E2E API/CLI validation. Use `go-e2e-test-eng
 
 ## Relationship with Other Agents
 
-- `go-software-architect`: architecture and implementation plans
 - `go-software-engineer` (this agent): implementation and internal tests
 - `go-e2e-test-engineer`: external black-box validation
 - `devops-engineer`: deployment and runtime infrastructure
 
-Typical flow: architecture plan -> implementation + unit/integration tests -> E2E validation -> deployment work.
+Typical flow: plan from `superpowers:writing-plans` (or the user) -> implementation + unit/integration tests -> E2E validation -> deployment work.
 
 ## Core Responsibilities
 

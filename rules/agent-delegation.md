@@ -12,7 +12,6 @@
 | API specs                                | `api architect`         |
 | Documentation                            | `technical writer`      |
 | System architecture                      | `solutions architect`   |
-| Go architecture                          | `go software architect` |
 | DevOps/Docker/CI                         | `devops engineer`       |
 | Data schema/models                       | `data architect`        |
 | Database migrations and data scripts     | `data engineer`         |

@@ -18,19 +18,21 @@ full workflow model.
 
 ## Main Claude workflow
 
-Main Claude owns coordination and the final response. It can consult an
-architect, delegate artifact production to implementation specialists, and
-then request independent validation. For example:
+Main Claude owns coordination and the final response. It brainstorms and
+plans with superpowers, can consult an architect, delegates artifact
+production to implementation specialists, and then requests independent
+validation. For example:
 
 ```text
 User: "Build a user management REST API in Go"
 
 Main Claude:
-  1. Consults solutions architect
-  2. Delegates the Go plan to go software architect
-  3. Delegates the contract to api architect
-  4. Delegates implementation to go software engineer
-  5. Delegates black-box tests to go e2e test engineer
+  1. Brainstorms the design with superpowers:brainstorming
+  2. Consults solutions architect
+  3. Writes the plan with superpowers:writing-plans
+  4. Delegates the contract to api architect
+  5. Delegates implementation to go software engineer
+  6. Delegates black-box tests to go e2e test engineer
 ```
 
 Narrow requests can go directly to one specialist:

@@ -58,6 +58,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Removed
 
+- Retired the `go software architect` agent and removed it from the README
+  role table, the delegation table, the install guide, and the Go software
+  engineer's agent relationships. Its design judgment lives in
+  `rules/go/architecture.md`, and superpowers `writing-plans` and
+  `brainstorming` own planning. The agent file stays on disk; only its
+  registrations are removed.
 - Retired the `code reviewer` agent and removed it from the README role
   table. Superpowers owns review, and the agent's checklists already live in
   `rules/code-shape.md`. Its one uncovered duty, checking current docs before
