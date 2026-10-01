@@ -7,6 +7,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added a Go code-shape rule to `rules/go/go.md`: never pass a function call
+  as an argument; assign its result to a named variable first. Conversions,
+  built-ins, `context.Background()`, `os.Environ()`, callback-returning
+  functions, and chained builders are exempt.
 
 ## [2.0.0] - 2026-09-30
 

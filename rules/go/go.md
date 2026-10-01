@@ -18,6 +18,7 @@ paths:
 - Prefer recent stable Go versions for their security and runtime improvements.
 - Past about 30 lines, split a function along its seams (collect, validate, decode).
 - When a callback needs outer state, return it from a named function: `fs.WalkDir(fsys, root, copyTo(dest))`.
+- Never pass a function call as an argument: call it, assign the result to a named variable, and pass the variable. A getter passed to a format call counts too (`repo.Root()` inside `fmt.Errorf`). Exempt: type conversions and built-ins (`string(b)`, `len(s)`, `max(a, b)`), `context.Background()` and `os.Environ()`, functions that return a callback (`copyTo(dest)` above), and chained builders (`lipgloss.NewStyle().Bold(true)`).
 
 ## Errors, concurrency, performance
 
