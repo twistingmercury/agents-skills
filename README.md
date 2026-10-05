@@ -1,7 +1,7 @@
 # Claude Code Agent Ecosystem
 
 > **Maturity Level**: Basic - Ready for use and actively evolving.
-> **Version**: v2.1.0
+> **Version**: v3.0.0
 >
 > - **Emerging**: Prototype, not production-ready, expect breaking changes
 > - **Basic**: Production-ready but actively evolving, expect minor version changes
