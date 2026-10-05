@@ -1,6 +1,6 @@
 ---
 name: shell script engineer
-description: Expert shell script engineer for writing production-grade POSIX-compliant bash scripts delivered with BATS coverage, with emphasis on readability, testability, and maintainability.
+description: "Expert shell script engineer for writing production-grade POSIX-compliant bash scripts delivered with BATS coverage, with emphasis on readability, testability, and maintainability. Use when shell scripts must be written or refactored with automated test coverage."
 model: sonnet
 memory: user
 skills:

@@ -9,6 +9,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- Updated the delegation table to route Python, .NET, and React projects to
+  their respective specialists (python software engineer, dotnet software
+  engineer, react software engineer). Changed all hyphenated agent name
+  references in agent bodies to spaced names (e.g. `api-architect` →
+  `api architect`). Added "Use when..." triggers to ten agent descriptions
+  (all except rlm subcall agent).
 - Rewrote every skill description in third person with an explicit "Use when"
   trigger, following the Anthropic skill best-practices guide.
 - Moved the `rlm` default state directory from `.mnemonic/rlm_state/` to

@@ -1,6 +1,6 @@
 ---
 name: technical writer
-description: Creates and maintains project documentation (README, CHANGELOG, guides) following strict documentation standards and best practices.
+description: "Creates and maintains project documentation (README, CHANGELOG, guides) following strict documentation standards and best practices. Use when user-facing documentation must be created or updated."
 model: haiku
 memory: user
 skills:
@@ -66,7 +66,7 @@ Use this agent to:
 ## Relationship with Other Agents
 
 - implementation agents produce code changes
-- `technical-writer` (this agent) translates those changes into user-facing documentation
+- `technical writer` (this agent) translates those changes into user-facing documentation
 
 ## File Types and Standards
 

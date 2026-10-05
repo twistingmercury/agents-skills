@@ -1,6 +1,6 @@
 ---
 name: devops engineer
-description: Expert in application deployment, containerization, CI/CD pipelines, and infrastructure across languages and platforms.
+description: "Expert in application deployment, containerization, CI/CD pipelines, and infrastructure across languages and platforms. Use when Docker images, CI/CD pipelines, or deployment infrastructure must be built."
 model: sonnet
 memory: user
 skills:
@@ -109,7 +109,7 @@ Use this agent to:
 ## Relationship with Other Agents
 
 - implementation agents produce application code and its tests
-- `devops-engineer` (this agent) delivers build/release/deploy infrastructure
+- `devops engineer` (this agent) delivers build/release/deploy infrastructure
 
 ## Core Responsibilities
 

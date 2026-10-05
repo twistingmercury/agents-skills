@@ -1,6 +1,6 @@
 ---
 name: go software engineer
-description: Expert Go engineer for writing, refactoring, optimizing, and architecting production-grade Go code with best practices.
+description: "Expert Go engineer for writing, refactoring, optimizing, and architecting production-grade Go code with best practices. Use when production Go code must be written with comprehensive tests from unit through E2E."
 model: sonnet
 memory: user
 skills:
@@ -105,8 +105,8 @@ Use this agent for:
 
 ## Relationship with Other Agents
 
-- `go-software-engineer` (this agent): implementation and all of its tests, unit through black-box E2E
-- `devops-engineer`: deployment and runtime infrastructure
+- `go software engineer` (this agent): implementation and all of its tests, unit through black-box E2E
+- `devops engineer`: deployment and runtime infrastructure
 
 Typical flow: plan from `superpowers:writing-plans` (or the user) -> implementation with unit, integration, and E2E tests -> deployment work.
 

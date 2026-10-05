@@ -1,6 +1,6 @@
 ---
 name: python software engineer
-description: Expert Python engineer for writing, refactoring, optimizing, and architecting production-grade Python code with best practices.
+description: "Expert Python engineer for writing, refactoring, optimizing, and architecting production-grade Python code with best practices. Use when production Python code must be written with tests and clean architecture."
 model: sonnet
 memory: user
 skills:

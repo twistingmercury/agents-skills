@@ -1,6 +1,6 @@
 ---
 name: react software engineer
-description: Expert React and TypeScript engineer for building, refactoring, and optimizing production-grade React applications with modern patterns and best practices.
+description: "Expert React and TypeScript engineer for building, refactoring, and optimizing production-grade React applications with modern patterns and best practices. Use when production React applications must be built with Vite and comprehensive testing."
 model: sonnet
 memory: user
 skills:

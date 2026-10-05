@@ -1,6 +1,6 @@
 ---
 name: dotnet software engineer
-description: Expert C# and .NET engineer for writing, refactoring, optimizing, and architecting production-grade .NET applications with best practices.
+description: "Expert C# and .NET engineer for writing, refactoring, optimizing, and architecting production-grade .NET applications with best practices. Use when production .NET 10 code must be written with comprehensive testing."
 model: sonnet
 memory: user
 skills:

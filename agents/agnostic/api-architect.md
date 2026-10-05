@@ -1,6 +1,6 @@
 ---
 name: api architect
-description: Language-agnostic API specification architect. Designs OpenAPI (REST), GraphQL schemas, Protocol Buffer (gRPC), and AsyncAPI (event-driven) specifications. Chooses appropriate API style and creates complete specifications with authentication, pagination, and error handling.
+description: "Language-agnostic API specification architect. Designs OpenAPI (REST), GraphQL schemas, Protocol Buffer (gRPC), and AsyncAPI (event-driven) specifications. Use when API contracts must be designed from requirements or complete specifications must cover authentication, pagination, and error handling."
 model: sonnet
 memory: user
 skills:
@@ -63,7 +63,7 @@ Do not pick language frameworks/generators or implement server code.
 
 - upstream: the design the brainstorm approved, either a spec under
   `docs/architecture/` or the user's stated requirements
-- `api-architect` (this agent): protocol-level API contracts
+- `api architect` (this agent): protocol-level API contracts
 - implementation agents (the language engineers): generator/framework choice,
   code, and tests
 
