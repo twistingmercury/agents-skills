@@ -40,6 +40,7 @@ Portable skills:
 | [`arch-docs`](skills/arch-docs/SKILL.md)                       | Create and update architecture documentation             |
 | [`check-push-readiness`](skills/check-push-readiness/SKILL.md) | Read-only audit of unpushed commits before a push        |
 | [`docker-first-ci`](skills/docker-first-ci/SKILL.md)           | Implement and harden Docker-first CI/CD pipelines        |
+| [`mermaid-diagrams`](skills/mermaid-diagrams/SKILL.md)         | Write Mermaid diagrams locally, never to third parties   |
 | [`prime`](skills/prime/SKILL.md)                               | Survey a repository and build working context            |
 | [`python-uv-starter`](skills/python-uv-starter/SKILL.md)       | Scaffold an empty uv-based Python CLI project            |
 | [`readme-writer`](skills/readme-writer/SKILL.md)               | Create or update a README from a standard template       |

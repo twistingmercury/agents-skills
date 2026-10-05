@@ -5,8 +5,8 @@ model: sonnet
 memory: user
 skills:
   - arch-docs
-  - mermaid-diagrams:mermaid-diagrams
-  - writing-clearly-and-concisely:writing-clearly-and-concisely
+  - mermaid-diagrams
+  - elements-of-style:writing-clearly-and-concisely
 tools:
   - mcp__context7
   - Read

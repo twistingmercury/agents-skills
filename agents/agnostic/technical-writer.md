@@ -4,8 +4,8 @@ description: "Creates and maintains project documentation (README, CHANGELOG, gu
 model: haiku
 memory: user
 skills:
-  - mermaid-diagrams:mermaid-diagrams
-  - writing-clearly-and-concisely:writing-clearly-and-concisely
+  - mermaid-diagrams
+  - elements-of-style:writing-clearly-and-concisely
 tools:
   - mcp__context7
   - Read

@@ -7,8 +7,23 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added the `mermaid-diagrams` skill, which writes Mermaid diagrams as local
+  plain-text fenced code blocks and never sends diagram source to online
+  renderers, editors, or APIs. Diagrams can be validated locally with
+  `mermaid-cli` (mmdc) in light and dark themes before committing.
+- Added a Go code-shape rule to `rules/go/go.md`: never pass a function call
+  as an argument; assign its result to a named variable first. Conversions,
+  built-ins, `context.Background()`, `os.Environ()`, callback-returning
+  functions, and chained builders are exempt.
+
 ### Changed
 
+- The `api architect`, `data architect`, and `technical writer` agents now
+  preload `elements-of-style:writing-clearly-and-concisely`; the old
+  `writing-clearly-and-concisely:writing-clearly-and-concisely` plugin name
+  never resolved correctly.
 - Updated the delegation table to route Python, .NET, and React projects to
   their respective specialists (python software engineer, dotnet software
   engineer, react software engineer). Changed all hyphenated agent name
@@ -21,6 +36,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   enables Read, Write, and Edit, so the scoped entries restricted nothing.
   Each agent keeps the same set of tools. Real limits belong in
   `permissions.deny` in settings.
+- Updated the `api architect`, `data architect`, and `technical writer` agents
+  to preload the repo's local `mermaid-diagrams` skill in place of the
+  `mermaid-diagrams:mermaid-diagrams` plugin skill.
 - Rewrote every skill description in third person with an explicit "Use when"
   trigger, following the Anthropic skill best-practices guide.
 - Moved the `rlm` default state directory from `.mnemonic/rlm_state/` to
@@ -39,13 +57,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Removed the two CI/CD flow-diagram files from `docker-first-ci/references/`.
   The generic one repeated the `SKILL.md` workflow, and the Go one described
   another project's build and linked sideways to the generic one.
-
-### Added
-
-- Added a Go code-shape rule to `rules/go/go.md`: never pass a function call
-  as an argument; assign its result to a named variable first. Conversions,
-  built-ins, `context.Background()`, `os.Environ()`, callback-returning
-  functions, and chained builders are exempt.
 
 ## [2.0.0] - 2026-09-30
 
