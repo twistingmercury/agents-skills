@@ -12,9 +12,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Added
 
 - Added a Prerequisites section to the README with required Claude Code plugins
-  (`superpowers`, optional `elements-of-style` and `frontend-design`), the
-  Context7 MCP server, local tools needed to install, test, and lint the
-  catalog, and a table listing the development environments for each specialist
+  (`superpowers`, `gopls-lsp`, `pyright-lsp`, optional `elements-of-style` and
+  `frontend-design`),
+  the `python-debugpy` skill, the Context7 MCP server, local tools needed to
+  install, test, and lint the catalog, installation instructions for all local
+  tools with macOS (Homebrew) and Linux (system packages and official installers)
+  commands, and a table listing the development environments for each specialist
   agent.
 - Added the `mermaid-diagrams` skill, which writes Mermaid diagrams as local
   plain-text fenced code blocks and never sends diagram source to online
