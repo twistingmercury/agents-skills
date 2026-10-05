@@ -18,6 +18,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - Fixed markdownlint errors across `skills/` and ignored `.rlm/` in
   `.gitignore`.
 
+### Removed
+
+- Removed the two CI/CD flow-diagram files from `docker-first-ci/references/`.
+  The generic one repeated the `SKILL.md` workflow, and the Go one described
+  another project's build and linked sideways to the generic one.
+
 ### Added
 
 - Added a Go code-shape rule to `rules/go/go.md`: never pass a function call

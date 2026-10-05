@@ -73,8 +73,6 @@ Implement Docker-first CI/CD so CI builds and validates the image once, then CD 
 
 Read these when you need a concrete shape to copy, not before:
 
-- `references/docker-first-ci-cd-diagram.md`: language-agnostic flow diagram; read first to explain the CI-to-CD handoff.
-- `references/example-go-ci-cd-diagram.md`: the same flow for a Go service (names are illustrative).
 - `references/example-build.sh`: build entrypoint shared by local and CI builds.
 - `references/example-Dockerfile`: multi-stage image with quality gates in the build stage.
 - `references/example-ci.yaml`: CI workflow that builds, tests, and publishes once.
