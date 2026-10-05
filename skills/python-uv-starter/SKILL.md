@@ -1,12 +1,11 @@
 ---
 name: python-uv-starter
-description: Use when standing up a new, empty Python project (CLI or package) in the current directory with uv, src/ layout, pytest, ruff, a Makefile, a Docker-first wheel build, and GitHub Actions CI. Not for modifying an existing Python project.
+description: Scaffolds an empty directory as a Python CLI project with uv, src/ layout, pytest, ruff, a Makefile, a Docker-first wheel build, and GitHub Actions CI. Use when standing up a new Python project; not for modifying an existing one.
 ---
 
 # Python uv Starter
 
-Scaffolds the current directory as a minimal Python CLI project in the
-`agentic_loop_runner` layout. It's deterministic: every file comes from
+Scaffolds the current directory as a minimal Python CLI project. It's deterministic: every file comes from
 `assets/project/` via `scripts/scaffold.sh`. Don't hand-write the files.
 
 ## Generated layout

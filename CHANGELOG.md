@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Changed
+
+- Rewrote every skill description in third person with an explicit "Use when"
+  trigger, following the Anthropic skill best-practices guide.
+- Moved the `rlm` default state directory from `.mnemonic/rlm_state/` to
+  `.rlm/`. Existing state must be re-created with `init` or `init-corpus`.
+- Linked the `rlm` plan docs from `SKILL.md`, gave them a table of contents,
+  and added read-when hints to the `docker-first-ci` reference list.
+- Fixed markdownlint errors across `skills/` and ignored `.rlm/` in
+  `.gitignore`.
+
 ### Added
 
 - Added a Go code-shape rule to `rules/go/go.md`: never pass a function call

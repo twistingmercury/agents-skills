@@ -1,6 +1,6 @@
 ---
 name: arch-docs
-description: Create and update versioned architecture documentation using standardized templates and snake_case filenames. Use when writing architecture recommendations, documenting decisions, or scaffolding docs/architecture/.
+description: Creates and updates versioned architecture documents under docs/architecture/ from standardized templates, using snake_case filenames and never editing published versions. Use when writing architecture recommendations, recording decisions (ADRs), or scaffolding docs/architecture/.
 ---
 
 # Architecture Documentation Skill
@@ -13,17 +13,17 @@ Accept document numbers such as `00 01 02 03 05`, or `all`. If the requested doc
 
 Available documents:
 
-| #   | Initial filename                           | Description                                           |
-| --- | ------------------------------------------ | ----------------------------------------------------- |
-| 00  | `00_overview_v01.md`                      | High-level system overview and document navigation    |
-| 01  | `01_requirements_v01.md`                  | Problem statement, goals, non-goals, success criteria |
-| 02  | `02_architectural_decisions_v01.md`       | ADR log with Context/Decision/Consequences format     |
-| 03  | `03_system_architecture_v01.md`            | Component breakdown, data flow, boundaries            |
-| 04  | `04_communication_patterns_v01.md`         | API protocols, endpoints, integration patterns        |
-| 05  | `05_deployment_architecture_v01.md`        | Deployment topology, infrastructure, scaling          |
-| 06  | `06_security_architecture_v01.md`          | Auth model, access control, encryption, audit         |
-| 07  | `07_observability_architecture_v01.md`     | Monitoring, logging, tracing, alerting                |
-| 08  | `08_data_architecture_v01.md`              | Database stack, data models, storage, migrations      |
+| #   | Initial filename                       | Description                                           |
+| --- | -------------------------------------- | ----------------------------------------------------- |
+| 00  | `00_overview_v01.md`                   | High-level system overview and document navigation    |
+| 01  | `01_requirements_v01.md`               | Problem statement, goals, non-goals, success criteria |
+| 02  | `02_architectural_decisions_v01.md`    | ADR log with Context/Decision/Consequences format     |
+| 03  | `03_system_architecture_v01.md`        | Component breakdown, data flow, boundaries            |
+| 04  | `04_communication_patterns_v01.md`     | API protocols, endpoints, integration patterns        |
+| 05  | `05_deployment_architecture_v01.md`    | Deployment topology, infrastructure, scaling          |
+| 06  | `06_security_architecture_v01.md`      | Auth model, access control, encryption, audit         |
+| 07  | `07_observability_architecture_v01.md` | Monitoring, logging, tracing, alerting                |
+| 08  | `08_data_architecture_v01.md`          | Database stack, data models, storage, migrations      |
 
 ## Naming and versioning
 

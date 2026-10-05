@@ -1,6 +1,6 @@
 ---
 name: readme-writer
-description: Create or update a concise project README.md using the required template baseline. Use when a project needs a new README, when an existing README is stale or incomplete, or when README structure should be normalized for fast engineer onboarding.
+description: Creates or updates a concise root README.md from a required template baseline. Use when a project needs a new README, or an existing README is stale, incomplete, or missing the template sections.
 ---
 
 # README Writer Skill

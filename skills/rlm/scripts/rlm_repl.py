@@ -53,7 +53,7 @@ from pathlib import Path
 from typing import Any, Dict, List, Tuple
 
 
-DEFAULT_STATE_PATH = Path(".mnemonic/rlm_state/state.pkl")
+DEFAULT_STATE_PATH = Path(".rlm/state.pkl")
 DEFAULT_MAX_OUTPUT_CHARS = 8000
 DEFAULT_INCLUDE_EXTS = {
     ".txt",

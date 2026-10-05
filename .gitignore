@@ -79,8 +79,7 @@ __pycache__/
 
 **/coverage.out
 
-**/rlm_state/
-**/rlm_state/*
+**/.rlm/
 **/*.backup
 **/.local/
 **/_local/

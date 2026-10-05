@@ -8,7 +8,7 @@ Keep it concise and ensure the navigation table stays current.
 
 > **Maturity Level**: Emerging|Basic|Mature - <!-- Add a brief sentance about the maturity level  -->
 > **Version**: <!-- If no tags are present, always fall back to version v0.0.1. -->
-
+>
 > - **Emerging**: Prototype, not production-ready, expect breaking changes
 > - **Basic**: Production-ready but actively evolving, expect minor version changes
 > - **Mature**: Stable, battle-tested, changes are rare

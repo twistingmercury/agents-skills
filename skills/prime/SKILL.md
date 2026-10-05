@@ -1,6 +1,6 @@
 ---
 name: prime
-description: Survey a repository to build working context by reading its README and enumerating tracked files. Use when asked to prime, orient to, familiarize yourself with, or understand a project before starting work.
+description: Surveys a repository to build working context by reading its README and listing tracked files. Use when asked to prime, orient to, familiarize with, or understand a project before starting work.
 ---
 
 # Prime
