@@ -1,5 +1,5 @@
 ---
-name: arch-docs
+name: design-docs-writer
 description: Creates and updates versioned architecture documents under docs/architecture/ from standardized templates, using snake_case filenames and never editing published versions. Use when writing architecture recommendations, recording decisions (ADRs), or scaffolding docs/architecture/.
 ---
 
