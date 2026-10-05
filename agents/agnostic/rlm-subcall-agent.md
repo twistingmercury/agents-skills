@@ -4,9 +4,9 @@ description: Acts as the RLM sub-LLM (llm_query). Given a chunk of context (usua
 model: haiku
 memory: user
 tools:
-  - "mcp__context7"
-  - "Read(**/*)"
-  - "Glob(**/*)"
+  - mcp__context7
+  - Read
+  - Glob
 ---
 # RLM Subcall Agent
 

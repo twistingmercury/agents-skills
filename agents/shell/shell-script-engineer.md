@@ -9,49 +9,12 @@ skills:
   - superpowers:systematic-debugging
   - superpowers:receiving-code-review
 tools:
-  - "mcp__context7"
-  - "Read(**/*.sh)"
-  - "Read(**/*.bash)"
-  - "Read(**/*.bats)"
-  - "Read(**/*.md)"
-  - "Read(**/.shellcheckrc)"
-  - "Read(**/scripts/**)"
-  - "Read(**/test_helper/**)"
-  - "Write(scripts/**)"
-  - "Write(**/*.sh)"
-  - "Write(**/*.bats)"
-  - "Edit(scripts/**)"
-  - "Edit(**/*.sh)"
-  - "Edit(**/*.bats)"
-  - "Bash(bats *)"
-  - "Bash(shellcheck *)"
-  - "Bash(chmod +x *)"
-  - "Bash(bash -n *)"
-  - "Bash(./*.sh)"
-  - "Bash(./scripts/*.sh)"
-  - "Bash(find *)"
-  - "Bash(grep *)"
-  - "Bash(ls *)"
-  - "Bash(cat *)"
-  - "Bash(mkdir *)"
-  - "Bash(wc *)"
-  - "Bash(git status *)"
-  - "Bash(git diff *)"
-  - "Bash(git log *)"
-  - "Bash(git show *)"
-  - "Bash(git blame *)"
-  - "Bash(git ls-files *)"
-  - "Bash(git rev-parse *)"
-  - "Bash(git describe *)"
-  - "Bash(git remote -v)"
-  - "Bash(git fetch *)"
-  - "Bash(git pull *)"
-  - "Bash(git add *)"
-  - "Bash(git commit *)"
-  - "Bash(git tag *)"
-  - "Glob(**/*.sh)"
-  - "Glob(**/*.bats)"
-  - "Glob(**/scripts/**)"
+  - mcp__context7
+  - Read
+  - Write
+  - Edit
+  - Bash
+  - Glob
 ---
 
 # Shell Scripting Engineer

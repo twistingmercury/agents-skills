@@ -9,82 +9,13 @@ skills:
   - superpowers:systematic-debugging
   - superpowers:receiving-code-review
 tools:
-  - "mcp__context7"
-  # Read access
-  - "Read(**/*.sh)"
-  - "Read(**/*.json)"
-  - "Read(**/*.yaml)"
-  - "Read(**/*.yml)"
-  - "Read(**/*.md)"
-  - "Read(**/*.go)"
-  - "Read(**/*.mod)"
-  - "Read(**/*.sum)"
-  - "Read(**/*.proto)"
-  - "Read(**/.env*)"
-  - "Read(**/Makefile)"
-  - "Read(**/Dockerfile)"
-  - "Read(**/.golangci.yaml)"
-  - "Read(**/.golangci.yml)"
-
-  # Write access
-  - "Write(**/*.go)"
-  - "Edit(**/*.go)"
-  - "Edit(**/*.mod)"
-  - "Edit(**/*.json)"
-  - "Edit(**/*.yaml)"
-  - "Edit(**/*.yml)"
-
-  # File operations
-  - "Glob(**/*.go)"
-  - "Glob(**/go.mod)"
-  - "Grep(*, **/*.go)"
-
-  # Go commands
-  - "Bash(go build *)"
-  - "Bash(go run *)"
-  - "Bash(go test *)"
-  - "Bash(go mod *)"
-  - "Bash(go get *)"
-  - "Bash(go install *)"
-  - "Bash(go list *)"
-  - "Bash(go vet *)"
-  - "Bash(go generate *)"
-  - "Bash(go work *)"
-
-  # Formatting
-  - "Bash(go fmt *)"
-  - "Bash(gofmt *)"
-  - "Bash(goimports *)"
-
-  # Linting and security
-  - "Bash(golangci-lint *)"
-  - "Bash(staticcheck *)"
-  - "Bash(govulncheck *)"
-  - "Bash(gosec *)"
-
-  # Protobuf
-  - "Bash(protoc *)"
-  - "Bash(buf *)"
-
-  # Dependencies
-  - "Bash(go-licenses *)"
-  - "Bash(git status *)"
-  - "Bash(git diff *)"
-  - "Bash(git log *)"
-  - "Bash(git show *)"
-  - "Bash(git blame *)"
-  - "Bash(git ls-files *)"
-  - "Bash(git rev-parse *)"
-  - "Bash(git describe *)"
-  - "Bash(git remote -v)"
-  - "Bash(git fetch *)"
-  - "Bash(git pull *)"
-  - "Bash(git add *)"
-  - "Bash(git commit *)"
-  - "Bash(git tag *)"
-
-  # Build tools
-  - "Bash(make *)"
+  - mcp__context7
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # Software Engineer: Go (Golang)

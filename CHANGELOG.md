@@ -15,6 +15,12 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   references in agent bodies to spaced names (e.g. `api-architect` →
   `api architect`). Added "Use when..." triggers to ten agent descriptions
   (all except rlm subcall agent).
+- Reduced every agent's `tools` list to bare tool names. Claude Code does not
+  apply path or command specifiers such as `Read(**/*.go)` or
+  `Bash(git status *)` in an agent's `tools` field, and `memory` already
+  enables Read, Write, and Edit, so the scoped entries restricted nothing.
+  Each agent keeps the same set of tools. Real limits belong in
+  `permissions.deny` in settings.
 - Rewrote every skill description in third person with an explicit "Use when"
   trigger, following the Anthropic skill best-practices guide.
 - Moved the `rlm` default state directory from `.mnemonic/rlm_state/` to

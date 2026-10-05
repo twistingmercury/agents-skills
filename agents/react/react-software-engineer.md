@@ -10,99 +10,13 @@ skills:
   - superpowers:receiving-code-review
   - frontend-design:frontend-design
 tools:
-  - "mcp__context7"
-
-  # Read access
-  - "Read(**/*.ts)"
-  - "Read(**/*.tsx)"
-  - "Read(**/*.js)"
-  - "Read(**/*.jsx)"
-  - "Read(**/*.json)"
-  - "Read(**/*.yaml)"
-  - "Read(**/*.yml)"
-  - "Read(**/*.md)"
-  - "Read(**/*.css)"
-  - "Read(**/*.scss)"
-  - "Read(**/*.module.css)"
-  - "Read(**/*.module.scss)"
-  - "Read(**/.env*)"
-  - "Read(**/Makefile)"
-  - "Read(**/Dockerfile)"
-  - "Read(**/package.json)"
-  - "Read(**/tsconfig*.json)"
-  - "Read(**/.eslintrc*)"
-  - "Read(**/eslint.config.*)"
-  - "Read(**/vite.config.*)"
-  - "Read(**/next.config.*)"
-  - "Read(**/tailwind.config.*)"
-  - "Read(**/postcss.config.*)"
-  - "Read(**/.prettierrc*)"
-  - "Read(**/vitest.config.*)"
-  - "Read(**/playwright.config.*)"
-
-  # Write access
-  - "Write(**/*.ts)"
-  - "Write(**/*.tsx)"
-  - "Write(**/*.js)"
-  - "Write(**/*.jsx)"
-  - "Write(**/*.css)"
-  - "Write(**/*.scss)"
-  - "Edit(**/*.ts)"
-  - "Edit(**/*.tsx)"
-  - "Edit(**/*.js)"
-  - "Edit(**/*.jsx)"
-  - "Edit(**/*.css)"
-  - "Edit(**/*.scss)"
-  - "Edit(**/*.json)"
-  - "Edit(**/*.yaml)"
-  - "Edit(**/*.yml)"
-
-  # File operations
-  - "Glob(**/*.ts)"
-  - "Glob(**/*.tsx)"
-  - "Glob(**/*.js)"
-  - "Glob(**/*.jsx)"
-  - "Glob(**/package.json)"
-  - "Grep(*, **/*.ts)"
-  - "Grep(*, **/*.tsx)"
-  - "Grep(*, **/*.js)"
-  - "Grep(*, **/*.jsx)"
-
-  # Package managers
-  - "Bash(npm *)"
-  - "Bash(npx *)"
-  - "Bash(yarn *)"
-  - "Bash(pnpm *)"
-  - "Bash(bun *)"
-
-  # Testing
-  - "Bash(vitest *)"
-  - "Bash(jest *)"
-  - "Bash(playwright *)"
-
-  # Linting and formatting
-  - "Bash(eslint *)"
-  - "Bash(prettier *)"
-  - "Bash(tsc *)"
-
-  # Build tools
-  - "Bash(vite *)"
-  - "Bash(next *)"
-  - "Bash(git status *)"
-  - "Bash(git diff *)"
-  - "Bash(git log *)"
-  - "Bash(git show *)"
-  - "Bash(git blame *)"
-  - "Bash(git ls-files *)"
-  - "Bash(git rev-parse *)"
-  - "Bash(git describe *)"
-  - "Bash(git remote -v)"
-  - "Bash(git fetch *)"
-  - "Bash(git pull *)"
-  - "Bash(git add *)"
-  - "Bash(git commit *)"
-  - "Bash(git tag *)"
-  - "Bash(make *)"
+  - mcp__context7
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # Software Engineer: React / TypeScript

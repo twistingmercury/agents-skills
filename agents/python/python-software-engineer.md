@@ -9,88 +9,13 @@ skills:
   - superpowers:systematic-debugging
   - superpowers:receiving-code-review
 tools:
-  - "mcp__context7"
-  # Read access
-  - "Read(**/*.py)"
-  - "Read(**/*.pyi)"
-  - "Read(**/*.json)"
-  - "Read(**/*.yaml)"
-  - "Read(**/*.yml)"
-  - "Read(**/*.toml)"
-  - "Read(**/*.cfg)"
-  - "Read(**/*.ini)"
-  - "Read(**/*.md)"
-  - "Read(**/.env*)"
-  - "Read(**/Makefile)"
-  - "Read(**/Dockerfile)"
-  - "Read(**/pyproject.toml)"
-  - "Read(**/setup.py)"
-  - "Read(**/setup.cfg)"
-  - "Read(**/requirements*.txt)"
-  - "Read(**/.flake8)"
-  - "Read(**/mypy.ini)"
-  - "Read(**/.mypy.ini)"
-  - "Read(**/ruff.toml)"
-  - "Read(**/.ruff.toml)"
-
-  # Write access
-  - "Write(**/*.py)"
-  - "Edit(**/*.py)"
-  - "Edit(**/*.toml)"
-  - "Edit(**/*.json)"
-  - "Edit(**/*.yaml)"
-  - "Edit(**/*.yml)"
-  - "Edit(**/requirements*.txt)"
-
-  # File operations
-  - "Glob(**/*.py)"
-  - "Glob(**/pyproject.toml)"
-  - "Grep(*, **/*.py)"
-
-  # Python commands
-  - "Bash(python *)"
-  - "Bash(python3 *)"
-  - "Bash(pip *)"
-  - "Bash(pip3 *)"
-  - "Bash(uv *)"
-  - "Bash(poetry *)"
-  - "Bash(pdm *)"
-
-  # Testing
-  - "Bash(pytest *)"
-  - "Bash(python -m pytest *)"
-  - "Bash(python3 -m pytest *)"
-
-  # Formatting and linting
-  - "Bash(ruff *)"
-  - "Bash(black *)"
-  - "Bash(isort *)"
-  - "Bash(flake8 *)"
-  - "Bash(mypy *)"
-  - "Bash(pyright *)"
-  - "Bash(pylint *)"
-
-  # Security
-  - "Bash(bandit *)"
-  - "Bash(safety *)"
-  - "Bash(pip-audit *)"
-  - "Bash(git status *)"
-  - "Bash(git diff *)"
-  - "Bash(git log *)"
-  - "Bash(git show *)"
-  - "Bash(git blame *)"
-  - "Bash(git ls-files *)"
-  - "Bash(git rev-parse *)"
-  - "Bash(git describe *)"
-  - "Bash(git remote -v)"
-  - "Bash(git fetch *)"
-  - "Bash(git pull *)"
-  - "Bash(git add *)"
-  - "Bash(git commit *)"
-  - "Bash(git tag *)"
-
-  # Build tools
-  - "Bash(make *)"
+  - mcp__context7
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # Software Engineer: Python

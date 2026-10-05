@@ -9,76 +9,13 @@ skills:
   - superpowers:systematic-debugging
   - superpowers:receiving-code-review
 tools:
-  - "mcp__context7"
-  # Read access
-  - "Read(**/*.cs)"
-  - "Read(**/*.csproj)"
-  - "Read(**/*.sln)"
-  - "Read(**/*.slnx)"
-  - "Read(**/*.json)"
-  - "Read(**/*.yaml)"
-  - "Read(**/*.yml)"
-  - "Read(**/*.xml)"
-  - "Read(**/*.md)"
-  - "Read(**/.env*)"
-  - "Read(**/Makefile)"
-  - "Read(**/Dockerfile)"
-  - "Read(**/*.props)"
-  - "Read(**/*.targets)"
-  - "Read(**/nuget.config)"
-  - "Read(**/global.json)"
-  - "Read(**/appsettings*.json)"
-  - "Read(**/.editorconfig)"
-
-  # Write access
-  - "Write(**/*.cs)"
-  - "Edit(**/*.cs)"
-  - "Edit(**/*.csproj)"
-  - "Edit(**/*.sln)"
-  - "Edit(**/*.slnx)"
-  - "Edit(**/*.json)"
-  - "Edit(**/*.yaml)"
-  - "Edit(**/*.yml)"
-
-  # File operations
-  - "Glob(**/*.cs)"
-  - "Glob(**/*.csproj)"
-  - "Glob(**/*.sln)"
-  - "Glob(**/*.slnx)"
-  - "Grep(*, **/*.cs)"
-
-  # .NET CLI commands
-  - "Bash(dotnet build *)"
-  - "Bash(dotnet run *)"
-  - "Bash(dotnet test *)"
-  - "Bash(dotnet publish *)"
-  - "Bash(dotnet restore *)"
-  - "Bash(dotnet add *)"
-  - "Bash(dotnet remove *)"
-  - "Bash(dotnet list *)"
-  - "Bash(dotnet new *)"
-  - "Bash(dotnet clean *)"
-  - "Bash(dotnet format *)"
-  - "Bash(dotnet tool *)"
-  - "Bash(dotnet ef *)"
-  - "Bash(dotnet user-secrets *)"
-  - "Bash(git status *)"
-  - "Bash(git diff *)"
-  - "Bash(git log *)"
-  - "Bash(git show *)"
-  - "Bash(git blame *)"
-  - "Bash(git ls-files *)"
-  - "Bash(git rev-parse *)"
-  - "Bash(git describe *)"
-  - "Bash(git remote -v)"
-  - "Bash(git fetch *)"
-  - "Bash(git pull *)"
-  - "Bash(git add *)"
-  - "Bash(git commit *)"
-  - "Bash(git tag *)"
-
-  # Build tools
-  - "Bash(make *)"
+  - mcp__context7
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # Software Engineer: C# / .NET 10

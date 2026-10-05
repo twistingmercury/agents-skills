@@ -7,83 +7,13 @@ skills:
   - superpowers:verification-before-completion
   - superpowers:systematic-debugging
 tools:
-  - "mcp__context7"
-  # Read access
-  - "Read(**/*.sh)"
-  - "Read(**/*.bats)"
-  - "Read(**/*.md)"
-  - "Read(**/*.bash)"
-  - "Read(**/*.yaml)"
-  - "Read(**/*.json)"
-  - "Read(**/test_helper/**)"
-  - "Read(**/.shellcheckrc)"
-  - "Read(**/Dockerfile)"
-  - "Read(**/docker-compose.yaml)"
-  - "Read(**/.dockerignore)"
-  - "Read(**/.github/workflows/**)"
-  # Write access
-  - "Write(tests/bats/**)"
-  - "Write(**/Dockerfile)"
-  - "Write(**/.dockerignore)"
-  - "Write(**/.github/workflows/**)"
-  - "Write(**/docker-compose.yaml)"
-  - "Write(**/*.sh)"
-  - "Write(**/*.yaml)"
-  - "Edit(tests/bats/**)"
-  - "Edit(**/Dockerfile)"
-  - "Edit(**/.dockerignore)"
-  - "Edit(**/.github/workflows/**)"
-  - "Edit(**/docker-compose.yaml)"
-  - "Edit(**/docker-compose.yml)"
-  - "Edit(**/*.sh)"
-  - "Edit(**/*.yaml)"
-  # File operations
-  - "Glob(**/*.sh)"
-  - "Glob(**/*.bats)"
-  - "Glob(**/test_helper/**)"
-  - "Glob(**/Dockerfile)"
-  - "Glob(**/*.yaml)"
-  - "Glob(**/*.yml)"
-  - "Grep(*, **/*)"
-  # Shell and Docker commands
-  - "Bash(bats *)"
-  - "Bash(curl *)"
-  - "Bash(shellcheck *)"
-  - "Bash(find *)"
-  - "Bash(mkdir *)"
-  - "Bash(docker volume *)"
-  - "Bash(docker run *)"
-  - "Bash(docker rm *)"
-  - "Bash(docker inspect *)"
-  - "Bash(docker exec *)"
-  - "Bash(docker ps *)"
-  - "Bash(docker build *)"
-  - "Bash(docker compose up *)"
-  - "Bash(docker compose stop *)"
-  - "Bash(docker compose down *)"
-  - "Bash(jq *)"
-  - "Bash(yq *)"
-  - "Bash(cat *)"
-  - "Bash(cd *)"
-  - "Bash(chmod +x *)"
-  - "Bash(python3 *)"
-  - "Bash(wc *)"
-  - "Bash(grep *)"
-  - "Bash(ls *)"
-  - "Bash(git status *)"
-  - "Bash(git diff *)"
-  - "Bash(git log *)"
-  - "Bash(git show *)"
-  - "Bash(git blame *)"
-  - "Bash(git ls-files *)"
-  - "Bash(git rev-parse *)"
-  - "Bash(git describe *)"
-  - "Bash(git remote -v)"
-  - "Bash(git fetch *)"
-  - "Bash(git pull *)"
-  - "Bash(git add *)"
-  - "Bash(git commit *)"
-  - "Bash(git tag *)"
+  - mcp__context7
+  - Read
+  - Write
+  - Edit
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # DevOps Engineer

@@ -8,26 +8,12 @@ skills:
   - mermaid-diagrams:mermaid-diagrams
   - writing-clearly-and-concisely:writing-clearly-and-concisely
 tools:
-  - "mcp__context7"
-  - "Read(**/*)"
-  - "Write(**/*)"
-  - "Glob(**/*)"
-  - "Grep(*, **/*)"
-  - "Bash(mkdir *)"
-  - "Bash(git status *)"
-  - "Bash(git diff *)"
-  - "Bash(git log *)"
-  - "Bash(git show *)"
-  - "Bash(git blame *)"
-  - "Bash(git ls-files *)"
-  - "Bash(git rev-parse *)"
-  - "Bash(git describe *)"
-  - "Bash(git remote -v)"
-  - "Bash(git fetch *)"
-  - "Bash(git pull *)"
-  - "Bash(git add *)"
-  - "Bash(git commit *)"
-  - "Bash(git tag *)"
+  - mcp__context7
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - Bash
 ---
 # Data Architect Agent
 
