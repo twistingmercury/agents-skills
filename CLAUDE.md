@@ -30,6 +30,7 @@ markdownlint --ignore-path /dev/null agents/*/*.md   # .markdownlintignore skips
 - `agents/<group>/*.md`: Claude agents with YAML frontmatter (`name` with spaces like `go software engineer`, hyphenated filenames, `tools` allowlist) plus a prompt body. See `agents/ABOUT-THE-AGENTS.md` for the specialist roles and the superpowers flow. Retired agent files remain on disk but are not registered anywhere.
 - `skills/<skill>/`: Portable skill trees installed unchanged. `SKILL.md` is the entrypoint. The optional `agents/openai.yaml` is leftover Codex UI metadata; harmless, not read by Claude Code.
 - `rules/`: Claude Code rules installed to `~/.claude/rules/` with subject folders intact. See `rules/index.md` for the path-scoped language rules and their file triggers. Files without `paths:` frontmatter like `agent-delegation.md`, `code-shape.md`, and `library-docs.md` load every session.
+- `scripts/`: Optional toolchain installers (Go, Python, Node tools) with BATS tests in `scripts/tests/`, run by `make test`; not part of `make install`.
 - `lib/print.sh`: `print::info/error/success/warning` helpers sourced by the installer.
 - `_archive/`: Retired resources (Codex integration, agents, skills) not installed.
 

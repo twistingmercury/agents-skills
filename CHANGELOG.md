@@ -27,6 +27,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   as an argument; assign its result to a named variable first. Conversions,
   built-ins, `context.Background()`, `os.Environ()`, callback-returning
   functions, and chained builders are exempt.
+- Added three optional toolchain scripts (`scripts/go_tool_chain.sh`,
+  `scripts/python_tool_chain.sh`, `scripts/node_tool_chain.sh`) that install
+  language-specific tools globally without modifying projects, with BATS
+  coverage in `scripts/tests/` included in `make test`.
 
 ### Changed
 

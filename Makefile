@@ -8,6 +8,7 @@ help: ## Show this help
 install: ## Install Claude Code agents, rules, and skills.
 	./install/install.sh
 
-test: ## Run the shared skill test suites (requires Python 3.11+ and bats).
+test: ## Run the shared skill test suites and the tool chain script tests (requires Python 3.11+ and bats).
 	cd skills/rlm && python3 -m unittest discover -s tests
 	bats skills/python-uv-starter/tests
+	bats scripts/tests
