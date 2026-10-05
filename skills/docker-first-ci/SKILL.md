@@ -14,6 +14,14 @@ Every project, whatever it produces:
 - CI runs `build/build.sh` and nothing else for build and test.
 - E2E tests run in a container against the exact thing that was just built.
 
+## Requirements
+
+- Docker with buildx (`docker build --output` for the artifact shape) and Compose (the image shape's e2e tests)
+- `bash` and `git`: `build.sh` takes the version from the latest tag
+- `shellcheck` and `bats`, when you add or change the build scripts (they follow `rules/shell/`)
+
+Install instructions are in the README's local tools table of the repository that ships this skill.
+
 ## Choose the output shape
 
 The two shapes are equals. Pick by what the project produces.

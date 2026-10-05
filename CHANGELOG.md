@@ -35,8 +35,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 ### Changed
 
 - The `devops engineer` now covers Helm charts, Terraform, and local verification
-  with minikube and `kubectl`, and is told never to run `terraform apply` or
-  touch shared clusters.
+  with minikube and `kubectl`, is told never to run `terraform apply` or touch
+  shared clusters, and lists its required tools. The `docker-first-ci` skill
+  lists its requirements too.
 - `rules/docker.md` now allows a `scratch` `export` stage for artifact builds and
   a single-stage test runner, and asks for version-plus-digest pins on tooling
   images, matching the `docker-first-ci` skill. `rules/index.md` now says

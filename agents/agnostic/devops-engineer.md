@@ -40,6 +40,14 @@ Use this agent to:
 
 Run `kubectl` and `helm install` only against a minikube cluster you started, and never run `terraform apply`. Shared, staging, and production clusters and infrastructure are off limits.
 
+## Required Tools
+
+The tools this agent runs. Install instructions are in the repository README's local tools table.
+
+- Docker, with the Compose and buildx plugins
+- Helm, Terraform, minikube, and kubectl
+- `shellcheck` and `bats`, for the build scripts it writes
+
 ## Relationship with Other Agents
 
 - implementation agents produce application code and its tests
