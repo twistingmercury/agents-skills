@@ -17,6 +17,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   and added read-when hints to the `docker-first-ci` reference list.
 - Fixed markdownlint errors across `skills/` and ignored `.rlm/` in
   `.gitignore`.
+- Rewrote the `docker-first-ci` skill around two equal output shapes
+  (artifact export and runtime image), a publishing checklist, and new
+  reference examples (Dockerfiles, `build.sh` scripts, e2e, CI, release). The
+  CI-to-CD artifact handoff is now an optional variant.
 
 ### Removed
 
