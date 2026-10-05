@@ -28,6 +28,10 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - The `devops engineer` now covers Helm charts, Terraform, and local verification
   with minikube and `kubectl`, and is told never to run `terraform apply` or
   touch shared clusters.
+- `rules/docker.md` now allows a `scratch` `export` stage for artifact builds and
+  a single-stage test runner, and asks for version-plus-digest pins on tooling
+  images, matching the `docker-first-ci` skill. `rules/index.md` now says
+  path-scoped rules load when a matching file is read, written, or edited.
 - CLAUDE.md now references README.md, agents/ABOUT-THE-AGENTS.md, and rules/index.md
   instead of repeating their content; it retains unique facts about installer
   behavior, agent file registration, skill installation, and project maintenance.
