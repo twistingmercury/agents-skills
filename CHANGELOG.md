@@ -9,6 +9,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
+- Added a Prerequisites section to the README with required Claude Code plugins
+  (`superpowers`, optional `elements-of-style` and `frontend-design`), the
+  Context7 MCP server, local tools needed to install, test, and lint the
+  catalog, and a table listing the development environments for each specialist
+  agent.
 - Added the `mermaid-diagrams` skill, which writes Mermaid diagrams as local
   plain-text fenced code blocks and never sends diagram source to online
   renderers, editors, or APIs. Diagrams can be validated locally with
@@ -20,6 +25,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
+- The `devops engineer` now covers Helm charts, Terraform, and local verification
+  with minikube and `kubectl`, and is told never to run `terraform apply` or
+  touch shared clusters.
+- CLAUDE.md now references README.md, agents/ABOUT-THE-AGENTS.md, and rules/index.md
+  instead of repeating their content; it retains unique facts about installer
+  behavior, agent file registration, skill installation, and project maintenance.
+- Removed dead `claude/README.md` links from README.md and CLAUDE.md; installer
+  behavior facts are now stated inline in README Key Considerations.
 - The `api architect`, `data architect`, and `technical writer` agents now
   preload `elements-of-style:writing-clearly-and-concisely`; the old
   `writing-clearly-and-concisely:writing-clearly-and-concisely` plugin name

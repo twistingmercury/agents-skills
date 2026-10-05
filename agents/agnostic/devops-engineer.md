@@ -34,7 +34,11 @@ Use this agent to:
 - Build CI/CD pipelines (GitHub Actions, Azure DevOps, GitLab CI)
 - Implement build metadata/version injection
 - Configure test/dependency infrastructure (for example Docker Compose)
-- Provide deployment artifacts (Kubernetes/compose/runbooks)
+- Provide deployment artifacts (Kubernetes manifests, Helm charts, compose files, runbooks)
+- Write infrastructure as code with Terraform
+- Verify Kubernetes and Helm artifacts on a local minikube cluster with `kubectl`, and validate Terraform with `terraform fmt`, `validate`, and `plan`
+
+Run `kubectl` and `helm install` only against a minikube cluster you started, and never run `terraform apply`. Shared, staging, and production clusters and infrastructure are off limits.
 
 ## Relationship with Other Agents
 
