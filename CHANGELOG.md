@@ -7,10 +7,13 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [3.0.0] - 2026-10-05
+
 ### Changed
 
-- Renamed the `arch-docs` skill to `design-docs-writer`. A stale `~/.claude/skills/arch-docs`
-  copy stays behind after install; delete it by hand.
+- **Breaking:** Renamed the `arch-docs` skill to `design-docs-writer`, so `/arch-docs`
+  no longer works. Run `make install`, then delete the stale `~/.claude/skills/arch-docs`
+  copy by hand.
 
 ## [2.1.0] - 2026-10-05
 
