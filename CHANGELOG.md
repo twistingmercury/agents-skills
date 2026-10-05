@@ -32,6 +32,9 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
   a single-stage test runner, and asks for version-plus-digest pins on tooling
   images, matching the `docker-first-ci` skill. `rules/index.md` now says
   path-scoped rules load when a matching file is read, written, or edited.
+- `rules/library-docs.md` now applies to writing, refactoring, and review as well
+  as direct questions, and takes precedence over the "do not use for" list in
+  the Context7 rule that `ctx7 setup` generates.
 - CLAUDE.md now references README.md, agents/ABOUT-THE-AGENTS.md, and rules/index.md
   instead of repeating their content; it retains unique facts about installer
   behavior, agent file registration, skill installation, and project maintenance.
