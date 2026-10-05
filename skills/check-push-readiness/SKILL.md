@@ -1,6 +1,6 @@
 ---
 name: check-push-readiness
-description: Audits, read-only, the exact unpushed commits before a push: resolves the live remote SHA, checks fast-forward, scans the diff for secrets and debug code, reviews commit metadata, and validates the committed tree. Use when asked whether a commit or branch is ready to push, or before the push-and-create-PR option in superpowers:finishing-a-development-branch.
+description: "Audits, read-only, the exact unpushed commits before a push: resolves the live remote SHA, checks fast-forward, scans the diff for secrets and debug code, reviews commit metadata, and validates the committed tree. Use when asked whether a commit or branch is ready to push, or before the push-and-create-PR option in superpowers:finishing-a-development-branch."
 ---
 
 # Check Push Readiness

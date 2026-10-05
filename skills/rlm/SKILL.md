@@ -1,6 +1,6 @@
 ---
 name: rlm
-description: Runs a Recursive Language Model-style loop over a large file or document directory using a persistent local REPL: load the context once, then search, chunk, and extract across multiple queries. Use when the user supplies a context too large to paste into chat, or asks to analyze a corpus of PDFs, DOCX, ODT, or text files.
+description: "Runs a Recursive Language Model-style loop over a large file or document directory using a persistent local REPL: load the context once, then search, chunk, and extract across multiple queries. Use when the user supplies a context too large to paste into chat, or asks to analyze a corpus of PDFs, DOCX, ODT, or text files."
 ---
 
 # rlm (Recursive Language Model workflow)
