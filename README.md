@@ -37,8 +37,8 @@ Portable skills:
 
 | Skill                                                          | Purpose                                                |
 | -------------------------------------------------------------- | ------------------------------------------------------ |
-| [`arch-docs`](skills/arch-docs/SKILL.md)                       | Create and update architecture documentation           |
 | [`check-push-readiness`](skills/check-push-readiness/SKILL.md) | Read-only audit of unpushed commits before a push      |
+| [`design-docs-writer`](skills/design-docs-writer/SKILL.md)     | Create and update architecture documentation           |
 | [`docker-first-ci`](skills/docker-first-ci/SKILL.md)           | Implement and harden Docker-first CI/CD pipelines      |
 | [`mermaid-diagrams`](skills/mermaid-diagrams/SKILL.md)         | Write Mermaid diagrams locally, never to third parties |
 | [`prime`](skills/prime/SKILL.md)                               | Survey a repository and build working context          |
@@ -110,7 +110,7 @@ For Python projects and `scripts/python_tool_chain.sh` (install `uv` first, see 
 Used when a skill runs:
 
 - `docker` (`docker-first-ci`, `python-uv-starter`)
-- `git` (`check-push-readiness`, `prime`, `readme-writer`, `arch-docs`)
+- `git` (`check-push-readiness`, `prime`, `readme-writer`, `design-docs-writer`)
 - `mmdc` (mermaid-cli, optional; used by `mermaid-diagrams` skill for local validation)
 
 ### Development environments

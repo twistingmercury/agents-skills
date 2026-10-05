@@ -33,7 +33,7 @@ specification and never coordinate other agents.
 
 1. **Brainstorm.** `superpowers:brainstorming` works out intent, requirements,
    and design with the user. The approved design is recorded under
-   `docs/architecture/` through the `/arch-docs` skill. When the design needs
+   `docs/architecture/` through the `/design-docs-writer` skill. When the design needs
    an API contract or a data model, the brainstorm draws on the
    `api architect` and `data architect` as consultants.
 2. **Plan.** `superpowers:writing-plans` turns the spec into a plan of small,
@@ -67,7 +67,7 @@ instead.
 User: "Build a user management REST API in Go"
 1. superpowers:brainstorming settles scope, auth, and data shape; the api
    architect drafts the OpenAPI contract and the data architect the schema
-2. /arch-docs records the approved design under docs/architecture/
+2. /design-docs-writer records the approved design under docs/architecture/
 3. superpowers:writing-plans breaks the design into tasks
 4. superpowers:subagent-driven-development runs them: go software engineer
    implements handlers and their black-box tests, data engineer writes
