@@ -1,11 +1,12 @@
 ---
 name: rlm
-description: Run a Recursive Language Model-style loop for long-context tasks using a persistent local REPL.
+description: "Runs a Recursive Language Model-style loop over a large file or document directory using a persistent local REPL: load the context once, then search, chunk, and extract across multiple queries. Use when the user supplies a context too large to paste into chat, or asks to analyze a corpus of PDFs, DOCX, ODT, or text files."
 ---
 
 # rlm (Recursive Language Model workflow)
 
 Use this skill when:
+
 - The user provides a large context file or document directory.
 - You need iterative search/chunk/extract over that context.
 - You want to reuse loaded context across multiple queries.
@@ -13,15 +14,18 @@ Use this skill when:
 ## Inputs
 
 Required:
+
 - `context=<path>`: file path (single-file mode) or directory path (corpus mode)
 - `query=<question>`: question/task to run against the loaded context
 
 Optional:
+
 - `chunk_chars=<int>` (default ~200000)
 - `overlap_chars=<int>` (default 0)
 - `strict=true` (corpus mode only, fail on first parse error)
 
 If arguments are missing, ask for:
+
 1. context path
 2. query
 
@@ -71,7 +75,7 @@ Resolve `<skill-dir>` to the directory containing this `SKILL.md` before running
 
    ```bash
    python3 <skill-dir>/scripts/rlm_repl.py exec <<'PY'
-   paths = write_chunks('.mnemonic/rlm_state/chunks', size=200000, overlap=0)
+   paths = write_chunks('.rlm/chunks', size=200000, overlap=0)
    print(len(paths))
    print(paths[:5])
    PY
@@ -83,7 +87,7 @@ Resolve `<skill-dir>` to the directory containing this `SKILL.md` before running
 
 - Do not paste large raw chunks into chat.
 - Quote only needed excerpts.
-- Keep scratch/state files under `.mnemonic/rlm_state/`.
+- Keep scratch/state files under `.rlm/`.
 - For first iteration, refresh manually when sources change:
   - run `python3 <skill-dir>/scripts/rlm_repl.py reset`
   - then reinvoke the skill with `context=... query=...`
@@ -95,4 +99,6 @@ Resolve `<skill-dir>` to the directory containing this `SKILL.md` before running
   - DOCX: `python-docx`
   - ODT: `odfpy`
 - Default corpus excludes: `.git/`, `node_modules/`, `bin/`, `_archive/`.
-- Additional reference docs are in `references/`.
+- Corpus-mode design history. Read these only when changing corpus mode, not to run the skill:
+  - [Design](references/plans/2026-02-23-rlm-corpus-design.md): goals, architecture, ignore and extraction rules, decision log.
+  - [Implementation plan](references/plans/2026-02-23-rlm-corpus-implementation-plan.md): phased work, test plan, definition of done.

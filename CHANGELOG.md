@@ -7,12 +7,86 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [2.1.0] - 2026-10-05
+
 ### Added
 
+- Added a Prerequisites section to the README with required Claude Code plugins
+  (`superpowers`, `gopls-lsp`, `pyright-lsp`, optional `elements-of-style` and
+  `frontend-design`),
+  the `python-debugpy` skill, the Context7 MCP server, local tools needed to
+  install, test, and lint the catalog, installation instructions for all local
+  tools with macOS (Homebrew) and Linux (system packages and official installers)
+  commands, and a table listing the development environments for each specialist
+  agent.
+- Added the `mermaid-diagrams` skill, which writes Mermaid diagrams as local
+  plain-text fenced code blocks and never sends diagram source to online
+  renderers, editors, or APIs. Diagrams can be validated locally with
+  `mermaid-cli` (mmdc) in light and dark themes before committing.
 - Added a Go code-shape rule to `rules/go/go.md`: never pass a function call
   as an argument; assign its result to a named variable first. Conversions,
   built-ins, `context.Background()`, `os.Environ()`, callback-returning
   functions, and chained builders are exempt.
+- Added three optional toolchain scripts (`scripts/go_tool_chain.sh`,
+  `scripts/python_tool_chain.sh`, `scripts/node_tool_chain.sh`) that install
+  language-specific tools globally without modifying projects, with BATS
+  coverage in `scripts/tests/` included in `make test`.
+
+### Changed
+
+- The `devops engineer` now covers Helm charts, Terraform, and local verification
+  with minikube and `kubectl`, is told never to run `terraform apply` or touch
+  shared clusters, and lists its required tools. The `docker-first-ci` skill
+  lists its requirements too.
+- `rules/docker.md` now allows a `scratch` `export` stage for artifact builds and
+  a single-stage test runner, and asks for version-plus-digest pins on tooling
+  images, matching the `docker-first-ci` skill. `rules/index.md` now says
+  path-scoped rules load when a matching file is read, written, or edited.
+- `rules/library-docs.md` now applies to writing, refactoring, and review as well
+  as direct questions, and takes precedence over the "do not use for" list in
+  the Context7 rule that `ctx7 setup` generates.
+- CLAUDE.md now references README.md, agents/ABOUT-THE-AGENTS.md, and rules/index.md
+  instead of repeating their content; it retains unique facts about installer
+  behavior, agent file registration, skill installation, and project maintenance.
+- Removed dead `claude/README.md` links from README.md and CLAUDE.md; installer
+  behavior facts are now stated inline in README Key Considerations.
+- The `api architect`, `data architect`, and `technical writer` agents now
+  preload `elements-of-style:writing-clearly-and-concisely`; the old
+  `writing-clearly-and-concisely:writing-clearly-and-concisely` plugin name
+  never resolved correctly.
+- Updated the delegation table to route Python, .NET, and React projects to
+  their respective specialists (python software engineer, dotnet software
+  engineer, react software engineer). Changed all hyphenated agent name
+  references in agent bodies to spaced names (e.g. `api-architect` →
+  `api architect`). Added "Use when..." triggers to ten agent descriptions
+  (all except rlm subcall agent).
+- Reduced every agent's `tools` list to bare tool names. Claude Code does not
+  apply path or command specifiers such as `Read(**/*.go)` or
+  `Bash(git status *)` in an agent's `tools` field, and `memory` already
+  enables Read, Write, and Edit, so the scoped entries restricted nothing.
+  Each agent keeps the same set of tools. Real limits belong in
+  `permissions.deny` in settings.
+- Updated the `api architect`, `data architect`, and `technical writer` agents
+  to preload the repo's local `mermaid-diagrams` skill in place of the
+  `mermaid-diagrams:mermaid-diagrams` plugin skill.
+- Rewrote every skill description in third person with an explicit "Use when"
+  trigger, following the Anthropic skill best-practices guide.
+- Moved the `rlm` default state directory from `.mnemonic/rlm_state/` to
+  `.rlm/`. Existing state must be re-created with `init` or `init-corpus`.
+- Linked the `rlm` plan docs from `SKILL.md`, gave them a table of contents,
+  and added read-when hints to the `docker-first-ci` reference list.
+- Fixed markdownlint errors across `skills/` and ignored `.rlm/` in
+  `.gitignore`.
+- Rewrote the `docker-first-ci` skill around two equal output shapes
+  (artifact export and runtime image), a publishing checklist, and new
+  reference examples (Dockerfiles, `build.sh` scripts, e2e, CI, release). The
+  CI-to-CD artifact handoff is now an optional variant.
+
+### Removed
+
+- Removed the two CI/CD flow-diagram files from `docker-first-ci/references/`.
+  The generic one repeated the `SKILL.md` workflow, and the Go one described
+  another project's build and linked sideways to the generic one.
 
 ## [2.0.0] - 2026-09-30
 

@@ -4,6 +4,22 @@ Date: 2026-02-23
 Status: Ready for execution
 Depends on: `docs/plans/2026-02-23-rlm-corpus-design.md`
 
+## Contents
+
+- [Objective](#objective)
+- [Scope Guardrails](#scope-guardrails)
+- [Deliverables](#deliverables)
+- [Implementation Sequence](#implementation-sequence)
+  - [Phase 1: Corpus State And Command Skeleton](#phase-1-corpus-state-and-command-skeleton)
+  - [Phase 2: Discovery, Ignore Rules, And File Limits](#phase-2-discovery-ignore-rules-and-file-limits)
+  - [Phase 3: Extractor Layer And Modes](#phase-3-extractor-layer-and-modes)
+  - [Phase 4: Corpus Indexing And Chunk Metadata](#phase-4-corpus-indexing-and-chunk-metadata)
+  - [Phase 5: Reporting, Docs, And Final Hardening](#phase-5-reporting-docs-and-final-hardening)
+- [Test Plan](#test-plan)
+- [Suggested Work Breakdown](#suggested-work-breakdown)
+- [Risks And Mitigations](#risks-and-mitigations)
+- [Definition Of Done](#definition-of-done)
+
 ## Objective
 
 Implement corpus-based document ingestion for `scripts/rlm_repl.py` while preserving backward compatibility with existing single-file flows.
@@ -11,6 +27,7 @@ Implement corpus-based document ingestion for `scripts/rlm_repl.py` while preser
 ## Scope Guardrails
 
 In scope:
+
 - Single root directory ingestion (recursive)
 - `.rlmignore` support + default excludes
 - Best-effort default + optional `--strict`
@@ -18,6 +35,7 @@ In scope:
 - Optional FOSS extractors (`pypdf`, `python-docx`, `odfpy`)
 
 Out of scope:
+
 - Multi-root ingestion
 - Code-intelligence features (AST, symbol graph, semantic refactors)
 
@@ -37,9 +55,11 @@ Out of scope:
 ### Phase 1: Corpus State And Command Skeleton
 
 Goal:
+
 - Add `init-corpus <root_dir>` and persist corpus state without breaking `init`.
 
 Tasks:
+
 1. Extend CLI parser with `init-corpus` and flags:
    - `--ignore-file`
    - `--strict`
@@ -57,6 +77,7 @@ Tasks:
 4. Extend `status` to report corpus metrics when corpus mode is active.
 
 Acceptance criteria:
+
 - Existing `init` and `exec` behavior remains functional.
 - `init-corpus` can initialize from a directory and persist valid state.
 - `status` clearly distinguishes single-file vs corpus mode.
@@ -64,9 +85,11 @@ Acceptance criteria:
 ### Phase 2: Discovery, Ignore Rules, And File Limits
 
 Goal:
+
 - Deterministic recursive discovery with ignore controls and safety caps.
 
 Tasks:
+
 1. Implement recursive file discovery (sorted deterministic order).
 2. Add built-in excludes:
    - `.git/`, `node_modules/`, `bin/`, `_archive/`
@@ -76,6 +99,7 @@ Tasks:
 6. Add extension include filtering from `--include-ext` with document-focused defaults.
 
 Acceptance criteria:
+
 - Ignored paths are excluded reliably, including nested paths.
 - Discovery order is stable across runs.
 - Limit violations produce clear, actionable errors.
@@ -83,9 +107,11 @@ Acceptance criteria:
 ### Phase 3: Extractor Layer And Modes
 
 Goal:
+
 - Parse supported formats with robust error handling.
 
 Tasks:
+
 1. Add extractor registry keyed by extension/format.
 2. Implement baseline text extraction for plain text docs.
 3. Add optional extractors:
@@ -97,6 +123,7 @@ Tasks:
 6. Normalize extracted text (newline normalization, UTF-8 replacement fallback).
 
 Acceptance criteria:
+
 - Supported text files ingest without regressions.
 - Missing optional dependencies yield clear diagnostics.
 - Best-effort and strict produce expected exit behavior.
@@ -104,9 +131,11 @@ Acceptance criteria:
 ### Phase 4: Corpus Indexing And Chunk Metadata
 
 Goal:
+
 - Preserve existing chunk workflow while adding source traceability.
 
 Tasks:
+
 1. Build `corpus.full_text` by concatenating loaded docs.
 2. Build `corpus.index` mapping corpus spans to file paths.
 3. Update `write_chunks` to output chunk metadata including:
@@ -117,15 +146,18 @@ Tasks:
 4. Keep existing `write_chunks` return behavior stable (list of chunk paths).
 
 Acceptance criteria:
+
 - `grep/peek/chunk_indices/write_chunks` continue working in corpus mode.
 - Chunk metadata allows path-level attribution for every chunk.
 
 ### Phase 5: Reporting, Docs, And Final Hardening
 
 Goal:
+
 - Make ingestion observable and user-facing docs complete.
 
 Tasks:
+
 1. Add ingestion summary output to `init-corpus`:
    - scanned count
    - considered count
@@ -137,12 +169,14 @@ Tasks:
 4. Document dependency installation for optional extractors.
 
 Acceptance criteria:
+
 - Users can diagnose ingestion outcomes from CLI output alone.
 - Skill docs accurately show new invocation and behavior.
 
 ## Test Plan
 
 Unit tests:
+
 - discovery ordering and recursion
 - ignore matching (`.rlmignore` + defaults)
 - include-ext filtering
@@ -150,16 +184,19 @@ Unit tests:
 - corpus index span correctness
 
 Extractor tests:
+
 - fixture success for txt/md/pdf/docx/odt
 - malformed/corrupt fixture failures
 - missing dependency diagnostics
 
 Integration tests:
+
 - end-to-end `init-corpus -> status -> exec(grep) -> write_chunks`
 - nested directories with ignored subtrees
 - strict mode non-zero exit verification
 
 Regression checks:
+
 - legacy `init <context_file>` flow unchanged
 - existing helper signatures preserved
 
@@ -185,6 +222,7 @@ Mitigation: keep legacy command path untouched; run regression checks each phase
 ## Definition Of Done
 
 All are true:
+
 1. `init-corpus` works on nested document trees with `.rlmignore`.
 2. Best-effort and strict modes behave as specified.
 3. Optional extractor dependencies are detected and reported cleanly.

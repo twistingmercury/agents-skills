@@ -1,33 +1,79 @@
-name: Example CI
+# Image shape. For the artifact shape, delete the build_and_publish job, the
+# registry env below, and the `if` on the build job: CI is then one build.sh step.
+name: CI
 
 on:
   push:
     branches: [main, develop]
+    # Path filters keep docs-only changes from running a full build.
+    paths:
+      - "src/**"
+      - "build/**"
+      - "tests/**"
+      - "LICENSE"
+      - ".github/workflows/ci.yaml"
   pull_request:
     branches: [main, develop]
+    paths:
+      - "src/**"
+      - "build/**"
+      - "tests/**"
+      - "LICENSE"
+      - ".github/workflows/ci.yaml"
+
+permissions:
+  contents: read
+
+env:
+  IMAGE_NAME: ghcr.io/example-org/example-service
 
 jobs:
-  build-and-test:
+  # Pull requests build and test only. This job cannot write packages.
+  build:
+    if: github.event_name == 'pull_request'
+    runs-on: ubuntu-latest
+    steps:
+      - uses: actions/checkout@v7
+        with:
+          fetch-depth: 0 # build.sh derives the version from tags
+          persist-credentials: false
+
+      - name: Validate the e2e compose file
+        run: docker compose -f tests/docker-compose.yaml config --quiet
+
+      - name: Build and test
+        run: ./build/build.sh
+
+  # Push events build, test, and then push the image the tests just ran against.
+  # Make main and develop protected branches so only reviewed code reaches here.
+  build_and_publish:
+    if: github.event_name == 'push'
     runs-on: ubuntu-latest
     permissions:
       contents: read
+      packages: write
     steps:
-      - name: Checkout
-        uses: actions/checkout@v4
+      - uses: actions/checkout@v7
         with:
           fetch-depth: 0
+          persist-credentials: false
 
-      - name: Build + test through Docker-first entrypoint
+      - name: Validate the e2e compose file
+        run: docker compose -f tests/docker-compose.yaml config --quiet
+
+      - name: Build and test
         run: ./build/build.sh
 
-      - name: Export image artifact for CD
-        if: github.event_name == 'push'
-        run: docker save ghcr.io/example-org/example-service:latest -o image.tar
-
-      - name: Upload image artifact
-        if: github.event_name == 'push'
-        uses: actions/upload-artifact@v4
+      - uses: docker/login-action@v4
         with:
-          name: docker-image
-          path: image.tar
-          retention-days: 1
+          registry: ghcr.io
+          username: ${{ github.actor }}
+          password: ${{ secrets.GITHUB_TOKEN }}
+
+      # build.sh tagged the image with the version; latest points at the same one.
+      - name: Push the tested image
+        run: |
+          version="$(git describe --tags --abbrev=0 2>/dev/null || printf 'dev')"
+          docker tag "${IMAGE_NAME}:${version}" "${IMAGE_NAME}:latest"
+          docker push "${IMAGE_NAME}:${version}"
+          docker push "${IMAGE_NAME}:latest"

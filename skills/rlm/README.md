@@ -46,7 +46,7 @@ context=./architecture-docs query="Compare security and communications assumptio
 2. Reuse the persisted REPL state for additional queries.
 3. Reset and reload manually when source content changes.
 
-State is persisted at `.mnemonic/rlm_state/state.pkl` relative to the current
+State is persisted at `.rlm/state.pkl` relative to the current
 working directory by default. Use the global `--state <path>` option before a
 subcommand to select another state file; use the same path for subsequent calls.
 

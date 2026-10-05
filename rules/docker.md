@@ -11,7 +11,8 @@ paths:
 
 - Always multi-stage: a stage named `build`, then a runtime stage named `final` that holds only the artifact and the CA bundle.
 - `final` uses the smallest base that runs the artifact; a static binary gets `scratch`.
-- Pin base images to a version tag; never `latest` or a bare variant such as `golang:alpine`.
+- A build that only exports files (binaries, wheels) has no runtime image: it ends in a `scratch` stage named `export` instead of `final`. A test runner with nothing to separate may be a single stage named `final`.
+- Pin base images to a version tag, and tooling images to the version plus its digest (`image:1.2.3@sha256:<digest>`); never `latest` or a bare variant such as `golang:alpine`.
 - Install packages before declaring the build-metadata `ARG`s: `BUILD_DATE` changes on every build and invalidates each `RUN` after it.
 
 ## Build metadata

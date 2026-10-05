@@ -58,8 +58,8 @@ graph TB
 <!-- Only list documents that actually exist. Update this table when adding
      or removing docs. Check docs/architecture/ with Glob before updating. -->
 
-| #   | Document                                                       | Description                           | Status          |
-| --- | -------------------------------------------------------------- | ------------------------------------- | --------------- |
+| #   | Document                                                           | Description                           | Status          |
+| --- | ------------------------------------------------------------------ | ------------------------------------- | --------------- |
 | 00  | [Overview](00_overview_v01.md)                                     | This document                         | Current         |
 | 01  | [Requirements](01_requirements_v01.md)                             | Problem statement, goals, constraints | <!-- status --> |
 | 02  | [Architectural Decisions](02_architectural_decisions_v01.md)       | ADR log                               | <!-- status --> |

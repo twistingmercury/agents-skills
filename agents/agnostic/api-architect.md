@@ -1,33 +1,19 @@
 ---
 name: api architect
-description: Language-agnostic API specification architect. Designs OpenAPI (REST), GraphQL schemas, Protocol Buffer (gRPC), and AsyncAPI (event-driven) specifications. Chooses appropriate API style and creates complete specifications with authentication, pagination, and error handling.
+description: "Language-agnostic API specification architect. Designs OpenAPI (REST), GraphQL schemas, Protocol Buffer (gRPC), and AsyncAPI (event-driven) specifications. Use when API contracts must be designed from requirements or complete specifications must cover authentication, pagination, and error handling."
 model: sonnet
 memory: user
 skills:
   - arch-docs
-  - mermaid-diagrams:mermaid-diagrams
-  - writing-clearly-and-concisely:writing-clearly-and-concisely
+  - mermaid-diagrams
+  - elements-of-style:writing-clearly-and-concisely
 tools:
-  - "mcp__context7"
-  - "Read(**/*)"
-  - "Write(**/*)"
-  - "Glob(**/*)"
-  - "Grep(*, **/*)"
-  - "Bash(mkdir *)"
-  - "Bash(git status *)"
-  - "Bash(git diff *)"
-  - "Bash(git log *)"
-  - "Bash(git show *)"
-  - "Bash(git blame *)"
-  - "Bash(git ls-files *)"
-  - "Bash(git rev-parse *)"
-  - "Bash(git describe *)"
-  - "Bash(git remote -v)"
-  - "Bash(git fetch *)"
-  - "Bash(git pull *)"
-  - "Bash(git add *)"
-  - "Bash(git commit *)"
-  - "Bash(git tag *)"
+  - mcp__context7
+  - Read
+  - Write
+  - Glob
+  - Grep
+  - Bash
 ---
 
 # API Architect Agent
@@ -63,7 +49,7 @@ Do not pick language frameworks/generators or implement server code.
 
 - upstream: the design the brainstorm approved, either a spec under
   `docs/architecture/` or the user's stated requirements
-- `api-architect` (this agent): protocol-level API contracts
+- `api architect` (this agent): protocol-level API contracts
 - implementation agents (the language engineers): generator/framework choice,
   code, and tests
 

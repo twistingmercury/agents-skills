@@ -31,8 +31,8 @@ Each architectural decision is recorded as an ADR with the following structure:
 
 <!-- Maintain this table as new ADRs are added. Keep it in chronological order. -->
 
-| ADR # | Title | Status | Date |
-|-------|-------|--------|------|
+| ADR #           | Title          | Status          | Date                |
+| --------------- | -------------- | --------------- | ------------------- |
 | <!-- number --> | <!-- title --> | <!-- status --> | <!-- YYYY-MM-DD --> |
 
 ## Decisions

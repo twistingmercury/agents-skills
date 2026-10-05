@@ -4,17 +4,20 @@
 
 ## Delegation table
 
-| Task                                     | Delegate To             |
-| ---------------------------------------- | ----------------------- |
-| Shell scripts                            | `shell script engineer` |
-| Go code/services                         | `go software engineer`  |
-| API specs                                | `api architect`         |
-| Documentation                            | `technical writer`      |
-| DevOps/Docker/CI                         | `devops engineer`       |
-| Data schema/models                       | `data architect`        |
-| Database migrations and data scripts     | `data engineer`         |
-| Create or update README.md               | `/readme-writer` skill  |
-| Create or update architectural documents | `/arch-docs` skill      |
+| Task                                     | Delegate To                |
+| ---------------------------------------- | -------------------------- |
+| Shell scripts                            | `shell script engineer`    |
+| Go code/services                         | `go software engineer`     |
+| Python code/services                     | `python software engineer` |
+| C# / .NET code                           | `dotnet software engineer` |
+| React / TypeScript front ends            | `react software engineer`  |
+| API specs                                | `api architect`            |
+| Documentation                            | `technical writer`         |
+| DevOps/Docker/CI                         | `devops engineer`          |
+| Data schema/models                       | `data architect`           |
+| Database migrations and data scripts     | `data engineer`            |
+| Create or update README.md               | `/readme-writer` skill     |
+| Create or update architectural documents | `/arch-docs` skill         |
 
 ## Constraints
 

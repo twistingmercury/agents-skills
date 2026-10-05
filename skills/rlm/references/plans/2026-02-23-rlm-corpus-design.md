@@ -3,6 +3,25 @@
 Date: 2026-02-23
 Status: Draft validated in-session
 
+## Contents
+
+- [Goal](#goal)
+- [Scope](#scope)
+- [Current State](#current-state)
+- [Proposed Architecture](#proposed-architecture)
+  - [New command](#new-command)
+  - [Corpus state shape](#corpus-state-shape)
+- [Discovery And Ignore Rules](#discovery-and-ignore-rules)
+- [Extraction Layer](#extraction-layer)
+- [Execution Semantics](#execution-semantics)
+  - [Modes](#modes)
+  - [Reporting](#reporting)
+- [REPL Compatibility](#repl-compatibility)
+- [Testing Strategy](#testing-strategy)
+- [Rollout Plan](#rollout-plan)
+- [Risks And Mitigations](#risks-and-mitigations)
+- [Decision Log](#decision-log)
+
 ## Goal
 
 Extend the current single-file `rlm_repl.py` workflow to support a unified corpus built from a directory tree (including subdirectories), while staying document-focused and format-agnostic across technical and non-technical content.
@@ -12,6 +31,7 @@ This design supports text-like docs (`.txt`, `.md`, etc.) and common document fo
 ## Scope
 
 In scope:
+
 - Recursive ingestion from a root directory
 - Unified searchable corpus with source attribution
 - `.rlmignore` support and built-in default excludes
@@ -20,6 +40,7 @@ In scope:
 - Backward compatibility for existing single-file workflows
 
 Out of scope:
+
 - Software-code-specific indexing (AST, symbol graph, call graph)
 - Refactor-safe code understanding
 - Language-server-style code intelligence
@@ -29,6 +50,7 @@ A separate future tool will target software docs + source code analysis.
 ## Current State
 
 Today, `scripts/rlm_repl.py` initializes state from one context file (`init <context_path>`) and stores:
+
 - `context.path`
 - `context.loaded_at`
 - `context.content`
@@ -46,6 +68,7 @@ Add a new corpus initializer and state model while preserving existing behavior.
 - `init-corpus <root_dir>`
 
 Optional flags:
+
 - `--ignore-file <path>` (defaults to `<root_dir>/.rlmignore` if present)
 - `--strict` (fail on first extraction error)
 - `--include-ext <csv>` (defaults to document-focused list)
@@ -65,6 +88,7 @@ Add `corpus` object in state:
 - `corpus.report`: summary stats for status/diagnostics
 
 Per-doc record (`corpus.docs[]`):
+
 - `path`
 - `format` (`txt`, `md`, `pdf`, `docx`, `odt`, ...)
 - `text`
@@ -72,6 +96,7 @@ Per-doc record (`corpus.docs[]`):
 - `error` (nullable)
 
 Index record (`corpus.index[]`):
+
 - `path`
 - `doc_index`
 - `corpus_start`
@@ -82,17 +107,20 @@ Index record (`corpus.index[]`):
 Directory walk is recursive and deterministic (sorted paths).
 
 Default excludes (always applied unless explicit override is added later):
+
 - `.git/`
 - `node_modules/`
 - `bin/`
 - `_archive/`
 
 Ignore file behavior:
+
 - Use `<root_dir>/.rlmignore` by default if present
 - Allow override with `--ignore-file <path>`
 - Pattern style should follow gitignore-like semantics where practical
 
 Inclusion behavior:
+
 - Default extensions are document-oriented
 - Include code extensions only via explicit `--include-ext` opt-in (not default)
 
@@ -101,18 +129,22 @@ Inclusion behavior:
 Use pluggable extractors by extension/content type.
 
 Baseline:
+
 - Plain text formats: stdlib read/decode
 
 Optional FOSS extractors:
+
 - PDF: `pypdf`
 - DOCX: `python-docx`
 - ODT: `odfpy`
 
 Dependency policy:
+
 - No paid or proprietary parser requirements
 - Missing optional parser should produce clear diagnostics
 
 Normalization:
+
 - newline normalization
 - UTF-8 replacement fallback where needed
 - minimal whitespace normalization only
@@ -122,11 +154,13 @@ Normalization:
 ### Modes
 
 Best-effort (default):
+
 - Continue past extraction failures
 - Mark doc status as `error`
 - Save error detail in doc record and report
 
 Strict (`--strict`):
+
 - Abort on first extraction failure
 - Print exact file and failure reason
 - Exit non-zero
@@ -134,6 +168,7 @@ Strict (`--strict`):
 ### Reporting
 
 `init-corpus` completion output should include:
+
 - total files scanned
 - total files considered after ignore filters
 - loaded/skipped/error counts
@@ -148,10 +183,12 @@ Strict (`--strict`):
 Preserve existing helper signatures where possible.
 
 Compatibility mapping:
+
 - `content` alias points to `corpus.full_text` in corpus mode
 - `peek`, `grep`, `chunk_indices`, `write_chunks` continue to operate over `content`
 
 Enhance `write_chunks` output with metadata sidecars or embedded metadata including:
+
 - source `path`
 - `chunk_index`
 - corpus span (`start`, `end`)
@@ -162,17 +199,20 @@ This preserves existing prompt/workflow habits while improving traceability.
 ## Testing Strategy
 
 Unit tests:
+
 - ignore matching (`.rlmignore` + defaults)
 - recursive discovery and deterministic ordering
 - extension routing and parser selection
 - strict vs best-effort branching
 
 Extractor tests:
+
 - valid fixtures for `txt/md/pdf/docx/odt`
 - malformed fixtures per type
 - missing dependency behavior
 
 Integration tests:
+
 - nested directory ingestion
 - `init-corpus -> status -> grep -> write_chunks` end-to-end
 - report correctness and non-zero behavior in strict failures
@@ -180,14 +220,17 @@ Integration tests:
 ## Rollout Plan
 
 Phase 1:
+
 - Add `init-corpus` command and state support
 - Keep existing `init` path untouched
 
 Phase 2:
+
 - Add `.rlmignore` and reporting improvements
 - Add metadata-aware chunk outputs
 
 Phase 3:
+
 - Add optional extractor dependencies and diagnostics
 - Stabilize tests and docs
 
@@ -205,6 +248,7 @@ Mitigation: keep defaults document-focused and clearly separate future code-spec
 ## Decision Log
 
 Accepted decisions from this session:
+
 - Unified corpus model selected
 - Input source is a root directory with recursive subdirectory ingestion
 - Ignore controls include defaults plus `.rlmignore` and optional `--ignore-file`

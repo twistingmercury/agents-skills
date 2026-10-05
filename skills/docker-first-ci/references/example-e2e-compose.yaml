@@ -1,0 +1,38 @@
+# Image shape: run the image that build.sh just built, with its dependencies.
+# build.sh exports EXAMPLE_SERVICE_IMAGE; the default only serves local use.
+# tests/e2e/ holds the test runner image and its Dockerfile.
+services:
+  database:
+    # Pin dependencies to a version tag, same as the tooling image.
+    image: postgres:17.6-alpine
+    environment:
+      POSTGRES_PASSWORD: example-only
+    healthcheck:
+      test: ["CMD-SHELL", "pg_isready -U postgres"]
+      interval: 2s
+      timeout: 5s
+      retries: 15
+
+  service:
+    image: ${EXAMPLE_SERVICE_IMAGE:-example-service:dev}
+    # Never pull: a registry copy of this name would not be what was built.
+    pull_policy: never
+    environment:
+      EXAMPLE_DATABASE_URL: postgres://postgres:example-only@database:5432/postgres?sslmode=disable
+    depends_on:
+      database:
+        condition: service_healthy
+    healthcheck:
+      test: ["CMD", "/example-service", "--health"]
+      interval: 2s
+      timeout: 5s
+      retries: 15
+
+  e2e_tests:
+    build: ./e2e
+    environment:
+      EXAMPLE_SERVICE_URL: http://service:8080
+    # Starts only once the service reports healthy, so no sleeps are needed.
+    depends_on:
+      service:
+        condition: service_healthy
