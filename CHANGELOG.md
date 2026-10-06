@@ -7,6 +7,19 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.0.0] - 2026-10-06
+
+### Changed
+
+- **Breaking:** The `design-docs-writer` skill no longer suffixes documents with
+  `_vNN`. Files are named `NN_document_name.md`, and `version`, `date`, and `notes`
+  live in YAML frontmatter. An update edits the document in place and bumps
+  `version`; it never creates a successor file.
+- **Breaking:** Design documents now go under `docs/design/` instead of
+  `docs/architecture/`. The `api architect`, `data architect`, `ABOUT-THE-AGENTS.md`,
+  and `rules/agent-delegation.md` point at the new path. Run `make install`, and
+  move any existing `docs/architecture/` files by hand.
+
 ## [3.0.0] - 2026-10-05
 
 ### Changed

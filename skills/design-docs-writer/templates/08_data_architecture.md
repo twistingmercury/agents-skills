@@ -1,14 +1,16 @@
-<!-- Template: 08_data_architecture_v01.md
+---
+version: 1
+date: {YYYY-MM-DD}
+notes: Initial version.
+---
+
+<!-- Template: 08_data_architecture.md
      Purpose: Document database technology choices, data models, storage architecture,
      data flow patterns, consistency model, and migration strategy. -->
 
 # {PROJECT_NAME} — Data Architecture
 
-> **Version**: v01
-> **Date**: {YYYY-MM-DD}
-> **Notes**: Initial version.
-
-[Back to Overview](00_overview_v01.md) | [Back to Project README](../../README.md)
+[Back to Overview](00_overview.md) | [Back to Project README](../../README.md)
 
 ## Table of Contents
 
@@ -22,7 +24,7 @@
 ## Database Technology Stack
 
 <!-- For each database or data store used, document its purpose and justify the choice.
-     Reference ADRs from 02_architectural_decisions_v01.md for the technology selection rationale. -->
+     Reference ADRs from 02_architectural_decisions.md for the technology selection rationale. -->
 
 ### {Database Name}
 

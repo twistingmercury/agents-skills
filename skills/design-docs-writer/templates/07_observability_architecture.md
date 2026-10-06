@@ -1,14 +1,16 @@
-<!-- Template: 07_observability_architecture_v01.md
+---
+version: 1
+date: {YYYY-MM-DD}
+notes: Initial version.
+---
+
+<!-- Template: 07_observability_architecture.md
      Purpose: Document the observability strategy covering the three pillars:
      metrics, logs, and traces, plus alerting and SLO definitions. -->
 
 # {PROJECT_NAME} — Observability Architecture
 
-> **Version**: v01
-> **Date**: {YYYY-MM-DD}
-> **Notes**: Initial version.
-
-[Back to Overview](00_overview_v01.md) | [Back to Project README](../../README.md)
+[Back to Overview](00_overview.md) | [Back to Project README](../../README.md)
 
 ## Table of Contents
 
@@ -125,4 +127,4 @@ sequenceDiagram
 <!-- What happens when the error budget is exhausted? e.g., freeze feature releases,
      focus on reliability work. -->
 
-**Next:** [Data Architecture](08_data_architecture_v01.md)
+**Next:** [Data Architecture](08_data_architecture.md)

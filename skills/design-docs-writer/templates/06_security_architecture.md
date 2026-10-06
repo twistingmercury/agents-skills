@@ -1,14 +1,16 @@
-<!-- Template: 06_security_architecture_v01.md
+---
+version: 1
+date: {YYYY-MM-DD}
+notes: Initial version.
+---
+
+<!-- Template: 06_security_architecture.md
      Purpose: Document the security model including authentication, authorization,
      encryption, audit logging, and vulnerability management. -->
 
 # {PROJECT_NAME} — Security Architecture
 
-> **Version**: v01
-> **Date**: {YYYY-MM-DD}
-> **Notes**: Initial version.
-
-[Back to Overview](00_overview_v01.md) | [Back to Project README](../../README.md)
+[Back to Overview](00_overview.md) | [Back to Project README](../../README.md)
 
 ## Table of Contents
 
@@ -85,7 +87,7 @@ sequenceDiagram
 ## Security Boundaries
 
 <!-- Diagram showing trust zones and security boundaries. Reference the boundary
-     definitions from 03_system_architecture_v01.md. -->
+     definitions from 03_system_architecture.md. -->
 
 ```mermaid
 graph TB
@@ -114,4 +116,4 @@ graph TB
 - **Update Policy:** <!-- how quickly patches are applied -->
 - **Incident Response:** <!-- reference to incident response plan or summary -->
 
-**Next:** [Observability Architecture](07_observability_architecture_v01.md)
+**Next:** [Observability Architecture](07_observability_architecture.md)

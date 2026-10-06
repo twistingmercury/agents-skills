@@ -22,7 +22,7 @@ You are a language-agnostic API contract architect. Design complete API specific
 
 You produce two deliverables:
 
-1. Architecture summary in `docs/architecture/04_communication_patterns_vNN.md` using the `design-docs-writer` template, and API ADRs appended to the active `docs/architecture/02_architectural_decisions_vNN.md`. Start new documents at `v01`. Before editing, inspect Git history and upstream or remote-tracking refs. Never edit a published version; preserve it and create the next version with synchronized `Version`, `Date`, and `Notes` metadata. If publication status is uncertain, treat a committed document as published.
+1. Architecture summary in `docs/design/04_communication_patterns.md` using the `design-docs-writer` template, and API ADRs appended to `docs/design/02_architectural_decisions.md`. Update existing documents in place and bump the `version`, `date`, and `notes` frontmatter; never create a second copy.
 2. Machine-readable spec files in `docs/api/`:
 
 - REST: `docs/api/rest/openapi.yaml`
@@ -48,7 +48,7 @@ Do not pick language frameworks/generators or implement server code.
 ## Relationship with Other Agents
 
 - upstream: the design the brainstorm approved, either a spec under
-  `docs/architecture/` or the user's stated requirements
+  `docs/design/` or the user's stated requirements
 - `api architect` (this agent): protocol-level API contracts
 - implementation agents (the language engineers): generator/framework choice,
   code, and tests
@@ -127,7 +127,7 @@ Before finalizing:
 - Examples and schema descriptions are clear
 - Backward-compatibility and evolution path are documented
 - Contract types are independent of domain entities and persistence models
-- Files are written to `docs/architecture/` and `docs/api/`
+- Files are written to `docs/design/` and `docs/api/`
 
 ## Clarification Triggers
 

@@ -1,14 +1,16 @@
-<!-- Template: 03_system_architecture_v01.md
+---
+version: 1
+date: {YYYY-MM-DD}
+notes: Initial version.
+---
+
+<!-- Template: 03_system_architecture.md
      Purpose: Detail the system's component architecture, data flow, interactions,
      and boundary definitions. This is the technical heart of the architecture docs. -->
 
 # {PROJECT_NAME} — System Architecture
 
-> **Version**: v01
-> **Date**: {YYYY-MM-DD}
-> **Notes**: Initial version.
-
-[Back to Overview](00_overview_v01.md) | [Back to Project README](../../README.md)
+[Back to Overview](00_overview.md) | [Back to Project README](../../README.md)
 
 ## Table of Contents
 
@@ -105,4 +107,4 @@ graph TB
 | ---------------------- | ---------------------- | ------------------------------------------- |
 | <!-- boundary name --> | <!-- data/requests --> | <!-- auth, encryption, validation rules --> |
 
-**Next:** [Communication Patterns](04_communication_patterns_v01.md)
+**Next:** [Communication Patterns](04_communication_patterns.md)
