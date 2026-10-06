@@ -1,14 +1,16 @@
-<!-- Template: 04_communication_patterns_v01.md
+---
+version: 1
+date: {YYYY-MM-DD}
+notes: Initial version.
+---
+
+<!-- Template: 04_communication_patterns.md
      Purpose: Document API protocol choices, design patterns, integration patterns,
      and error handling strategies across the system. -->
 
 # {PROJECT_NAME} — Communication Patterns
 
-> **Version**: v01
-> **Date**: {YYYY-MM-DD}
-> **Notes**: Initial version.
-
-[Back to Overview](00_overview_v01.md) | [Back to Project README](../../README.md)
+[Back to Overview](00_overview.md) | [Back to Project README](../../README.md)
 
 ## Table of Contents
 
@@ -22,7 +24,7 @@
 ## Protocol Choices
 
 <!-- Justify why each protocol was chosen. Reference ADRs from
-     02_architectural_decisions_v01.md where applicable. -->
+     02_architectural_decisions.md where applicable. -->
 
 | Protocol                 | Use Case            | Rationale                  |
 | ------------------------ | ------------------- | -------------------------- |
@@ -88,7 +90,7 @@
 ## Authentication and Authorization Flow
 
 <!-- Document how requests are authenticated and authorized across service
-     boundaries. Reference 06_security_architecture_v01.md for detailed security model. -->
+     boundaries. Reference 06_security_architecture.md for detailed security model. -->
 
 ```mermaid
 sequenceDiagram
@@ -104,4 +106,4 @@ sequenceDiagram
     Service-->>Client: Response
 ```
 
-**Next:** [Deployment Architecture](05_deployment_architecture_v01.md)
+**Next:** [Deployment Architecture](05_deployment_architecture.md)

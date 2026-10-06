@@ -1,14 +1,16 @@
-<!-- Template: 01_requirements_v01.md
+---
+version: 1
+date: {YYYY-MM-DD}
+notes: Initial version.
+---
+
+<!-- Template: 01_requirements.md
      Purpose: Capture the problem space, goals, non-goals, success criteria, and constraints.
      This document drives architectural decisions — keep it specific and measurable. -->
 
 # {PROJECT_NAME} — Requirements
 
-> **Version**: v01
-> **Date**: {YYYY-MM-DD}
-> **Notes**: Initial version.
-
-[Back to Overview](00_overview_v01.md) | [Back to Project README](../../README.md)
+[Back to Overview](00_overview.md) | [Back to Project README](../../README.md)
 
 ## Table of Contents
 
@@ -82,4 +84,4 @@
 | ------------------- | --------------- | ------------------------ |
 | <!-- assumption --> | <!-- impact --> | <!-- how to validate --> |
 
-**Next:** [Architectural Decisions](02_architectural_decisions_v01.md)
+**Next:** [Architectural Decisions](02_architectural_decisions.md)

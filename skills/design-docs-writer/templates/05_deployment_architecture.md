@@ -1,14 +1,16 @@
-<!-- Template: 05_deployment_architecture_v01.md
+---
+version: 1
+date: {YYYY-MM-DD}
+notes: Initial version.
+---
+
+<!-- Template: 05_deployment_architecture.md
      Purpose: Document deployment topology, infrastructure requirements,
      operational considerations, and scaling strategy. -->
 
 # {PROJECT_NAME} — Deployment Architecture
 
-> **Version**: v01
-> **Date**: {YYYY-MM-DD}
-> **Notes**: Initial version.
-
-[Back to Overview](00_overview_v01.md) | [Back to Project README](../../README.md)
+[Back to Overview](00_overview.md) | [Back to Project README](../../README.md)
 
 ## Table of Contents
 
@@ -91,7 +93,7 @@ graph LR
 
 ### Monitoring
 
-<!-- What to monitor and alerting thresholds. Reference 07_observability_architecture_v01.md
+<!-- What to monitor and alerting thresholds. Reference 07_observability_architecture.md
      for detailed observability strategy. -->
 
 - <!-- key metric and threshold -->
@@ -133,4 +135,4 @@ graph LR
 
 - <!-- bottleneck and mitigation -->
 
-**Next:** [Security Architecture](06_security_architecture_v01.md)
+**Next:** [Security Architecture](06_security_architecture.md)

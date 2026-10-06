@@ -24,4 +24,4 @@
 - The API and data architects are **consultants**: they return recommendations and do not coordinate
 - Specialists execute the task they are handed and return
 - Specialists may stage, commit, and tag their own work (`git add`, `git commit`, `git tag`); nobody but the user pushes
-- Design specs from `superpowers:brainstorming` go under `docs/architecture/` via the `/design-docs-writer` skill, not `docs/superpowers/specs/`; brainstorming honors this as a user preference
+- Design specs from `superpowers:brainstorming` go under `docs/design/` via the `/design-docs-writer` skill, not `docs/superpowers/specs/`; brainstorming honors this as a user preference

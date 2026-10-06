@@ -1,11 +1,11 @@
 ---
 name: design-docs-writer
-description: Creates and updates versioned architecture documents under docs/architecture/ from standardized templates, using snake_case filenames and never editing published versions. Use when writing architecture recommendations, recording decisions (ADRs), or scaffolding docs/architecture/.
+description: Creates and updates architecture documents under docs/design/ from standardized templates, using snake_case filenames and frontmatter versioning, always updating in place. Use when writing architecture recommendations, recording decisions (ADRs), or scaffolding docs/design/.
 ---
 
 # Architecture Documentation Skill
 
-Create and maintain structured architecture documentation in `docs/architecture/` using standardized templates.
+Create and maintain structured architecture documentation in `docs/design/` using standardized templates.
 
 ## Inputs
 
@@ -13,45 +13,49 @@ Accept document numbers such as `00 01 02 03 05`, or `all`. If the requested doc
 
 Available documents:
 
-| #   | Initial filename                       | Description                                           |
-| --- | -------------------------------------- | ----------------------------------------------------- |
-| 00  | `00_overview_v01.md`                   | High-level system overview and document navigation    |
-| 01  | `01_requirements_v01.md`               | Problem statement, goals, non-goals, success criteria |
-| 02  | `02_architectural_decisions_v01.md`    | ADR log with Context/Decision/Consequences format     |
-| 03  | `03_system_architecture_v01.md`        | Component breakdown, data flow, boundaries            |
-| 04  | `04_communication_patterns_v01.md`     | API protocols, endpoints, integration patterns        |
-| 05  | `05_deployment_architecture_v01.md`    | Deployment topology, infrastructure, scaling          |
-| 06  | `06_security_architecture_v01.md`      | Auth model, access control, encryption, audit         |
-| 07  | `07_observability_architecture_v01.md` | Monitoring, logging, tracing, alerting                |
-| 08  | `08_data_architecture_v01.md`          | Database stack, data models, storage, migrations      |
+| #  | Filename                           | Description                                           |
+| -- | ---------------------------------- | ----------------------------------------------------- |
+| 00 | `00_overview.md`                   | High-level system overview and document navigation    |
+| 01 | `01_requirements.md`               | Problem statement, goals, non-goals, success criteria |
+| 02 | `02_architectural_decisions.md`    | ADR log with Context/Decision/Consequences format     |
+| 03 | `03_system_architecture.md`        | Component breakdown, data flow, boundaries            |
+| 04 | `04_communication_patterns.md`     | API protocols, endpoints, integration patterns        |
+| 05 | `05_deployment_architecture.md`    | Deployment topology, infrastructure, scaling          |
+| 06 | `06_security_architecture.md`      | Auth model, access control, encryption, audit         |
+| 07 | `07_observability_architecture.md` | Monitoring, logging, tracing, alerting                |
+| 08 | `08_data_architecture.md`          | Database stack, data models, storage, migrations      |
 
 ## Naming and versioning
 
 - Use lowercase snake_case for generated documentation filenames.
 - Preserve conventional ecosystem filenames such as `README.md`, `CHANGELOG.md`, `CONTRIBUTING.md`, and `LICENSE`.
-- Name architecture documents `NN_document_name_vNN.md`.
-- Start a new architecture document at `v01`.
-- Before editing, inspect Git history and the configured upstream or remote-tracking refs to determine whether the active version has been published.
-- Never edit a published architecture document. Copy its content into the next version, preserve the published file unchanged, and make changes only in the successor.
-- If publication status cannot be established, treat a committed architecture document as published.
-- Edit the highest version in place only while it is untracked or known to be unpushed.
-- When a new version is requested, increment the highest suffix (`v01` to `v02`), copy forward relevant content, and preserve the prior version.
-- Keep version suffixes two digits until `v99`.
-- Keep the filename suffix and header metadata synchronized: `_v02.md` uses `Version: v02`.
-- Set `Date` to the ISO creation date of that version (`YYYY-MM-DD`).
-- Set `Notes` to `Initial version.` for `v01`, or briefly summarize changes from the previous version.
+- Name architecture documents `NN_document_name.md`, with no version suffix.
+- Record `version`, `date`, and `notes` as YAML frontmatter on the first lines of every document:
+
+  ```yaml
+  ---
+  version: 1
+  date: 2026-10-06
+  notes: Initial version.
+  ---
+  ```
+
+- Start a new document at `version: 1` with `notes: Initial version.`.
+- Always update a document in place. Never create a second copy or a successor file.
+- On every update, increment `version` by one, set `date` to the ISO date (`YYYY-MM-DD`) of the update, and set `notes` to a brief summary of what changed in that update.
+- Git history holds earlier versions; do not preserve them as separate files.
 
 ## Step-by-step procedure
 
 ### Step 1: Ensure directory exists
 
-Check if `docs/architecture/` exists. If not, create it with `mkdir -p docs/architecture/`.
+Check if `docs/design/` exists. If not, create it with `mkdir -p docs/design/`.
 
 ### Step 2: Check existing documents
 
-Find requested documents using the `NN_document_name_vNN.md` pattern. Determine whether the highest version is published using local Git and upstream-tracking evidence. Update it only when it is untracked or known to be unpushed; otherwise create the next version. For a new document, create `v01` from the matching template. Do not fetch or contact a remote unless the user has authorized it.
+Find requested documents using the `NN_document_name.md` pattern. Update an existing document in place and bump its frontmatter `version`, `date`, and `notes`. For a new document, create it from the matching template at `version: 1`.
 
-For architectural decisions, append new ADRs to the active `02_architectural_decisions_vNN.md` rather than replacing earlier ADRs. Determine the next ADR number from the active version.
+For architectural decisions, append new ADRs to the `02_architectural_decisions.md` rather than replacing earlier ADRs. Determine the next ADR number from the existing ADRs, and bump the frontmatter version.
 
 ### Step 3: Read templates
 
@@ -59,24 +63,24 @@ Read the corresponding template(s) from this skill's `templates/` directory (the
 
 ### Step 4: Write documents
 
-Write each document to `docs/architecture/` using the template structure. Fill in project-specific content from conversation context or the calling agent's analysis.
+Write each document to `docs/design/` using the template structure. Fill in project-specific content from conversation context or the calling agent's analysis.
 
 **Document format rules:**
 
 - Title as H1
-- Immediately below the H1, include `Version`, `Date`, and `Notes` blockquote metadata
-- Navigation links follow the metadata and point to the active overview version and `../../README.md`
+- YAML frontmatter with `version`, `date`, and `notes` as the first lines of the file, before the H1
+- Navigation links follow the H1 and point to the overview and `../../README.md`
 - Table of Contents after navigation
 - Mermaid diagrams for visual architecture (use fenced ```mermaid blocks)
 - Tables for structured comparisons and decisions
-- `**Next:** [Document Name](filename.md)` at the bottom, linking to the active version of the next document
+- `**Next:** [Document Name](filename.md)` at the bottom, linking to the next document
 - ADR format: Context / Decision / Consequences (positive + negative)
 - Cross-references between docs using relative links
 - Only create documents you have actual content for — no empty stubs
 
 ### Step 5: Update overview navigation
 
-If an overview exists or other documents were added, update the active overview's Document Navigation table to list only existing documents and their active versions.
+If an overview exists or other documents were added, update the overview's Document Navigation table to list only existing documents.
 
 ### Step 6: Return summary
 
@@ -84,7 +88,7 @@ Return a summary to the caller listing:
 
 - Files created (with paths)
 - Files updated (with what changed)
-- Total document count in `docs/architecture/`
+- Total document count in `docs/design/`
 
 ## When used by agents
 
@@ -97,8 +101,8 @@ Any agent writing architecture documentation can use this skill. When invoked by
 
 ## Key principles
 
-- **Convention over configuration** — always writes to `docs/architecture/`
+- **Convention over configuration** — always writes to `docs/design/`
 - **No empty stubs** — only create documents with actual content
-- **Preserve published versions** — never edit a version found on the tracked remote; create the next version instead
+- **Update in place** — one file per document; bump the frontmatter `version`, `date`, and `notes` on every change
 - **Consistent format** — all docs follow the same navigation, TOC, and linking patterns
 - **Living documents** — designed to be updated as architecture evolves

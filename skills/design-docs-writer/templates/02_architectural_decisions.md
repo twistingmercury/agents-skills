@@ -1,15 +1,17 @@
-<!-- Template: 02_architectural_decisions_v01.md
+---
+version: 1
+date: {YYYY-MM-DD}
+notes: Initial version.
+---
+
+<!-- Template: 02_architectural_decisions.md
      Purpose: Log architectural decisions using the ADR (Architecture Decision Record) format.
      This is an append-only document — never remove or modify accepted ADRs.
      Supersede them with new ADRs instead. -->
 
 # {PROJECT_NAME} — Architectural Decisions
 
-> **Version**: v01
-> **Date**: {YYYY-MM-DD}
-> **Notes**: Initial version.
-
-[Back to Overview](00_overview_v01.md) | [Back to Project README](../../README.md)
+[Back to Overview](00_overview.md) | [Back to Project README](../../README.md)
 
 ## Table of Contents
 
@@ -42,7 +44,7 @@ Each architectural decision is recorded as an ADR with the following structure:
      2. Add an entry to the Decision Summary table above
      3. Append the new ADR below existing ones
      4. Never remove or modify accepted ADRs — supersede them with new ones instead
-     5. Reference related requirements from 01_requirements_v01.md where applicable -->
+     5. Reference related requirements from 01_requirements.md where applicable -->
 
 ### ADR-001: {Decision Title}
 
@@ -51,7 +53,7 @@ Each architectural decision is recorded as an ADR with the following structure:
 **Context:**
 
 <!-- What is the issue? What forces are at play? What requirements or constraints
-     drive this decision? Reference specific goals from 01_requirements_v01.md. -->
+     drive this decision? Reference specific goals from 01_requirements.md. -->
 
 **Decision:**
 
@@ -68,4 +70,4 @@ Each architectural decision is recorded as an ADR with the following structure:
 
 <!-- Trade-offs accepted. What limitations or risks does this introduce? -->
 
-**Next:** [System Architecture](03_system_architecture_v01.md)
+**Next:** [System Architecture](03_system_architecture.md)
