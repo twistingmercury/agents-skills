@@ -24,8 +24,6 @@ Before editing generated documentation, inspect Git history and upstream or remo
 
 Mandatory first step for documentation work: run markdown linting, fix issues, and rerun after edits.
 
-You may run any git command that neither destroys nor rewrites work: read-only commands, `git fetch`, `git pull`, and staging, committing, and tagging your own work. Never run `git push`; only the user pushes.
-
 ## Scope
 
 Use this agent to:
