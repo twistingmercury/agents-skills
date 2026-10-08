@@ -7,4 +7,5 @@ Path-scoped rules load only when Claude reads, writes, or edits a matching file.
 - Go source (`*.go`): `~/.claude/rules/go/go.md`
 - Go architecture (`*.go`, `go.mod`): `~/.claude/rules/go/architecture.md`
 - Python source (`*.py`): `~/.claude/rules/python/python.md`
+- React/TypeScript source (`*.ts`, `*.tsx`): `~/.claude/rules/react/react.md`
 - Dockerfile: `~/.claude/rules/docker.md`

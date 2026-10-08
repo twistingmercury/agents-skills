@@ -7,6 +7,28 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.1.0] - 2026-10-08
+
+### Added
+
+- Added `rules/react/react.md`, a path-scoped rule (`*.ts`, `*.tsx`) holding the
+  React and TypeScript standards, and listed it in `rules/index.md`.
+- Added a "When to delegate" section to `rules/agent-delegation.md`: delegate
+  implementation only for tasks touching about 3 or more files, needing a
+  test-fix loop, running under `superpowers:subagent-driven-development`, or
+  running in parallel with other work. Everything else is done inline.
+
+### Changed
+
+- The language engineers and the `devops engineer` now describe themselves as
+  "use only for" multi-file or test-driven work, so small edits stay inline.
+- The `react software engineer` now points at `rules/react/react.md` instead of
+  carrying the standards itself, shrinking from 175 lines to about 40.
+- The git policy (any non-destructive, non-rewriting command; commit and tag
+  your own work; only the user pushes) now lives once in
+  `rules/agent-delegation.md` instead of being repeated in 10 agent files. Run
+  `make install` so the agents and the rule stay in step.
+
 ## [4.0.0] - 2026-10-06
 
 ### Changed

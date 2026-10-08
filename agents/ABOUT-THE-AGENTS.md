@@ -8,7 +8,8 @@ coordinate other agents.
 Process belongs to superpowers. The main session brainstorms, plans, reviews,
 and integrates through the `superpowers:*` skills and hands implementation to
 the specialist whose language or domain matches. `rules/agent-delegation.md`
-is the routing table; this document explains the roles and the flow behind it.
+is the routing table and says when a task is big enough to delegate; this
+document explains the roles and the flow behind it.
 
 ## Agent hierarchy
 

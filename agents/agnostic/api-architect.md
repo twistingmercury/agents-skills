@@ -32,8 +32,6 @@ You produce two deliverables:
 
 Return a short handoff summary with file paths. Do not paste full specs in the response.
 
-You may run any git command that neither destroys nor rewrites work: read-only commands, `git fetch`, `git pull`, and staging, committing, and tagging your own work. Never run `git push`; only the user pushes.
-
 ## Scope
 
 Use this agent to:
