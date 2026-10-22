@@ -7,6 +7,17 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.2.0] - 2026-10-22
+
+### Added
+
+- Added four always-loaded rules: `rules/build-and-ci.md` (local equals CI, no
+  build caches, exact Docker cleanup), `rules/git-push.md` (push only when the
+  owner says so; run `check-push-readiness` first), `rules/secrets.md` (never
+  read or dump credentials from the environment), and `rules/working-style.md`
+  (simplicity, verify before asking, deferred findings go to GitHub issues).
+  Run `make install` to copy them to `~/.claude/rules/`.
+
 ## [4.1.0] - 2026-10-08
 
 ### Added
