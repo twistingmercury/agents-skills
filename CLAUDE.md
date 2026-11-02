@@ -50,7 +50,7 @@ See [README § How it works](README.md#how-it-works) for the three-phase install
 
 ### Skills with executable code
 
-Most skills are prompt-only. `rlm` has `scripts/rlm_repl.py` and `tests/test_rlm_repl.py` (stdlib `unittest`); `python-uv-starter` has `scripts/scaffold.sh` and `tests/scaffold.bats`.
+Most skills are prompt-only. `rlm` has `scripts/rlm_repl.py` and `tests/test_rlm_repl.py` (stdlib `unittest`).
 
 ## Conventions
 

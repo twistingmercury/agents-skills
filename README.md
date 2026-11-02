@@ -42,9 +42,9 @@ Portable skills:
 | [`docker-first-ci`](skills/docker-first-ci/SKILL.md)           | Implement and harden Docker-first CI/CD pipelines      |
 | [`mermaid-diagrams`](skills/mermaid-diagrams/SKILL.md)         | Write Mermaid diagrams locally, never to third parties |
 | [`prime`](skills/prime/SKILL.md)                               | Survey a repository and build working context          |
-| [`python-uv-starter`](skills/python-uv-starter/SKILL.md)       | Scaffold an empty uv-based Python CLI project          |
 | [`readme-writer`](skills/readme-writer/SKILL.md)               | Create or update a README from a standard template     |
 | [`rlm`](skills/rlm/SKILL.md)                                   | Run long-context tasks using a persistent local REPL   |
+| [`scaffold-project`](skills/scaffold-project/SKILL.md)         | Stand up a new project from a GitHub template repo     |
 
 ## Prerequisites
 
@@ -105,11 +105,12 @@ To lint it (contributors):
 
 For Python projects and `scripts/python_tool_chain.sh` (install `uv` first, see the table below):
 
-- `uv` (the per-project `uv add --dev` route, the `python-uv-starter` skill, and the Python tool script)
+- `uv` (the per-project `uv add --dev` route and the Python tool script)
 
 Used when a skill runs:
 
-- `docker` (`docker-first-ci`, `python-uv-starter`)
+- `docker` (`docker-first-ci`, `scaffold-project`)
+- `gh` (`scaffold-project`)
 - `git` (`check-push-readiness`, `prime`, `readme-writer`, `design-docs-writer`)
 - `mmdc` (mermaid-cli, optional; used by `mermaid-diagrams` skill for local validation)
 
@@ -151,7 +152,7 @@ Each tool is listed once. The `go install` tools land in `$HOME/go/bin`, which m
 | shellcheck                     | macOS `brew install shellcheck`; Linux `apt install shellcheck` or `dnf install shellcheck`                                                                                                                         | Linting, shell engineer              |
 | markdownlint                   | `scripts/node_tool_chain.sh`                                                                                                                                                                                        | Linting, technical writer            |
 | Docker with Compose and buildx | macOS [Docker Desktop](https://docs.docker.com/desktop/setup/install/mac-install/) (includes both); Linux [Docker Engine](https://docs.docker.com/engine/install/) plus the Compose and buildx plugins it describes | Skills, DevOps and data engineers    |
-| uv                             | macOS `brew install uv`; Linux `curl -LsSf https://astral.sh/uv/install.sh \| sh`                                                                                                                                   | Python engineer, `python-uv-starter` |
+| uv                             | macOS `brew install uv`; Linux `curl -LsSf https://astral.sh/uv/install.sh \| sh`                                                                                                                                   | Python engineer                      |
 | mmdc                           | `scripts/node_tool_chain.sh`                                                                                                                                                                                        | `mermaid-diagrams` (optional)        |
 | Go toolchain                   | macOS `brew install go`; Linux [go.dev/doc/install](https://go.dev/doc/install)                                                                                                                                     | Go engineer                          |
 | goimports                      | `scripts/go_tool_chain.sh`                                                                                                                                                                                          | Go engineer                          |
@@ -230,7 +231,7 @@ root:
 make test
 ```
 
-This runs the RLM unit tests, the python-uv-starter bats tests, and the toolchain
+This runs the RLM unit tests and the toolchain
 script tests in `scripts/tests/`. You may also run the RLM tests directly:
 
 ```bash

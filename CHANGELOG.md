@@ -7,6 +7,20 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+### Added
+
+- Added the `scaffold-project` skill, which stands up a new project from one of
+  the owner's GitHub template repos (starting with
+  `twistingmercury/scaffold-go-cli`) via `gh repo create --template` and the
+  template's `scaffold_project.sh`. New templates are added as a row in the
+  skill's template table.
+
+### Removed
+
+- Removed the `python-uv-starter` skill; `scaffold-project` and template repos
+  replace the `*-starter` skills. Delete any stale copy at
+  `~/.claude/skills/python-uv-starter` by hand.
+
 ## [4.2.0] - 2026-10-22
 
 ### Added
