@@ -67,7 +67,11 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 - **Breaking:** The `design-docs-writer` skill no longer suffixes documents with
   `_vNN`. Files are named `NN_document_name.md`, and `version`, `date`, and `notes`
   live in YAML frontmatter. An update edits the document in place and bumps
-  `version`; it never creates a successor file.
+  `version`; it never creates a successor file. The skill only finds files
+  named `NN_document_name.md`, so migrate existing versioned documents by hand:
+  rename the latest `NN_document_name_vNN.md` to `NN_document_name.md`, add the
+  `version`, `date`, and `notes` frontmatter, and delete the older `_vNN`
+  copies. Git history keeps them.
 - **Breaking:** Design documents now go under `docs/design/` instead of
   `docs/architecture/`. The `api architect`, `data architect`, `ABOUT-THE-AGENTS.md`,
   and `rules/agent-delegation.md` point at the new path. Run `make install`, and
@@ -166,10 +170,6 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Added
 
-- Added the `python-uv-starter` skill, which scaffolds an empty uv-based Python
-  CLI project (src layout, pytest, ruff, Makefile, Docker-first wheel build,
-  GitHub Actions CI) from bundled templates, with BATS coverage for its
-  renderer.
 - Added path-scoped Claude Code coding rules for shell, BATS, Go, Python, and
   Dockerfiles under `rules/`, with an always-on `index.md` that points
   at them.
@@ -181,7 +181,7 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ### Changed
 
-This release removes four agents and one skill in favor of superpowers, so
+This release removes five agents and three skills in favor of superpowers, so
 any routing to them breaks.
 
 - Repositioned the `check-push-readiness` skill as the read-only audit that
@@ -236,7 +236,7 @@ any routing to them breaks.
   installer no longer reads or writes `~/.claude/CLAUDE.md`.
 - Rewrote `agents/ABOUT-THE-AGENTS.md` around the superpowers flow. It now
   presents the specialists as implementer seats and artifact producers,
-  lists the twelve live agents in one table grouped by area, and walks the
+  lists the eleven live agents in one table grouped by area, and walks the
   brainstorm, plan, implement, review, and finish stages through their
   `superpowers:` skills. The five pipeline workflows, the API style tree,
   the architect-selection tree, the numbered best practices, the long
@@ -291,7 +291,7 @@ any routing to them breaks.
   `agents/GLOBAL_AGENT_RULES.md`. An agent-rules block left in
   `~/.claude/CLAUDE.md` by an earlier install is not removed; delete it by
   hand so the rules do not load twice.
-  - Retired the `capture-requirements` skill to `_archive/skills/`. Superpowers
+- Retired the `capture-requirements` skill to `_archive/skills/`. Superpowers
   `brainstorming` covers the same elicitation (read the project, ask one
   question at a time, gate on approval, write a handoff document), and the
   skill's handoff targeted the architecture agents retired in 2.0.0. It also
@@ -325,6 +325,15 @@ any routing to them breaks.
   The install guide's links to `agents/ABOUT-THE-AGENTS.md` and `rules/`
   were relative to `claude/` and resolved nowhere; they now climb to the
   repository root.
+
+## [1.7.0] - 2026-09-28
+
+### Added
+
+- Added the `python-uv-starter` skill, which scaffolds an empty uv-based Python
+  CLI project (src layout, pytest, ruff, Makefile, Docker-first wheel build,
+  GitHub Actions CI) from bundled templates, with BATS coverage for its
+  renderer.
 
 ## [1.6.0] - 2026-09-27
 
@@ -400,6 +409,16 @@ any routing to them breaks.
 ### Fixed
 
 - Stopped tracking Python bytecode caches and ignored `__pycache__/`.
+
+## [1.5.1] - 2026-09-14
+
+### Changed
+
+- Updated the `ralph-loop-docs-writer` skill to v03 templates to match gralph:
+  each task gets exactly one attempt, with no retry disposition, attempt
+  budget, or `--iterations` flag. A result that still carries `retry` is
+  rejected. Regenerate prompts written against the v02 templates instead of
+  patching them.
 
 ## [1.5.0] - 2026-09-14
 
