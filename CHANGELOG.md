@@ -7,8 +7,14 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.3.0] - 2026-11-02
+
 ### Added
 
+- Added `rules/obvious-code.md`, an always-loaded rule on how code reads (the
+  debugger test, explicit over implicit, standard patterns, concrete over
+  generic, full-word names, top-to-bottom order). It complements
+  `rules/code-shape.md`. Run `make install` to copy it to `~/.claude/rules/`.
 - Added the `scaffold-project` skill, which stands up a new project from one of
   the owner's GitHub template repos (starting with
   `twistingmercury/scaffold-go-cli`) via `gh repo create --template` and the
