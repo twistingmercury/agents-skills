@@ -7,6 +7,15 @@ and this project adheres to [Semantic Versioning](https://semver.org/spec/v2.0.0
 
 ## [Unreleased]
 
+## [4.4.0] - 2026-11-03
+
+### Added
+
+- Added the `issue-writer` skill, which writes or updates an issue from a fixed
+  Context / The Work / Expected Result template and posts it with `gh`. It shows
+  a draft and asks before posting unless explicitly told to create an issue.
+  Run `make install` to copy it to `~/.claude/skills/`.
+
 ## [4.3.0] - 2026-11-02
 
 ### Added

@@ -1,7 +1,7 @@
 # Claude Code Agent Ecosystem
 
 > **Maturity Level**: Basic - Ready for use and actively evolving.
-> **Version**: v4.3.0
+> **Version**: v4.4.0
 >
 > - **Emerging**: Prototype, not production-ready, expect breaking changes
 > - **Basic**: Production-ready but actively evolving, expect minor version changes
@@ -40,6 +40,7 @@ Portable skills:
 | [`check-push-readiness`](skills/check-push-readiness/SKILL.md) | Read-only audit of unpushed commits before a push      |
 | [`design-docs-writer`](skills/design-docs-writer/SKILL.md)     | Create and update architecture documentation           |
 | [`docker-first-ci`](skills/docker-first-ci/SKILL.md)           | Implement and harden Docker-first CI/CD pipelines      |
+| [`issue-writer`](skills/issue-writer/SKILL.md)                 | Write or update an issue from a standard template      |
 | [`mermaid-diagrams`](skills/mermaid-diagrams/SKILL.md)         | Write Mermaid diagrams locally, never to third parties |
 | [`prime`](skills/prime/SKILL.md)                               | Survey a repository and build working context          |
 | [`readme-writer`](skills/readme-writer/SKILL.md)               | Create or update a README from a standard template     |
@@ -110,7 +111,7 @@ For Python projects and `scripts/python_tool_chain.sh` (install `uv` first, see 
 Used when a skill runs:
 
 - `docker` (`docker-first-ci`, `scaffold-project`)
-- `gh` (`scaffold-project`)
+- `gh` (`issue-writer`, `scaffold-project`)
 - `git` (`check-push-readiness`, `prime`, `readme-writer`, `design-docs-writer`)
 - `mmdc` (mermaid-cli, optional; used by `mermaid-diagrams` skill for local validation)
 
